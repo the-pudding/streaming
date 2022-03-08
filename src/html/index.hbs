@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang='en' data-version='{{timestamp}}'>
+
+<head>
+
+	{{> base/meta}}
+
+	<link inline rel='stylesheet' href='bundle.css' />
+
+	{{> base/font}}
+
+</head>
+
+<body>
+
+	{{> base/header 'sticky'}}
+
+	<main id='content'>
+
+		{{> story/intro }}
+
+	</main>
+
+	{{> base/footer }}
+
+
+	<script src='{{basepath}}assets/scripts/d3.v6.0.0.min.js'></script>
+	<script src='bundle.js?version={{timestamp}}' async></script>
+</body>
+
+</html>
