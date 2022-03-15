@@ -177,7 +177,7 @@ function render(){
               .data(data_music_notes)
               .enter()
               .append("image")
-              .attr('xlink:href', './images/music.png')
+              .attr('xlink:href', './assets/images/music.png')
               .attr('width', size_music_notes)
               .attr('height',size_music_notes)
               .attr("x", function(d){ return d.x_start; })
@@ -215,7 +215,7 @@ function render(){
               .data(data_diag_dollars)
               .enter()
               .append("image")
-              .attr('xlink:href', './images/round_dollar_fill_negative_with_edges_grey_bckgnd.png')
+              .attr('xlink:href', './assets/images/round_dollar_fill_negative_with_edges_grey_bckgnd.png')
               .attr('width', size_dollars)
               .attr('height',size_dollars)
               .attr("x", function(d){ return d.x_start; })
@@ -699,9 +699,8 @@ function render(){
                   "other_tracks":2000000,
               };
 
-  const
-    total_streams_maxv = 10000000000
-    track_streams_maxv = 5000000000;
+  const total_streams_maxv = 10000000000;
+  const track_streams_maxv = 5000000000;
 
   var dsp_revenue_default = 70;
   var dsp_share_default = 100;
@@ -764,6 +763,7 @@ function render(){
   var streams = streams_default;
   var dsp_revenue = dsp_revenue_default;  
   var dsp_share = dsp_share_default;
+  var artist_shareOfStreams = 0;
   var artist_share = artist_share_default;
   var revshare_drawn = false;
   var revshare_x_ticks_drawn = false;
@@ -1109,7 +1109,7 @@ function render(){
         var idx = i+j*N;
         g_dollars
           .append("image")
-          .attr('xlink:href', './images/round_dollar_fill_negative_with_edges.png')
+          .attr('xlink:href', './assets/images/round_dollar_fill_negative_with_edges.png')
           .attr("x", x(i*revshare_scale_ends.x_max/N))
           .attr("y",y(j*revshare_scale_ends.x_max/N))
           .attr("width", x(revshare_scale_ends.x_max/N) + 1)
@@ -1217,7 +1217,7 @@ function render(){
               // .style('stroke', color);   
 
             legend.append("image")  
-                  .attr('xlink:href', './images/round_dollar_fill_negative_with_edges.png')
+                  .attr('xlink:href', './assets/images/round_dollar_fill_negative_with_edges.png')
                   .attr("width", legendRectSize + 1)
                   .attr("height", legendRectSize + 1);                       
               
@@ -1432,21 +1432,21 @@ function render(){
           if (revshare_drawn==false){
             revshare_data_update();
             drawChart(data_revshare,revshare_rendering_options);
-            revshare_draw_dollars(N=20);
+            revshare_draw_dollars(20);
             // revshare_draw_title()
-            revshare_draw_legend(data_revshare, N=20);
+            revshare_draw_legend(data_revshare, 20);
             revshare_drawn = true;
           }
           else {
             revshare_data_update();
             updateChart(data_revshare,revshare_rendering_options);
-            revshare_update_legend(data_revshare, N=20);
+            revshare_update_legend(data_revshare, 20);
           }
         }
         else {
           revshare_data_update();
           updateChart(data_revshare,revshare_rendering_options);
-          revshare_update_legend(data_revshare, N=20);
+          revshare_update_legend(data_revshare, 20);
         }
       })
 
