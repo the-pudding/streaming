@@ -1,0 +1,722 @@
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<style>
+
+body{
+  max-width: 900px;
+  margin: 0px auto;
+  /*font-family: 'Lora', 'Times New Roman', serif;*/
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 16px;
+  /*color: #404040;
+  background-color:#F4EEE8*/
+  color: #434148;
+  background-color: efefef;
+  /*background-color: fef8f4;*/
+  line-height: 150%;
+}
+
+h1{
+  margin: 50px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1{
+  text-align: center;
+}
+
+h3{
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/*
+.legend{
+	font-family: "Courier New", Courier, monospace;
+}*/
+p.normal {
+  font-weight: normal;
+}
+p.highlight {
+  font-weight: bold;
+}
+
+.text_div{
+  max-width: 700px;
+  margin: auto;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.title{
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #434148;
+	font-weight: bold;
+}
+
+.legend{
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #434148;
+	font-weight: bold;
+}
+
+#container{
+  position: relative;
+}
+
+#sections{
+  width: 340px;
+}
+
+#sections > div{
+  background: white;
+  opacity: .2;
+  margin-bottom: 200px;
+}
+#sections > div:last-child{
+  margin-bottom: 30px;
+}
+#sections > div.graph-scroll-active{
+  opacity: 1;
+}
+
+#graph{
+  margin-left: 40px;
+  width: 500px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  float: right;
+}
+
+@media (max-width: 925px)  {
+  #graph{
+    width: 100%;
+    margin-left: 0px;
+    float: none;
+  }
+
+  #sections{
+    width: auto;
+    position: relative;
+    margin: 0px auto;
+  }
+
+  #sections > div{
+    background: rgba(255,255,255,.5);
+    padding: 10px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-bottom: 80vh;
+  }
+
+  pre{
+    overflow: hidden;
+  }
+
+  h1{
+    margin: 10px;
+  }
+}
+
+
+circle{
+  fill: steelblue;
+}
+
+.mono{
+  font-family: monospace;
+}
+
+/*svg{
+  background-color: #efefef;
+}*/
+
+.slider {
+  -webkit-appearance: none;
+  width: 15%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #7c95bd;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+</style>
+
+<div>
+  <h1> How do artists get paid from music streaming?</h1>
+</div>
+
+<div id="Intro" class="text_div">
+	
+	<p>
+		It is commonly understood that artists make money when their music is being listened to on Digital Streaming Platforms (DSPs) such as: Spotify, Apple Music, Deezer, Pandora, Tidal, YouTube Music, Amazon Music etc... but how does that work exactly? 
+	</p>
+  <p>
+    It turns out the answer to that question is too complicated to fit in a couple of simple sentences, because there are many factors to take into account. 
+  </p>
+  <p>
+    Scroll on to walk through a breakdown of the fundamental principles that dictate how much artists get paid from music streaming, with visual representations. 
+  </p>
+  <p>
+		<!-- The value chain in the music industry is incredibly complex.  -->
+    In order to keep things concise and accessible we will only focus on the case of featuring artist recording royalties and therefore do not address other types of royalties (e.g. for songwriters). 
+	</p>
+  <p>
+    Along the way we will clear some common confusions. For example, artists do not get a fixed payment for every stream, e.g. $0.00026 per stream<sup>1</sup>, or $0.0037 per stream<sup>2</sup>. That's right, this is not how they get paid. 
+    <!-- It is a bit more complicated than that. Actually it is a lot more complicated than that, but let’s break it down in simple terms." -->
+  </p>
+  <p>
+    Instead, music recordings royalties are a share of the Digital Streaming Platforms (DSPs) revenue that is proportional to their commercial use - i.e. when it gets listened to. 
+    How is the sum due to the artist calculated? Where does the money that end up in the artists' pocket come from in the first place? 
+  </p>
+	<!-- <p>
+		The music industry is wonderfully complex when it comes to the distribution of revenue along the value chain, from the fans to the artists, songwriters producers etc. via the streaming platforms and other stakeholders. 
+		Thoroughly describing all the processes at play would make this article extremely complex. 
+	</p> -->
+	
+	
+	<p>
+		Let’s dive in… 
+	</p>
+</div>
+
+<div class="text_div" style="padding-top:150px; padding-bottom: 100px;">
+<h1>Artist & Intermediaries</h1>
+
+Let's start by examining who are the players involved in getting the artist's music online and making sure they receive the money they are due. 
+</div>
+
+<div id='container' class='container-0'>
+  <div id='graph'></div>
+  <div id='sections'>
+    <div style="padding-top:200px">
+      <h3>Featuring artist recording royalties</h3>
+      A bit of clarification before we start. For every track on a Digital Streaming Platform (DSP), a number of parties may be due a payment, such as the featuring artist, composer, lyricist, publisher etc. 
+
+      <p>
+        The <em>primary</em> and/or <em>featured</em> artist(s) is the main artist(s) that performs on a track.
+      </p>
+
+      <p>
+        In order to keep things simple, this article focuses only on the case of the recording royalties due to the primary/featuring artist(s).  
+      </p>
+      
+    </div>
+    <div>
+      <h3>Getting Music Online</h3>
+      	<p>
+        	First things first: before any music can be played on Digital Streaming Platforms (DSPs) it has to get there. 
+        </p>
+        <p>
+          Say artist X just recorded their great new EP and wants to make it available on DSPs. How do they achieve this? Do they log into Spotify or Apple Music etc. and upload their tracks there? No. 
+		</p>
+		<p class="highlight">
+			The general setting is that artists do not deal with DSPs directly.
+		</p>
+        
+    </div>
+    <div>
+      <!-- <h3>Musician sends music</h3> -->
+        Artists have to use a distributor who will then take care of distributing their music to DSPs
+    </div>
+    <div>
+        In practice, Artists enter an agreement with a distributor, upload their music to the distributor who will then distribute it to the DSPs. 
+        <p>
+        	In the case that the artist is signed to a record label, the record label may take care of the distribution on behalf of the artist.
+        </p>
+    </div>
+    <div>
+      <h3>Collecting Royalties</h3>
+        When music is being listened to on the DSPs, royalties will be due.
+        <p>
+          The distributor and/or label will then collect the corresponding royalties from the DSPs and pay those who are due to receive them, such as the artist.
+        </p>
+    </div>
+    <div style="padding-bottom:150px">
+        You may be wondering: Where does the royalties money come from in the first place? 
+
+        <p>
+          Essentially, the DSPs devote a share of their revenue to the payment of royalties. This implies that DSPs need to make money in order to then be able to share some of it with the artists. Let's examine how DSPs make money in the next section. 
+        </p>
+        
+    </div>
+  </div>
+</div>
+
+<div class="text_div" style="padding-bottom:150px; padding-top:150px;">
+  <h1>Where does the money come from?</h1>
+
+  <!-- If artists are to make some money it has to come from somewhere! -->
+  Commercial offering may vary from one DSP to the next but there exists two main mechanisms for DSPs to generate revenue: 
+  <ul>
+    <li> <span class="bold">Subscriptions.</span> Users of the platform pay a monthly subscription to gain access to the music on the platform. This is also known as a <em>"Premium"</em> model. </li>
+    <li> <span class="bold">Ads.</span> In this scenario the users do not pay any money but instead accept to listen to and/or see ads while they use the platform. The advertisers pay the DSPs for the exposure to their customers. This is also known as a <em>"Freemium"</em> model.</li>
+  </ul>
+
+
+  Some DSPs like Spotify or Deezer offer both Freemium and Premium plans while some other like Apple Music or Tidal only offer Premium options.
+
+  <!-- On legitimate question to ask at this point is: How do these sources of revenu compare to each other? Let's have a closer look on a case study using Spotify's financials for the third quarter (Q3) of 2020.   -->
+</div>
+
+<div id='container' class='container-1'>
+  <div id='graph'></div>
+
+  <div id='sections'>
+    <div style="padding-top:100px">
+      <h3>Spotify Case study</h3>
+      Let's have a look at how these two types of revenue streams compare, using Spotify's financials for the third quarter (Q3) of 2020<sup>3</sup> as a case study.
+    </div>
+
+    <div>
+      <h3>User base</h3>
+        First, Spotify reports that premium and (active) freemium users represent about 45% and 55% of total users, respectively. 
+    </div>
+
+    <div>
+      <h3>Revenue per user</h3>
+      Spotify reports that the monthly Average Revenue Per User (ARPU) €4.19 for premium users and €0.33 for freemium users. The ARPU tells us how much money Spotify makes per user each month, on average, globally. 
+      <p class='highlight'>
+      	The numbers reported mean that premium subscribers generate over 12 times more revenue than freemium users.
+      </p>
+    </div>
+
+    <div>
+      <h3> Contribution to total revenue </h3>
+      To put the same numbers in a different perspective: premium subscribers represent around 45% of Spotify users and generate about 90% of the total revenue, which also means that the 55% of ad-supported users only generate about 10% of the revenue.
+      <p>
+      	The area of the rectangles on the graph represents the revenue.
+      </p>
+    </div>
+
+    <div>
+      <p>Remember that the artist royalties are a share of DSP revenue. So, everything else remaining equal, artist royalties go up if DSP revenue goes up</p>
+      <p>
+        <h3> How can the DSPs generate more revenue? </h3>
+      </p>
+    </div>
+
+    <div>
+      <h3> Increase ARPU </h3>
+      In the case of Premium users, the ARPU is affected by the commercial offering of the DSP. For example increasing the prices of the subscription plans would increase the ARPU. 
+
+      <p>
+        The risk of a price increase is that some users may cancel their subscriptions. 
+      </p>
+    </div>
+
+    <div>
+      Conversly, promotional offers (e.g. three months free when joining) tends to decrease the ARPU. 
+      <p>
+        On the other hand promotional offers may help increasing the number of subscriptions, and therefore the revenue in the long run.
+      </p>
+    </div>
+
+    <div>
+      In the case of Freemium users, the ARPU essentially depends on the value of the users auditive attention on the advertisement market.  
+
+      <!-- <p>
+        DSPs do not unilaterally control the advertisment market, so pushing the Freemium ARPU up is difficult.
+      </p>  -->
+      <!-- <p>What is for sure is that building a great product with which the users will be very engaged will help. </p> -->
+    </div>
+
+    <div>
+      <h3> Converting Freemium users to Premium </h3>
+      Premium users are over 10 times more profitable than Freemium users. Converting Freemium users to Premium may therefore have a huge impact on revenue. 
+    </div>
+
+    <div>
+      Now you may ask: why bother with Freemium users since they generate so little revenue? 
+      <p>
+        Some DSPs don't and only offer Premium subscriptions. 
+      </p>
+      <p>
+        Some do, using the Freemium tier to attract to the platform users who would not buy a subscription outright, and hopefully later "convert" some of them into Premium subscribers.
+      </p>
+        
+    </div>
+
+    <div style="padding-bottom:250px">
+      <h3>Increase number of users</h3>
+      Last but not least: increasing the total number of users on the DSP will mechanically increase revenue, by increasing the number of subscriptions and/or by increasing the size of the pool of customers available to advertisers. 
+    </div>
+
+  </div>
+
+
+</div>
+
+<div class="text_div" style="padding-top: 200px">
+	<h1>Artist Royalties Calculations</h1>
+	<p>
+		At this point we know that DSPs redistribute some of their revenue to the artists in the form of royalties and we know how DSPs make money. The question is now: how is the artists' royalties payments calculated? 
+	</p>
+</div>
+
+
+<div id='container' class='container-2'>
+  <div id='graph'></div>
+  <div id='sections'>
+
+    <div style="padding-top:200px">
+      <h3>From DSP revenue to royalties</h3>
+      First, the DSPs add up the revenue they generated.
+    </div>
+      
+    <div>
+      The dollars stack on the right represents the revenue of a DSP.
+    </div>
+
+    <div>
+      This revenue is then split two ways: the DSPs keep one part for themselves and redistribute the rest of it as royalties. 
+
+      <p>
+        Although the exact numbers are confidential, the figures often quoted in the press suggest that DSPs distribute around 70% of their revenue to music right owners as royalties
+      </p>
+    </div>
+
+    <div>
+      <p>
+        Once the DSP share is put away, the remaining dollars stack on the right represents the royalties money pot. 
+      </p>
+      <p>
+        The artists will receive a share of this pot.
+      </p>
+    </div>
+
+    <div>
+      <h3>Royalties proportional to DSP revenue</h3>
+      Since the DSPs pay out a percentage of their revenue in royalties, it means that the size of the royalties money pot to share is proportional to the DSPs revenue. 
+
+    </div>
+
+    <div>
+      In other words, more DSPs revenue means bigger royalties pie to share. 
+    </div>
+
+    <div>
+      The converse is also true... Less revenue means a smaller royalties pot. 
+    </div>
+
+    <div>
+      <h3>Revenue Pro-rata of streams</h3>
+      The royalties pot is then to be split between all tracks on the platform, pro-rata of their proportion of streams. 
+
+      <p>
+    	For example, let's take a track of a given artist. If the track represents 0.1% of the total streams on the platform, it will get 0.1% of the royalties.
+  	  </p>
+    </div>
+
+    <div>
+      If the proportion of total streams is larger, this track will be allocated more royalties accordingly. 
+      <p>
+        For example if the track was to get 50% of the total streams, it would get 50% of the royalties pot.
+      </p>
+    </div>
+    <div>
+      Similarly, if the track was to get 30% of the total streams it would get 30% of the royalties pot. You get the idea. 
+    </div>
+
+    <div>
+      So at the end of the day, if a track gets more streams, the artist will get a bigger royalties check, right? 
+
+      <p>
+        Not quite. The performance of all other tracks on the platform also has an influence. 
+      </p> 
+    </div>
+
+    <div>
+      <h3>Total other streams influence</h3>
+      Note that the share of royalties allocated to a track depends on the <em>proportion of total streams</em>, not just on the raw number of streams that the track got.
+
+      <p> The proportion of streams is simply the number of track streams divided by the total number of streams:
+       \[Proportion  = {Track Streams \over TotalStreams}\]
+   	  </p>
+
+    </div>
+
+    <div>
+    	If the track streams remain constant and the total number of streams on the platform increases (i.e. the other tracks get more streams), the track's share of stream would be smaller. 
+    </div>
+    <div>
+      Conversly, if the track streams remain constant and the total number of streams on the platform decreases, the track's share of stream would be larger. 
+    </div>
+
+    <div>
+      In summary, every track on the DSP is entitled a share of the royalties pot that is proportional to its share of total streams. As a result, each track's royalties share depends on the number of track streams <em>and</em> on the performance of all other tracks on the platform.
+    </div>
+
+    <div>
+      The better the performance of a track with respect to all other tracks on the platform, the more royalties it generates.
+    </div>
+
+    <div>
+      <h3>Track royalties split</h3>
+      Now that the track's share of royalties has been calculated, it may then be split between all parties who are entitled to a split of the royalties for this track. 
+    </div>
+
+    <div>
+      <p>This is typically when the distributor and/or label may take their cut.</p>
+    </div>
+
+    <div>
+      <p>
+      	The distributor/label share is normally defined in the contract between the artist and the distributor/label. The numbers will vary wildly from on case to the next, depending on what agreement has been found between the parties.  
+      </p>
+
+      <p>
+      	The general principle is that the distributor/label provide services to the artist and that granting them a share of royalties are one of the ways the artist can pay for these services.
+      </p>
+    </div>
+
+    <div>
+      In some cases the distrubutor/label may take a relatively large share. 
+      <p>This could for example be justified by the fact that the distributor provides a set of services that the artist does not pay for otherwise, or that the label has made a significant financial investment to produce the recording and is looking to recoupe its expenses from the roylalties revenue. 
+      </p>
+    </div>
+    <div>
+      In some other cases the agreement would be different and the distributor/label share will be small. 
+      <p>
+    	  This could for example be the case if the artist has already payed an upfront fee to the distributor or if the label only made a small financial investment in the track. 
+  	  </p>
+      <p>
+        Some distributors even offer plans for which they take no royalties share - i.e. the artists keep 100%. 
+      </p>
+    </div>
+
+    <div>
+      <p class="highlight">
+        The artist gets the remaining share of royalties, showed in green on the right.
+      </p> 
+    </div>
+
+    <div>
+      <p>Note that for simplicity we are only considering the case where there is a single artist/musician entitled royalties on the track. 
+        In the general case there could be several (e.g. band members, producer) and each of them would be entitled a split of the Artists Share, 
+        with the split ratios defined in a contract between all contributors. </p>
+      <!-- <p>
+        It is also possible that the Artist royalties share may vary over time. 
+      </p> -->
+    </div>
+
+    <div>
+      <h3>Why is per-stream rate misleading</h3>
+      <p>
+        Talking about per-stream rates being paid to the artists can be misleading because it implicitly suggests that only this rate and the number of streams impact royalties payment. 
+        However, as we have seen above, the royalty payment due to the artist depends on the numer of track streams but also on many other parameters. 
+      </p>
+      <p>
+        Per-stream rates can indeed be calculated from actual royalty payments but do not really tell the full story. 
+        And most importantly they are not a good representation of royalties payment calculation. 
+      </p>
+    </div>
+
+    <div style="padding-bottom: 100px;">
+      <h3>Interactive Simulator</h3>
+      <p>
+        It is the combination of all parameters described above that determines the size of the artist share of royalties. To get a sense of how they interact, have a play with our little simulator. 
+      </p>
+      Tweak the parameters using the sliders below and observe how they impact the artist's royalties share, in green on the graph. 
+      <p>
+          <input type="range" min="0" max="100" value="80" id="DSPrevenue" class="slider" style="width:200px;">
+          <br>
+          <label for="DSPrevenue" 
+               style="display: inline-block; width: 280px; text-align: left;">
+               <!-- DSP revenue = <span id="DSPrevenue-value">…</span> -->
+               DSP Revenue
+          </label>
+      </p>
+
+      <p>
+          <input type="range" min="60" max="100" value="95" id="TotalOtherStreams" class="slider" style="width:200px;">
+          <br>
+          <label for="TotalOtherStreams" 
+               style="display: inline-block; width: 280px; text-align: left">
+               Total Other Streams = <span id="TotalOtherStreams-value">…</span>
+          </label>
+      </p>
+
+      <p>
+          <input type="range" min="0" max="100" value="75" id="Trackstreams" class="slider" style="width:200px;">
+          <br>
+          <label for="Trackstreams" 
+               style="display: inline-block; width: 280px; text-align: left">
+               Track Streams = <span id="Trackstreams-value">…</span>
+          </label>
+      </p>
+
+      <p>
+          <input type="range" min="0" max="100" value="80" id="Artistshare" class="slider" style="width:200px;">
+          <br>
+          <label for="Artistshare" 
+               style="display: inline-block; width: 280px; text-align: left">
+               Artist share = <span id="Artistshare-value">…</span> %
+          </label>
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<!-- <div class="text_div" >
+	<h1>On the per-stream rate.</h1>
+	Per-stream royalty rates are regularly quoted in the press when discussing artists streaming revenue. Although this metric has its merits it often leads to the misconception that artist are payed based on a fixed per-stream rate, which is not true. 
+	<p>
+		Hopefully this article would have made it clear that there are a number of parameters that influence the royalty payment that an artist may receive from Digital Streaming Platforms, and that a number of these parameters will vary greatly from one track and artist to the next. It is likely that these parameters will also vary over time (e.g. the DSP revenue varies over time). 
+	</p>
+	<p>
+		Given a royalty payment and the corresponding track streams, one may indeed calculate an equivalent per-stream rate by dividing the former by the latter. But in no circumstances is the royalty payment calculated based on a fixed per-stream rate. 
+	</p>
+</div> -->
+
+<div class="text_div" style="padding-top:100px">
+  <h1>Closing words</h1>
+<!--   Discussing how much artists get paid from music streaming is good, and we all want the to be compensated fairly. However, in order to this discussion to be productive, one needs to at least understand how the mecanics of royalties payment work. --> 
+Hopefully this article has helped shading a light on some basic principles for calculating recording royalties. 
+
+  <!-- <h2>Summary</h2> -->
+  Let’s sum-up what we have gotten to: 
+  <ul>
+  <li> Artists do not deal directly with DSPs - they have to go through a distributor or label. </li>
+  <li> DSPs make money with Subscriptions and selling Ads </li>
+  <li> Subscriptions generate a <em>lot</em> more revenue than ads. </li>
+  <li> A share of the DSPs revenue is dedicated to payment of royalties </li>
+  <li> Royalties are <em>not</em> calculated from a fixed rate per stream
+  <li> The artist’s royalties for a given track are proportional to:</li>
+      <li style="margin-left:2em"> The DSP revenue </li> 
+      <li style="margin-left:2em"> Track streams</li>
+      <li style="margin-left:2em"> The inverse of the total number of streams on the DSP</li>
+      <li style="margin-left:2em"> The split of royalties due to the artist, which depends on the artist’s contract with distributor/label (and with other contributors if any).</li></li>
+  </ul>
+
+<!--   <h2>On the per-stream rate</h2>
+  <p>
+    Per-stream royalty rates are regularly quoted in the press when discussing artists streaming revenue. Although this metric has its merits it often leads to the misconception that artist are payed based on a fixed per-stream rate, which is not true. 
+  </p>
+  <p>
+    Hopefully this article would have made it clear that there are a number of parameters that influence the royalty payment that an artist may receive from Digital Streaming Platforms, and that a number of these parameters will vary greatly from one track, artist and DSP to the next. It is likely that these parameters will also vary over time (e.g. the DSP revenue varies over time). 
+  </p> -->
+
+<!--   If anything the idea to remember is that, at a basic level, the amount of money that ends up in the artist’s pocket depends on multiple of variables that themselves vary over time and from one artist to another.  -->
+
+  <h2>Making Artists a living</h2>
+  <p>
+    At the time of writing, only few artists make a living solely from their streaming royalties. 
+    <!-- Are there levers that can be pulled to increase artists recording streaming royalties?  -->
+  </p>
+  <p>
+    The current economics of music streaming royalties are built on a revenue share model. 
+    As a result there are two ways for artists to get a bigger royalties check: get a bigger share of the pie by increasing proportion of streams of their tracks, or making the pie bigger by increasing the DSPs revenue.
+    The former is every artist's career development challenge: grow their audience and grow fan engagement. The latter could be achieved by attracting more users to the music streaming platforms in general and more specifically to get more of them to pay for a subscription. There will not be more money for artists unless there is more money being spent for the consumption of their music. 
+  </p>
+  <p>
+     Potential alternative economic models are also debated in the music industry. This debate, however, is beyond the scope of this article. The interested reader may refer to some of the references below. 
+  </p>
+  <p>
+    Ultimately, the financial income of musical artists is made of the money the fans spend on the enjoyment of their music. 
+    Keeping on supporting artists, be it by subscribing to their social media channels, getting a music streaming subscription, attending their shows or buying merch will always be the way. 
+  </p>
+
+</div>
+
+<!-- <div class="text_div">
+  <h2>Interactive Simulator</h2>
+  <div id="interactive_sunburst" style="padding-bottom:50px">
+    <p>
+      In order to get a feel for how the artist royalties are impacted by some key parameters, have a play with our little simulator below. 
+    </p>
+  	Tweak the parameters using the sliders and observe how they impact the artist's royalties. 
+    <p>
+        <label for="DSPrevenue" 
+             style="display: inline-block; width: 240px; text-align: right">
+             DSP Revenue
+        </label>
+        <input type="range" min="0" max="100" value="80" id="DSPrevenue" class="slider">
+    </p>
+
+    <p>
+        <label for="TotalOtherStreams" 
+             style="display: inline-block; width: 240px; text-align: right">
+             Total Other Streams = <span id="TotalOtherStreams-value">…</span>
+        </label>
+        <input type="range" min="60" max="100" value="90" id="TotalOtherStreams" class="slider">
+    </p>
+
+    <p>
+        <label for="Trackstreams" 
+             style="display: inline-block; width: 240px; text-align: right">
+             Track Streams = <span id="Trackstreams-value">…</span>
+        </label>
+        <input type="range" min="0" max="100" value="75" id="Trackstreams" class="slider">
+    </p>
+
+    <p>
+        <label for="Artistshare" 
+             style="display: inline-block; width: 240px; text-align: right">
+             Artist share = <span id="Artistshare-value">…</span> %
+        </label>
+        <input type="range" min="0" max="100" value="80" id="Artistshare" class="slider">
+    </p>
+  </div>
+</div> -->
+
+<div id="references" class="text_div">
+  <h2>References</h2>
+  <ol>
+    <li><a href="https://www.digitalmusicnews.com/2016/04/13/were-an-indie-rock-band-in-france-want-to-see-our-streaming-royalties/"> https://www.digitalmusicnews.com/2016/04/13/were-an-indie-rock-band-in-france-want-to-see-our-streaming-royalties/</a></li>
+    <li><a href="https://musically.com/2019/11/22/artist-zoe-keating-reveals-latest-spotify-per-stream-payouts/">https://musically.com/2019/11/22/artist-zoe-keating-reveals-latest-spotify-per-stream-payouts/</a></li>
+    <li><a href = "https://investors.spotify.com/financials/press-release-details/2020/Spotify-Technology-S.A.-Announces-Financial-Results-for-Third-Quarter-2020/default.aspx">https://investors.spotify.com/financials/press-release-details/2020/Spotify-Technology-S.A.-Announces-Financial-Results-for-Third-Quarter-2020/default.aspx</a></li>
+    <li><a href="https://artists.spotify.com/videos/the-game-plan/how-spotify-pays-you?utm_source=emailwelcome&utm_medium=crmemail&utm_campaign=2019q1_creator_single_creator_welcome_2">https://artists.spotify.com/videos/the-game-plan/how-spotify-pays-you?utm_source=emailwelcome&utm_medium=crmemail&utm_campaign=2019q1_creator_single_creator_welcome_2</a></li>
+    <li><a href="https://musically.com/2020/05/05/spotify-should-pay-musicians-more-lets-talk-about-how/">https://musically.com/2020/05/05/spotify-should-pay-musicians-more-lets-talk-about-how/</a></li>
+  </ol>
+</div>
+
+<div id="photo_credit" class="text_div" style="padding-bottom: 100px">
+  Artist Photo by Oleg Magni from Pexels
+</div>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+{{!-- <script src="graph-scroll.js"></script>
+<script src="graphs_d3.js"></script> --}}
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+
