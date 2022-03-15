@@ -244,7 +244,7 @@ function render(){
               })
   }
 
-  var gs0 = d3.graphScroll()
+  var gs0 = graphScroll()
       .container(d3.select('.container-0'))
       .graph(d3.selectAll('container-0 #graph'))
       .eventId('uniqueId0')  // namespace for scroll and resize events
@@ -657,7 +657,7 @@ function render(){
     }
   }
 
-  var gs1 = d3.graphScroll()
+  var gs1 = graphScroll()
       .container(d3.select('.container-1'))
       .graph(d3.selectAll('container-1 #graph'))
       .eventId('uniqueId1')  // namespace for scroll and resize events
@@ -1419,7 +1419,7 @@ function render(){
   }
 
 
-  var gs2 = d3.graphScroll()
+  var gs2 = graphScroll()
       .container(d3.select('.container-2'))
       .graph(d3.selectAll('container-2 #graph'))
       .eventId('uniqueId2')  // namespace for scroll and resize events
