@@ -1,3 +1,6 @@
+// import { graphScroll } from './graph-scroll'
+
+
 var oldWidth = 0
 function render(){
   if (oldWidth == innerWidth) return
@@ -72,35 +75,35 @@ function render(){
   var draw_diagram = function(){
 
     var image_singer = svg_diag.append('image')
-      .attr('xlink:href', './images/singer.png')
+      .attr('xlink:href', './assets/images/singer.png')
       .attr('width', singer_params.width)
       .attr('height',singer_params.height)
       .attr('x',singer_params.x)
       .attr('y',singer_params.y - singer_params.height/2);
 
     // var image_distributor = svg_diag.append('image')
-    //   .attr('xlink:href', './images/home.png')
+    //   .attr('xlink:href', './assets/images/home.png')
     //   .attr('width', distributor_params.width)
     //   .attr('height',distributor_params.height)
     //   .attr('x',distributor_params.x)
     //   .attr('y',distributor_params.y - distributor_params.height/2);
 
     var logo_spotify = svg_diag.append('image')
-      .attr('xlink:href', './images/spotify-logo.png')
+      .attr('xlink:href', './assets/images/spotify-logo.png')
       .attr('width', spotify_params.width)
       .attr('height',spotify_params.height)
       .attr('x',spotify_params.x)
       .attr('y',spotify_params.y - spotify_params.height/2);
 
     var logo_apple = svg_diag.append('image')
-      .attr('xlink:href', './images/apple-logo.png')
+      .attr('xlink:href', './assets/images/apple-logo.png')
       .attr('width', apple_params.width)
       .attr('height',apple_params.height)
       .attr('x',apple_params.x)
       .attr('y',apple_params.y - apple_params.height/2);
 
     var logo_deezer = svg_diag.append('image')
-      .attr('xlink:href', './images/deezer-logo.png')
+      .attr('xlink:href', './assets/images/deezer-logo.png')
       .attr('width', deezer_params.width)
       .attr('height',deezer_params.height)
       .attr('x',deezer_params.x)
@@ -115,7 +118,7 @@ function render(){
         break;
       case 2:
         var image_distributor = svg_diag.append('image')
-          .attr('xlink:href', './images/home.png')
+          .attr('xlink:href', './assets/images/home.png')
           .attr('width', distributor_params.width)
           .attr('height',distributor_params.height)
           .attr('x',distributor_params.x)
