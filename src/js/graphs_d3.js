@@ -1,4 +1,4 @@
-// import { graphScroll } from './graph-scroll'
+import { graphScroll } from './graph-scroll'
 
 
 var oldWidth = 0
@@ -6,7 +6,9 @@ function render(){
   if (oldWidth == innerWidth) return
   oldWidth = innerWidth
 
-  var width = height = d3.select('#graph').node().offsetWidth
+  // var width = height = d3.select('#graph').node().offsetWidth
+  var width = d3.select('#graph').node().offsetWidth
+  var height = width;
 
   if (innerWidth <= 925){
     width = innerWidth
