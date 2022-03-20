@@ -530,12 +530,12 @@ function render(){
             .attr('class','rev_text')
             .attr('transform', function(d){
               if (d.label=="Freemium"){
-                horz = x((100-(100-d.n_users))/2+ data.premium.n_users)
+                var horz = x((100-(100-d.n_users))/2+ data.premium.n_users)
               }
               else if (d.label=="Premium"){
-                horz = x((100-(100-d.n_users))/2)
+                var horz = x((100-(100-d.n_users))/2)
               }
-              vert = y( (d.rev_per_user)/2);
+              var vert = y( (d.rev_per_user)/2);
               // vert = (y(16 -d.rev_per_user) - y(d.rev_per_user))/2;
               return 'translate(' + horz + ',' + vert + ')';
             });
@@ -559,12 +559,12 @@ function render(){
                 .duration(1000)
                 .attr('transform', function(d){
                         if (d.label=="Freemium"){
-                          horz = x((100-(100-d.n_users))/2+ data.premium.n_users);
+                          var horz = x((100-(100-d.n_users))/2+ data.premium.n_users);
                         }
                         else if (d.label=="Premium"){
-                          horz = x((100-(100-d.n_users))/2);
+                          var horz = x((100-(100-d.n_users))/2);
                         }
-                        vert = y( (d.rev_per_user)/2);
+                        var vert = y( (d.rev_per_user)/2);
                         // vert = (y(16 -d.rev_per_user) - y(d.rev_per_user))/2;
                         return 'translate(' + horz + ',' + vert + ')';
                       })
