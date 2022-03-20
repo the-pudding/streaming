@@ -17,7 +17,7 @@ function render(){
 
 
 
-///////////////// Middle men section /////////////////////
+  ///////////////// Middle men section /////////////////////
 
   var singer_params = {width:80, height:80,x:0,y:250}
   var distributor_params = {width:100, height:100,x:175,y:250}
@@ -1544,3 +1544,4 @@ function render(){
 }
 render()
 d3.select(window).on('resize', render)
+export default { render };
