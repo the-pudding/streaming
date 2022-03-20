@@ -761,6 +761,8 @@ function render(){
   var revshare_title = "DSP Roylaties revenue share";
   var shares = shares_default;
   var streams = streams_default;
+  var total_other_streams;
+  var track_streams;
   var dsp_revenue = dsp_revenue_default;  
   var dsp_share = dsp_share_default;
   var artist_shareOfStreams = 0;
@@ -918,8 +920,8 @@ function render(){
       case 24:
         // Get Initial values from the HTML slider. 
         dsp_revenue = d3.select("#DSPrevenue").property("value"); 
-        total_other_streams = log_slider(d3.select("#TotalOtherStreams").property("value"), minv=1000,maxv=total_streams_maxv);
-        track_streams = log_slider(d3.select("#Trackstreams").property("value"), minv=1000,maxv=track_streams_maxv);
+        total_other_streams = log_slider(d3.select("#TotalOtherStreams").property("value"), 1000, total_streams_maxv);
+        track_streams = log_slider(d3.select("#Trackstreams").property("value"), 1000, track_streams_maxv);
         artist_share = d3.select("#Artistshare").property("value")/100;
         var total_streams = total_other_streams + track_streams;
         artist_shareOfStreams = 100*track_streams/total_streams;
@@ -1485,13 +1487,13 @@ function render(){
     data_revshare.other_tracks.dsp_revenue = dsp_revenue;
     data_revshare.dist_share.dsp_revenue = dsp_revenue;
     data_revshare.artist_share.dsp_revenue = dsp_revenue;
-    updateChart(data_revshare,revshare_rendering_options,transition_duration=0);
+    updateChart(data_revshare, revshare_rendering_options, 0);
   });
 
     // Total other streams update
   d3.select("#TotalOtherStreams").on("input", function() {
       // adjust the text on the range slider
-      total_other_streams = log_slider(+this.value, minv=1000,maxv=total_streams_maxv);
+      total_other_streams = log_slider(+this.value, 1000, total_streams_maxv);
     d3.select("#TotalOtherStreams-value").text(total_other_streams.toLocaleString());
     d3.select("#TotalOtherStreams").property("value", +this.value);
 
@@ -1503,14 +1505,14 @@ function render(){
     data_revshare.dist_share.share_of_streams = track_share_of_streams;
     data_revshare.artist_share.share_of_streams = track_share_of_streams;
     
-    updateChart(data_revshare,revshare_rendering_options,transition_duration=0);
+    updateChart(data_revshare, revshare_rendering_options, 0);
   });
 
 
   // Track streams update
   d3.select("#Trackstreams").on("input", function() {
       // adjust the text on the range slider
-      track_streams = log_slider(+this.value, minv=1000,maxv=track_streams_maxv);
+      track_streams = log_slider(+this.value, 1000, track_streams_maxv);
     d3.select("#Trackstreams-value").text(track_streams.toLocaleString());
     d3.select("#Trackstreams").property("value", +this.value);
     
@@ -1522,7 +1524,7 @@ function render(){
     data_revshare.dist_share.share_of_streams = track_share_of_streams;
     data_revshare.artist_share.share_of_streams = track_share_of_streams;
 
-    updateChart(data_revshare,revshare_rendering_options,transition_duration=0);
+    updateChart(data_revshare, revshare_rendering_options, 0);
   });
 
   // Artist share update
@@ -1535,7 +1537,7 @@ function render(){
     data_revshare.artist_share.share = artist_share;
     data_revshare.dist_share.share = 1 - artist_share;
     
-    updateChart(data_revshare,revshare_rendering_options,transition_duration=0);
+    updateChart(data_revshare,revshare_rendering_options, 0);
   });
   
   
