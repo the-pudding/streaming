@@ -114,11 +114,11 @@ function render(){
 
   var update_diagram = function(i){
     switch (i){
-      case 1:
+      case 0:
         svg_diag.selectAll("#dist_image").remove()
         svg_diag.selectAll("#dist_text").remove()
         break;
-      case 2:
+      case 1:
         var image_distributor = svg_diag.append('image')
           .attr('xlink:href', './assets/images/home.png')
           .attr('width', distributor_params.width)
@@ -144,10 +144,10 @@ function render(){
     switch(i){
       // case 0:
       //   break;
-      case 2:
+      case 0:
         diag_delete_music();
         break;
-      case 3:
+      case 1:
         diag_delete_dollars();
         animate_music();
         break;
@@ -252,7 +252,7 @@ function render(){
       // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
       .on('active', function(i){
         console.log('graph 0 change', i)
-        console.log("gs1 i", i)
+        console.log("gs0 i", i)
         update_diagram(i);
         toggle_diag_animations(i);
       });
