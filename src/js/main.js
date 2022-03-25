@@ -5,6 +5,8 @@ import linkFix from './utils/link-fix';
 import modalSetup from './utils/modal-a11y';
 import graphic from './graphic';
 import footer from './footer';
+import graph_d3 from './graphs_d3';
+import graph_scroll from './graph-scroll';
 
 const $body = d3.select('body');
 let previousWidth = 0;
@@ -42,6 +44,11 @@ function init() {
   graphic.init();
   // load footer stories
   footer.init();
+  // load custom js code
+  // graph_scroll();
+  // console.log('type graph_d3', typeof graph_d3)
+  graph_d3.render();
+  
 }
 
 init();
