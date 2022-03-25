@@ -151,7 +151,7 @@ function render(){
         diag_delete_dollars();
         animate_music();
         break;
-      case 4:
+      case 2:
         diag_delete_music();
         diag_delete_dollars();
         animate_dollars();
