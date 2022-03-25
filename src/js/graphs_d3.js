@@ -585,24 +585,24 @@ function render(){
 
   function rect_data_modifier(i){
     switch(i){
-      case 0 :
-        data_rect = {"freemium":{"label":"Freemium",
-                          "n_users":185,
-                          "rev_per_user":0.33,
-                          "rev":"$",
-                          "color":"#000000",
-                          "color_highlight":'#363636',
-                          "opacity":0.5},
-              "premium":{"label":"Premium",
-                          "n_users":144,
-                          "rev_per_user":0.33,
-                          "rev":"$",
-                          "color":"#1dc500",
-                          "color_highlight":'#6bff53',
-                          "opacity":0.5}
-              };
-        break;
-      case 1:
+      // case 0 :
+      //   data_rect = {"freemium":{"label":"Freemium",
+      //                     "n_users":185,
+      //                     "rev_per_user":0.33,
+      //                     "rev":"$",
+      //                     "color":"#000000",
+      //                     "color_highlight":'#363636',
+      //                     "opacity":0.5},
+      //         "premium":{"label":"Premium",
+      //                     "n_users":144,
+      //                     "rev_per_user":0.33,
+      //                     "rev":"$",
+      //                     "color":"#1dc500",
+      //                     "color_highlight":'#6bff53',
+      //                     "opacity":0.5}
+      //         };
+      //   break;
+      case 0:
         data_rect = {"freemium":{"label":"Freemium",
                           "n_users":185,
                           "rev_per_user":0.33,
@@ -620,11 +620,12 @@ function render(){
               };
         rect_rendering_options = {"y_axis":false,
                                 "rev_text":false};
+        rect_rendering_options.rev_text = false;
         break;
-      case 2:
+      case 1:
         data_rect.premium.rev_per_user = 4.19;
         rect_rendering_options.y_axis = true;
-        rect_rendering_options.rev_text = false;
+        rect_rendering_options.rev_text = true;
         break;
       case 3:
         rect_rendering_options.rev_text = true;        
@@ -666,11 +667,11 @@ function render(){
       .on('active', function(i){
 
         console.log('graph 1 change', i)
-        if (i==0 & rect_drawn==true){
-          delete_rect();
-          rect_drawn = false;
-        }
-        if (i==1){
+        // if (i==0 & rect_drawn==true){
+        //   delete_rect();
+        //   rect_drawn = false;
+        // }
+        if (i>=0){
           if (rect_drawn==false){ 
             rect_data_modifier(i);
             draw_rect(data_rect,rect_rendering_options)
