@@ -241,6 +241,9 @@ circle{
   <p>
     {{doc.sec2.intro.p2}}
   </p>
+  <p>
+    {{doc.sec2.intro.p3}}
+  </p>
 </div>
 
 <div id='container' class='container-1'>
@@ -439,98 +442,90 @@ circle{
     </div>
 
     <div>
-      <h3>Total other streams influence</h3>
-      Note that the share of royalties allocated to a track depends on the <em>proportion of total streams</em>, not just on the raw number of streams that the track got.
-
-      <p> The proportion of streams is simply the number of track streams divided by the total number of streams:
-       \[Proportion  = {Track Streams \over TotalStreams}\]
-   	  </p>
-
-    </div>
-
-    <div>
-    	If the track streams remain constant and the total number of streams on the platform increases (i.e. the other tracks get more streams), the track's share of stream would be smaller. 
-    </div>
-    <div>
-      Conversly, if the track streams remain constant and the total number of streams on the platform decreases, the track's share of stream would be larger. 
-    </div>
-
-    <div>
-      In summary, every track on the DSP is entitled a share of the royalties pot that is proportional to its share of total streams. As a result, each track's royalties share depends on the number of track streams <em>and</em> on the performance of all other tracks on the platform.
-    </div>
-
-    <div>
-      The better the performance of a track with respect to all other tracks on the platform, the more royalties it generates.
-    </div>
-
-    <div>
-      <h3>Track royalties split</h3>
-      Now that the track's share of royalties has been calculated, it may then be split between all parties who are entitled to a split of the royalties for this track. 
-    </div>
-
-    <div>
-      <p>This is typically when the distributor and/or label may take their cut.</p>
-    </div>
-
-    <div>
-      <p>
-      	The distributor/label share is normally defined in the contract between the artist and the distributor/label. The numbers will vary wildly from on case to the next, depending on what agreement has been found between the parties.  
-      </p>
-
-      <p>
-      	The general principle is that the distributor/label provide services to the artist and that granting them a share of royalties are one of the ways the artist can pay for these services.
+       <p>
+        {{doc.sec3.bloc12.p1}}
       </p>
     </div>
 
     <div>
-      In some cases the distrubutor/label may take a relatively large share. 
-      <p>This could for example be justified by the fact that the distributor provides a set of services that the artist does not pay for otherwise, or that the label has made a significant financial investment to produce the recording and is looking to recoupe its expenses from the roylalties revenue. 
-      </p>
-    </div>
-    <div>
-      In some other cases the agreement would be different and the distributor/label share will be small. 
       <p>
-    	  This could for example be the case if the artist has already payed an upfront fee to the distributor or if the label only made a small financial investment in the track. 
-  	  </p>
-      <p>
-        Some distributors even offer plans for which they take no royalties share - i.e. the artists keep 100%. 
-      </p>
-    </div>
-
-    <div>
-      <p class="highlight">
-        The artist gets the remaining share of royalties, showed in green on the right.
+        {{doc.sec3.bloc13.p1}}
       </p> 
     </div>
-
     <div>
-      <p>Note that for simplicity we are only considering the case where there is a single artist/musician entitled royalties on the track. 
-        In the general case there could be several (e.g. band members, producer) and each of them would be entitled a split of the Artists Share, 
-        with the split ratios defined in a contract between all contributors. </p>
-      <!-- <p>
-        It is also possible that the Artist royalties share may vary over time. 
-      </p> -->
+      <p>
+        {{doc.sec3.bloc14.p1}}
+      </p>
     </div>
 
     <div>
-      <h3>Why is per-stream rate misleading</h3>
+      <h3>{{doc.sec3.bloc15.headline}}</h3>
       <p>
-        Talking about per-stream rates being paid to the artists can be misleading because it implicitly suggests that only this rate and the number of streams impact royalties payment. 
-        However, as we have seen above, the royalty payment due to the artist depends on the numer of track streams but also on many other parameters. 
+        {{doc.sec3.bloc15.p1}}
       </p>
       <p>
-        Per-stream rates can indeed be calculated from actual royalty payments but do not really tell the full story. 
-        And most importantly they are not a good representation of royalties payment calculation. 
+        {{doc.sec3.bloc15.p2}}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{doc.sec3.bloc16.p1}}
+      </p>
+      <p>
+        {{doc.sec3.bloc16.p2}}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{doc.sec3.bloc17.p1}}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{doc.sec3.bloc18.p1}}
+      </p>
+      <p>
+        {{doc.sec3.bloc18.p2}}
+      </p>
+    </div>
+
+
+    <div>
+      <p>
+        {{doc.sec3.bloc19.p1}}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{doc.sec3.bloc20.p1}}
+      </p>
+      <p>
+        {{doc.sec3.bloc20.p2}}
+      </p>
+    </div>
+
+    <div>
+      <h3>{{doc.sec3.bloc21.headline}}</h3>
+      <p>
+        {{doc.sec3.bloc21.p1}}
+      </p>
+      <p>
+        {{doc.sec3.bloc21.p2}}
       </p>
     </div>
 
     <div style="padding-bottom: 100px;">
-      <h3>Interactive Simulator</h3>
+      <h3>{{doc.sec3.sim.headline}}</h3>
       <p>
-        It is the combination of all parameters described above that determines the size of the artist share of royalties. To get a sense of how they interact, have a play with our little simulator. 
+        {{doc.sec3.sim.p1}}
       </p>
-      Tweak the parameters using the sliders below and observe how they impact the artist's royalties share, in green on the graph. 
       <p>
+        {{doc.sec3.sim.p2}}
+      </p>
           <input type="range" min="0" max="100" value="80" id="DSPrevenue" class="slider" style="width:200px;">
           <br>
           <label for="DSPrevenue" 
@@ -572,18 +567,6 @@ circle{
 
 </div>
 
-
-
-<!-- <div class="text_div" >
-	<h1>On the per-stream rate.</h1>
-	Per-stream royalty rates are regularly quoted in the press when discussing artists streaming revenue. Although this metric has its merits it often leads to the misconception that artist are payed based on a fixed per-stream rate, which is not true. 
-	<p>
-		Hopefully this article would have made it clear that there are a number of parameters that influence the royalty payment that an artist may receive from Digital Streaming Platforms, and that a number of these parameters will vary greatly from one track and artist to the next. It is likely that these parameters will also vary over time (e.g. the DSP revenue varies over time). 
-	</p>
-	<p>
-		Given a royalty payment and the corresponding track streams, one may indeed calculate an equivalent per-stream rate by dividing the former by the latter. But in no circumstances is the royalty payment calculated based on a fixed per-stream rate. 
-	</p>
-</div> -->
 
 <div class="text_div" style="padding-top:100px">
   <h1>Closing words</h1>

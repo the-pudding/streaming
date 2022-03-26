@@ -860,15 +860,24 @@ function render(){
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 1;
         break;
-      case 11:
+      case 10:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 1;
         break;
-      case 12:
+      case 11:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = 5;
         artist_share = 1;
+        break;
+      case 12:
+        dsp_revenue = dsp_revenue_default;
+        artist_shareOfStreams = artist_shareOfStreams_default;
+        artist_share = 1;
+        revshare_rendering_options.legend_other_tracks = true;
+        revshare_rendering_options.legend_artist = true;
+        data_revshare.artist_share.annotation = "Track Share";
+        revshare_rendering_options.legend_dist = false;
         break;
       case 13:
         dsp_revenue = dsp_revenue_default;
@@ -879,46 +888,39 @@ function render(){
         data_revshare.artist_share.annotation = "Track Share";
         revshare_rendering_options.legend_dist = false;
         break;
+      // case 16:
+      //   artist_share = 1;
+      //   data_revshare.artist_share.annotation = "Track Share";
+      //   revshare_rendering_options.legend_dist = false;
+      //   break;
       case 14:
-        dsp_revenue = dsp_revenue_default;
-        artist_shareOfStreams = artist_shareOfStreams_default;
-        revshare_rendering_options.legend_other_tracks = true;
-        revshare_rendering_options.legend_artist = true;
-        data_revshare.artist_share.annotation = "Track Share";
-        break;
-      case 16:
-        artist_share = 1;
-        data_revshare.artist_share.annotation = "Track Share";
-        revshare_rendering_options.legend_dist = false;
-        break;
-      case 17:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = artist_share_default;
         data_revshare.artist_share.annotation = "Artists Share";
         revshare_rendering_options.legend_dist = true;
         break;
-      case 19:
+      case 16:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 0.50;
         break;
+      case 17:
+        dsp_revenue = dsp_revenue_default;
+        artist_shareOfStreams = artist_shareOfStreams_default;
+        artist_share = 0.925;
+        break;
+      // case 22:
+      //   dsp_revenue = dsp_revenue_default;
+      //   artist_shareOfStreams = artist_shareOfStreams_default;
+      //   artist_share = 0.925;
+      //   break;
       case 20:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 0.925;
         break;
-      case 22:
-        dsp_revenue = dsp_revenue_default;
-        artist_shareOfStreams = artist_shareOfStreams_default;
-        artist_share = 0.925;
-        break;
-      case 23:
-        dsp_revenue = dsp_revenue_default;
-        artist_shareOfStreams = artist_shareOfStreams_default;
-        artist_share = 0.925;
-        break;
-      case 24:
+      case 21:
         // Get Initial values from the HTML slider. 
         dsp_revenue = d3.select("#DSPrevenue").property("value"); 
         total_other_streams = log_slider(d3.select("#TotalOtherStreams").property("value"), 1000, total_streams_maxv);
