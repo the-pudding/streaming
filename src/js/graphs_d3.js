@@ -114,11 +114,11 @@ function render(){
 
   var update_diagram = function(i){
     switch (i){
-      case 1:
+      case 0:
         svg_diag.selectAll("#dist_image").remove()
         svg_diag.selectAll("#dist_text").remove()
         break;
-      case 2:
+      case 1:
         var image_distributor = svg_diag.append('image')
           .attr('xlink:href', './assets/images/home.png')
           .attr('width', distributor_params.width)
@@ -144,14 +144,14 @@ function render(){
     switch(i){
       // case 0:
       //   break;
-      case 2:
+      case 0:
         diag_delete_music();
         break;
-      case 3:
+      case 1:
         diag_delete_dollars();
         animate_music();
         break;
-      case 4:
+      case 2:
         diag_delete_music();
         diag_delete_dollars();
         animate_dollars();
@@ -252,7 +252,7 @@ function render(){
       // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
       .on('active', function(i){
         console.log('graph 0 change', i)
-        console.log("gs1 i", i)
+        console.log("gs0 i", i)
         update_diagram(i);
         toggle_diag_animations(i);
       });
@@ -585,24 +585,24 @@ function render(){
 
   function rect_data_modifier(i){
     switch(i){
-      case 0 :
-        data_rect = {"freemium":{"label":"Freemium",
-                          "n_users":185,
-                          "rev_per_user":0.33,
-                          "rev":"$",
-                          "color":"#000000",
-                          "color_highlight":'#363636',
-                          "opacity":0.5},
-              "premium":{"label":"Premium",
-                          "n_users":144,
-                          "rev_per_user":0.33,
-                          "rev":"$",
-                          "color":"#1dc500",
-                          "color_highlight":'#6bff53',
-                          "opacity":0.5}
-              };
-        break;
-      case 1:
+      // case 0 :
+      //   data_rect = {"freemium":{"label":"Freemium",
+      //                     "n_users":185,
+      //                     "rev_per_user":0.33,
+      //                     "rev":"$",
+      //                     "color":"#000000",
+      //                     "color_highlight":'#363636',
+      //                     "opacity":0.5},
+      //         "premium":{"label":"Premium",
+      //                     "n_users":144,
+      //                     "rev_per_user":0.33,
+      //                     "rev":"$",
+      //                     "color":"#1dc500",
+      //                     "color_highlight":'#6bff53',
+      //                     "opacity":0.5}
+      //         };
+      //   break;
+      case 0:
         data_rect = {"freemium":{"label":"Freemium",
                           "n_users":185,
                           "rev_per_user":0.33,
@@ -620,11 +620,12 @@ function render(){
               };
         rect_rendering_options = {"y_axis":false,
                                 "rev_text":false};
+        rect_rendering_options.rev_text = false;
         break;
-      case 2:
+      case 1:
         data_rect.premium.rev_per_user = 4.19;
         rect_rendering_options.y_axis = true;
-        rect_rendering_options.rev_text = false;
+        rect_rendering_options.rev_text = true;
         break;
       case 3:
         rect_rendering_options.rev_text = true;        
@@ -666,11 +667,11 @@ function render(){
       .on('active', function(i){
 
         console.log('graph 1 change', i)
-        if (i==0 & rect_drawn==true){
-          delete_rect();
-          rect_drawn = false;
-        }
-        if (i==1){
+        // if (i==0 & rect_drawn==true){
+        //   delete_rect();
+        //   rect_drawn = false;
+        // }
+        if (i>=0){
           if (rect_drawn==false){ 
             rect_data_modifier(i);
             draw_rect(data_rect,rect_rendering_options)
@@ -782,12 +783,12 @@ function render(){
 
   var revshare_data_modifier = function(i){
     switch(i){
+      // case 0:
+      //   dsp_revenue = 0;
+      //   dsp_share = dsp_share_default;
+      //   artist_shareOfStreams = 0;
+      //   break;
       case 0:
-        dsp_revenue = 0;
-        dsp_share = dsp_share_default;
-        artist_shareOfStreams = 0;
-        break;
-      case 1:
         dsp_revenue = 100;
         dsp_share = dsp_share_default;
         artist_shareOfStreams = 0;
@@ -798,16 +799,26 @@ function render(){
         revshare_rendering_options.legend_artist = false;
         revshare_rendering_options.legend_dist = false;
         break;
-      case 2:
+      case 1:
         dsp_revenue = 70;
         dsp_share = 70;
         break;
-      case 3:
+      case 2:
         dsp_revenue = 70;
         dsp_share = dsp_share_default;
         break;
-      case 4:
+      case 3:
         dsp_revenue = 70;
+        artist_shareOfStreams = 0;
+        artist_share = 1;
+        revshare_rendering_options.x_axis_ticks = false;
+        revshare_rendering_options.x_axis_label = false;
+        revshare_rendering_options.legend_other_tracks = false;
+        revshare_rendering_options.legend_artist = false;
+        revshare_rendering_options.legend_dist = false;
+        break;
+      case 4:
+        dsp_revenue = 100;
         artist_shareOfStreams = 0;
         artist_share = 1;
         revshare_rendering_options.x_axis_ticks = false;
@@ -817,7 +828,7 @@ function render(){
         revshare_rendering_options.legend_dist = false;
         break;
       case 5:
-        dsp_revenue = 100;
+        dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = 0;
         artist_share = 1;
         revshare_rendering_options.x_axis_ticks = false;
@@ -828,16 +839,6 @@ function render(){
         break;
       case 6:
         dsp_revenue = dsp_revenue_default;
-        artist_shareOfStreams = 0;
-        artist_share = 1;
-        revshare_rendering_options.x_axis_ticks = false;
-        revshare_rendering_options.x_axis_label = false;
-        revshare_rendering_options.legend_other_tracks = false;
-        revshare_rendering_options.legend_artist = false;
-        revshare_rendering_options.legend_dist = false;
-        break;
-      case 7:
-        dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = 5;
         artist_share = 1;
         revshare_rendering_options.x_axis_ticks = false;
@@ -847,77 +848,82 @@ function render(){
         data_revshare.artist_share.annotation = "Track Share";
         revshare_rendering_options.legend_dist = false;
         break;
-      case 8:
+      case 7:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = 50;
         artist_share = 1;
         revshare_rendering_options.x_axis_ticks = false;
         revshare_rendering_options.x_axis_label = false;
         break;
+      case 8:
+        dsp_revenue = dsp_revenue_default;
+        artist_shareOfStreams = artist_shareOfStreams_default;
+        artist_share = 1;
+        break;
       case 9:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
+        artist_share = 1;
+        break;
+      case 10:
+        dsp_revenue = dsp_revenue_default;
+        artist_shareOfStreams = 5;
         artist_share = 1;
         break;
       case 11:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 1;
+        revshare_rendering_options.legend_other_tracks = true;
+        revshare_rendering_options.legend_artist = true;
+        data_revshare.artist_share.annotation = "Track Share";
+        revshare_rendering_options.legend_dist = false;
         break;
+      // case 12:
+      //   dsp_revenue = dsp_revenue_default;
+      //   artist_shareOfStreams = artist_shareOfStreams_default;
+      //   artist_share = 1;
+      //   revshare_rendering_options.legend_other_tracks = true;
+      //   revshare_rendering_options.legend_artist = true;
+      //   data_revshare.artist_share.annotation = "Track Share";
+      //   revshare_rendering_options.legend_dist = false;
+      //   break;
+      // case 16:
+      //   artist_share = 1;
+      //   data_revshare.artist_share.annotation = "Track Share";
+      //   revshare_rendering_options.legend_dist = false;
+      //   break;
       case 12:
-        dsp_revenue = dsp_revenue_default;
-        artist_shareOfStreams = 5;
-        artist_share = 1;
-        break;
-      case 13:
-        dsp_revenue = dsp_revenue_default;
-        artist_shareOfStreams = artist_shareOfStreams_default;
-        artist_share = 1;
-        revshare_rendering_options.legend_other_tracks = true;
-        revshare_rendering_options.legend_artist = true;
-        data_revshare.artist_share.annotation = "Track Share";
-        revshare_rendering_options.legend_dist = false;
-        break;
-      case 14:
-        dsp_revenue = dsp_revenue_default;
-        artist_shareOfStreams = artist_shareOfStreams_default;
-        revshare_rendering_options.legend_other_tracks = true;
-        revshare_rendering_options.legend_artist = true;
-        data_revshare.artist_share.annotation = "Track Share";
-        break;
-      case 16:
-        artist_share = 1;
-        data_revshare.artist_share.annotation = "Track Share";
-        revshare_rendering_options.legend_dist = false;
-        break;
-      case 17:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = artist_share_default;
         data_revshare.artist_share.annotation = "Artists Share";
         revshare_rendering_options.legend_dist = true;
         break;
-      case 19:
+      case 13:
+        artist_share = artist_share_default;
+        break;
+      case 14:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 0.50;
         break;
-      case 20:
+      case 15:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 0.925;
         break;
-      case 22:
+      // case 22:
+      //   dsp_revenue = dsp_revenue_default;
+      //   artist_shareOfStreams = artist_shareOfStreams_default;
+      //   artist_share = 0.925;
+      //   break;
+      case 17:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 0.925;
         break;
-      case 23:
-        dsp_revenue = dsp_revenue_default;
-        artist_shareOfStreams = artist_shareOfStreams_default;
-        artist_share = 0.925;
-        break;
-      case 24:
+      case 18:
         // Get Initial values from the HTML slider. 
         dsp_revenue = d3.select("#DSPrevenue").property("value"); 
         total_other_streams = log_slider(d3.select("#TotalOtherStreams").property("value"), 1000, total_streams_maxv);
