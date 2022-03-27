@@ -171,9 +171,9 @@ circle{
 
 </style>
 
-<div>
+{{!-- <div>
   <h1> {{doc.title}}</h1>
-</div>
+</div> --}}
 
 <div id="Intro" class="text_div">
 	
@@ -363,11 +363,17 @@ circle{
       <p>
         {{doc.sec3.bloc1.p1}}
       </p>
+      <p>
+        {{doc.sec3.bloc1.p2}}
+      </p>
     </div>
-      
+
     <div>
       <p>
         {{doc.sec3.bloc2.p1}}
+      </p>
+      <p>
+        {{doc.sec3.bloc2.p2}}
       </p>
     </div>
 
@@ -381,35 +387,35 @@ circle{
     </div>
 
     <div>
+      <h3>{{doc.sec3.bloc4.headline}}</h3>
       <p>
         {{doc.sec3.bloc4.p1}}
       </p>
-      <p>
-        {{doc.sec3.bloc4.p2}}
-      </p>
     </div>
 
     <div>
-      <h3>{{doc.sec3.bloc5.headline}}</h3>
       <p>
         {{doc.sec3.bloc5.p1}}
-      </p>
-    </div>
-
-    <div>
-      <p>
-        {{doc.sec3.bloc6.p1}}
       </p> 
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc7.p1}}
+        {{doc.sec3.bloc6.p1}}
       </p>
     </div>
 
     <div>
-      <h3>{{doc.sec3.bloc8.headline}}</h3>
+      <h3>{{doc.sec3.bloc7.headline}}</h3>
+      <p>
+        {{doc.sec3.bloc7.p1}}
+      </p>
+      <p>
+        {{doc.sec3.bloc7.p2}}
+      </p>
+    </div>
+
+    <div>
       <p>
         {{doc.sec3.bloc8.p1}}
       </p>
@@ -417,54 +423,55 @@ circle{
         {{doc.sec3.bloc8.p2}}
       </p>
     </div>
-
     <div>
       <p>
         {{doc.sec3.bloc9.p1}}
       </p>
-      <p>
-        {{doc.sec3.bloc9.p2}}
-      </p>
-    </div>
-    <div>
-      <p>
-        {{doc.sec3.bloc10.p1}}
-      </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc11.p1}}
+        {{doc.sec3.bloc10.p1}}
       </p>
       <p>
-        {{doc.sec3.bloc11.p2}}
+        {{doc.sec3.bloc10.p2}}
       </p> 
     </div>
 
     <div>
        <p>
-        {{doc.sec3.bloc12.p1}}
+        {{doc.sec3.bloc11.p1}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc13.p1}}
+        {{doc.sec3.bloc12.p1}}
       </p> 
     </div>
+
+    <div>
+      <h3>{{doc.sec3.bloc13.headline}}</h3>
+      <p>
+        {{doc.sec3.bloc13.p1}}
+      </p>
+      <p>
+        {{doc.sec3.bloc13.p2}}
+      </p>
+    </div>
+
     <div>
       <p>
         {{doc.sec3.bloc14.p1}}
       </p>
+      <p>
+        {{doc.sec3.bloc14.p2}}
+      </p>
     </div>
 
     <div>
-      <h3>{{doc.sec3.bloc15.headline}}</h3>
       <p>
         {{doc.sec3.bloc15.p1}}
-      </p>
-      <p>
-        {{doc.sec3.bloc15.p2}}
       </p>
     </div>
 
@@ -476,6 +483,7 @@ circle{
         {{doc.sec3.bloc16.p2}}
       </p>
     </div>
+
 
     <div>
       <p>
@@ -492,29 +500,13 @@ circle{
       </p>
     </div>
 
-
     <div>
+      <h3>{{doc.sec3.bloc19.headline}}</h3>
       <p>
         {{doc.sec3.bloc19.p1}}
       </p>
-    </div>
-
-    <div>
       <p>
-        {{doc.sec3.bloc20.p1}}
-      </p>
-      <p>
-        {{doc.sec3.bloc20.p2}}
-      </p>
-    </div>
-
-    <div>
-      <h3>{{doc.sec3.bloc21.headline}}</h3>
-      <p>
-        {{doc.sec3.bloc21.p1}}
-      </p>
-      <p>
-        {{doc.sec3.bloc21.p2}}
+        {{doc.sec3.bloc19.p2}}
       </p>
     </div>
 
@@ -569,24 +561,11 @@ circle{
 
 
 <div class="text_div" style="padding-top:100px">
-  <h1>Closing words</h1>
-<!--   Discussing how much artists get paid from music streaming is good, and we all want the to be compensated fairly. However, in order to this discussion to be productive, one needs to at least understand how the mecanics of royalties payment work. --> 
-Hopefully this article has helped shading a light on some basic principles for calculating recording royalties. 
+  <h1>{{doc.outro.headline}}</h1>
 
-  <!-- <h2>Summary</h2> -->
-  Let’s sum-up what we have gotten to: 
-  <ul>
-  <li> Artists do not deal directly with DSPs - they have to go through a distributor or label. </li>
-  <li> DSPs make money with Subscriptions and selling Ads </li>
-  <li> Subscriptions generate a <em>lot</em> more revenue than ads. </li>
-  <li> A share of the DSPs revenue is dedicated to payment of royalties </li>
-  <li> Royalties are <em>not</em> calculated from a fixed rate per stream
-  <li> The artist’s royalties for a given track are proportional to:</li>
-      <li style="margin-left:2em"> The DSP revenue </li> 
-      <li style="margin-left:2em"> Track streams</li>
-      <li style="margin-left:2em"> The inverse of the total number of streams on the DSP</li>
-      <li style="margin-left:2em"> The split of royalties due to the artist, which depends on the artist’s contract with distributor/label (and with other contributors if any).</li></li>
-  </ul>
+  <p>
+    {{doc.outro.p1}}
+  </p>
 
 <!--   <h2>On the per-stream rate</h2>
   <p>
@@ -595,9 +574,7 @@ Hopefully this article has helped shading a light on some basic principles for c
   <p>
     Hopefully this article would have made it clear that there are a number of parameters that influence the royalty payment that an artist may receive from Digital Streaming Platforms, and that a number of these parameters will vary greatly from one track, artist and DSP to the next. It is likely that these parameters will also vary over time (e.g. the DSP revenue varies over time). 
   </p> -->
-
-<!--   If anything the idea to remember is that, at a basic level, the amount of money that ends up in the artist’s pocket depends on multiple of variables that themselves vary over time and from one artist to another.  -->
-
+{{!-- 
   <h2>Making Artists a living</h2>
   <p>
     At the time of writing, only few artists make a living solely from their streaming royalties. 
@@ -614,50 +591,10 @@ Hopefully this article has helped shading a light on some basic principles for c
   <p>
     Ultimately, the financial income of musical artists is made of the money the fans spend on the enjoyment of their music. 
     Keeping on supporting artists, be it by subscribing to their social media channels, getting a music streaming subscription, attending their shows or buying merch will always be the way. 
-  </p>
+  </p> --}}
 
 </div>
 
-<!-- <div class="text_div">
-  <h2>Interactive Simulator</h2>
-  <div id="interactive_sunburst" style="padding-bottom:50px">
-    <p>
-      In order to get a feel for how the artist royalties are impacted by some key parameters, have a play with our little simulator below. 
-    </p>
-  	Tweak the parameters using the sliders and observe how they impact the artist's royalties. 
-    <p>
-        <label for="DSPrevenue" 
-             style="display: inline-block; width: 240px; text-align: right">
-             DSP Revenue
-        </label>
-        <input type="range" min="0" max="100" value="80" id="DSPrevenue" class="slider">
-    </p>
-
-    <p>
-        <label for="TotalOtherStreams" 
-             style="display: inline-block; width: 240px; text-align: right">
-             Total Other Streams = <span id="TotalOtherStreams-value">…</span>
-        </label>
-        <input type="range" min="60" max="100" value="90" id="TotalOtherStreams" class="slider">
-    </p>
-
-    <p>
-        <label for="Trackstreams" 
-             style="display: inline-block; width: 240px; text-align: right">
-             Track Streams = <span id="Trackstreams-value">…</span>
-        </label>
-        <input type="range" min="0" max="100" value="75" id="Trackstreams" class="slider">
-    </p>
-
-    <p>
-        <label for="Artistshare" 
-             style="display: inline-block; width: 240px; text-align: right">
-             Artist share = <span id="Artistshare-value">…</span> %
-        </label>
-        <input type="range" min="0" max="100" value="80" id="Artistshare" class="slider">
-    </p>
-  </div>
-</div> -->
 
 <div id="references" class="text_div">
   <h2>References</h2>
