@@ -918,12 +918,12 @@ function render(){
       //   artist_shareOfStreams = artist_shareOfStreams_default;
       //   artist_share = 0.925;
       //   break;
-      case 18:
+      case 17:
         dsp_revenue = dsp_revenue_default;
         artist_shareOfStreams = artist_shareOfStreams_default;
         artist_share = 0.925;
         break;
-      case 19:
+      case 18:
         // Get Initial values from the HTML slider. 
         dsp_revenue = d3.select("#DSPrevenue").property("value"); 
         total_other_streams = log_slider(d3.select("#TotalOtherStreams").property("value"), 1000, total_streams_maxv);
