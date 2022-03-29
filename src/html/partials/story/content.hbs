@@ -1,180 +1,4 @@
 
-<!DOCTYPE html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<style>
-
-body{
-  max-width: 900px;
-  margin: 0px auto;
-  /*font-family: 'Lora', 'Times New Roman', serif;*/
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-size: 16px;
-  /*color: #404040;
-  background-color:#F4EEE8*/
-  color: #434148;
-  background-color: efefef;
-  /*background-color: fef8f4;*/
-  line-height: 150%;
-}
-
-h1{
-  margin: 50px;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-h1{
-  text-align: center;
-}
-
-h3{
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-/*
-.legend{
-	font-family: "Courier New", Courier, monospace;
-}*/
-p.normal {
-  font-weight: normal;
-}
-p.highlight {
-  font-weight: bold;
-}
-
-.text_div{
-  max-width: 700px;
-  margin: auto;
-}
-
-.bold{
-  font-weight: bold;
-}
-
-.title{
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #434148;
-	font-weight: bold;
-}
-
-.legend{
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #434148;
-	font-weight: bold;
-}
-
-#container{
-  position: relative;
-}
-
-#sections{
-  width: 340px;
-}
-
-#sections > div{
-  background: white;
-  opacity: .2;
-  margin-bottom: 200px;
-}
-#sections > div:last-child{
-  margin-bottom: 30px;
-}
-#sections > div.graph-scroll-active{
-  opacity: 1;
-}
-
-#graph{
-  margin-left: 40px;
-  width: 500px;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 50px;
-  float: right;
-}
-
-@media (max-width: 925px)  {
-  #graph{
-    width: 100%;
-    margin-left: 0px;
-    float: none;
-  }
-
-  #sections{
-    width: auto;
-    position: relative;
-    margin: 0px auto;
-  }
-
-  #sections > div{
-    background: rgba(255,255,255,.5);
-    padding: 10px;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    margin-bottom: 80vh;
-  }
-
-  pre{
-    overflow: hidden;
-  }
-
-  h1{
-    margin: 10px;
-  }
-}
-
-
-circle{
-  fill: steelblue;
-}
-
-.mono{
-  font-family: monospace;
-}
-
-/*svg{
-  background-color: #efefef;
-}*/
-
-.slider {
-  -webkit-appearance: none;
-  width: 15%;
-  height: 10px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #7c95bd;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #4CAF50;
-  cursor: pointer;
-}
-
-</style>
-
-{{!-- <div>
-  <h1> {{doc.title}}</h1>
-</div> --}}
-
 <div id="Intro" class="text_div">
 	
   <p>
@@ -189,8 +13,8 @@ circle{
 
 </div>
 
-<div class="text_div" style="padding-top:150px; padding-bottom: 100px;">
-<h1>{{doc.sec1.headline}}</h1>
+<div class="text_div">
+<h2>{{doc.sec1.headline}}</h2>
 <p>
   {{doc.sec1.intro}}
 </p>
@@ -199,7 +23,7 @@ circle{
 <div id='container' class='container-0'>
   <div id='graph'></div>
   <div id='sections'>
-    <div style="padding-top:200px">
+    <div>
       <h3>{{doc.sec1.bloc1.headline}}</h3>
       <p>
         {{doc.sec1.bloc1.p1}}
@@ -222,7 +46,7 @@ circle{
         </p>
         
     </div>
-    <div style="padding-bottom:150px">
+    <div>
       <h3>{{doc.sec1.bloc3.headline}}</h3>
       <p>
         	{{doc.sec1.bloc3.p1}}
@@ -234,8 +58,8 @@ circle{
   </div>
 </div>
 
-<div class="text_div" style="padding-bottom:150px; padding-top:150px;">
-  <h1>{{doc.sec2.headline}}</h1>
+<div class="text_div">
+  <h2>{{doc.sec2.headline}}</h2>
   <p>
     {{doc.sec2.intro.p1}}
   </p>
@@ -251,7 +75,7 @@ circle{
   <div id='graph'></div>
 
   <div id='sections'>
-    <div style="padding-top:100px">
+    <div>
       <h3>{{doc.sec2.bloc1.headline}}</h3>
       <p>
         {{doc.sec2.bloc1.p1}}
@@ -347,8 +171,8 @@ circle{
 
 </div>
 
-<div class="text_div" style="padding-top: 200px">
-	<h1>{{doc.sec3.headline}}</h1>
+<div class="text_div">
+	<h2>{{doc.sec3.headline}}</h2>
 	<p>
     {{doc.sec3.intro}}
 	</p>
@@ -359,7 +183,7 @@ circle{
   <div id='graph'></div>
   <div id='sections'>
 
-    <div style="padding-top:200px">
+    <div>
       <h3>{{doc.sec3.bloc1.headline}}</h3>
       <p>
         {{doc.sec3.bloc1.p1}}
@@ -553,7 +377,7 @@ circle{
 
 
 <div class="text_div" style="padding-top:100px">
-  <h1>{{doc.outro.headline}}</h1>
+  <h2>{{doc.outro.headline}}</h2>
 
   <p>
     {{doc.outro.p1}}

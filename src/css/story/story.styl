@@ -1,1 +1,212 @@
 /* CUSTOM STORY STYLE */
+body
+    background-color: $bg-purple;
+    color: $white;
+    font-family: $sans;
+
+#content 
+    padding: 0 1rem;
+
+h1
+    font-family: $sans-display;
+    text-transform: uppercase;
+    set-type-size(xxxxx-large, false);
+    line-height: 1;
+    font-weight: 300;
+    max-width: 30rem;
+    text-shadow: 0 0 20px $white;
+    animation: flicker 5s linear 3;
+
+h1:hover 
+    animation: flicker 5s linear infinite;
+
+h2
+    font-family: $sans-display;
+    text-transform: uppercase;
+    set-type-size(xxx-large, false);
+    line-height: 1;
+    font-weight: 300;
+    text-align: center;
+    padding: 6rem 0 0 0;
+    max-width: $column-width;
+
+h3
+    font-family: $sans-display;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: $dark-purple;
+
+p 
+    max-width: $column-width;
+    margin 0 auto;
+    padding: 1rem 0;
+
+p.normal {
+  font-weight: normal;
+}
+p.highlight {
+  font-weight: bold;
+}
+
+.text_div{
+  max-width: 700px;
+  margin: auto;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.title{
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #434148;
+	font-weight: bold;
+}
+
+.legend{
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #434148;
+	font-weight: bold;
+}
+
+#container{
+  position: relative;
+}
+
+#sections{
+  max-width: 400px;
+  margin: 0 auto;
+  color: $dark-purple;
+  position: relative;
+  z-index: set-index('overlay');
+}
+
+#sections > div{
+  background: white;
+  opacity: .2;
+  margin-bottom: 200px;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 5px solid $purple;
+  box-shadow: 0 0 20px $purple;
+  z-index: set-index('overlay');
+}
+#sections > div:last-child{
+  margin-bottom: 30px;
+}
+#sections > div.graph-scroll-active{
+  opacity: 1;
+}
+
+#graph{
+  max-width: $column-width;
+  margin: 0 auto;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  border: 5px solid $purple;
+  border-radius: 10px;
+  box-shadow: 0 0 20px $purple;
+  background-color: $dark-purple;
+  z-index: 1;
+}
+
+.axis-label
+    fill: $white;
+    text-transform: uppercase;
+    font-family: $sans-display;
+    font-weight: 500;
+    font-size: 14px;
+
+.tick line
+    stroke: $white;
+    opacity: 0.25;
+
+.tick text 
+    font-size: 14px;
+
+.domain
+    display: none;   
+
+#premium 
+    fill: $green;
+    opacity: 0.90;
+    filter: drop-shadow(0 0 10px $green);
+
+#Freemium
+    fill: $white;
+    opacity: 0.90;
+    filter: drop-shadow(0 0 10px $white);
+
+.legend-Freemium rect
+    fill: $white;
+    filter: drop-shadow(0 0 10px $white);
+
+.legend-Premium rect
+    fill: $green;
+    filter: drop-shadow(0 0 10px $green);
+
+.legend text
+    font-family: $poppins;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    fill: $white;
+
+circle{
+  fill: steelblue;
+}
+
+.mono{
+  font-family: monospace;
+}
+
+/*svg{
+  background-color: #efefef;
+}*/
+
+.slider {
+  -webkit-appearance: none;
+  width: 15%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #7c95bd;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+@keyframes flicker {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+		//text-shadow: none;
+    opacity: .99;
+		
+	}
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		opacity: 0.4;
+	
+    }
+}
