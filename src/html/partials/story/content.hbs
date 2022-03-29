@@ -2,21 +2,21 @@
 <div id="Intro" class="text_div">
 	
   <p>
-    {{doc.intro.p1}}
+    {{{doc.intro.p1}}}
   </p>
   <p>
-    {{doc.intro.p2}}
+    {{{doc.intro.p2}}}
   </p>
   <p>
-    {{doc.intro.p3}}
+    {{{doc.intro.p3}}}
   </p>
 
 </div>
 
 <div class="text_div">
-<h2>{{doc.sec1.headline}}</h2>
+<h2>{{{doc.sec1.headline}}}</h2>
 <p>
-  {{doc.sec1.intro}}
+  {{{doc.sec1.intro}}}
 </p>
 </div>
 
@@ -24,50 +24,50 @@
   <div id='graph'></div>
   <div id='sections'>
     <div>
-      <h3>{{doc.sec1.bloc1.headline}}</h3>
+      <h3>{{{doc.sec1.bloc1.headline}}}</h3>
       <p>
-        {{doc.sec1.bloc1.p1}}
+        {{{doc.sec1.bloc1.p1}}}
       </p>      
       <p>
-        {{doc.sec1.bloc1.p2}}
+        {{{doc.sec1.bloc1.p2}}}
       </p>
       
     </div>
     <div>
-      <h3>{{doc.sec1.bloc2.headline}}</h3>
+      <h3>{{{doc.sec1.bloc2.headline}}}</h3>
       	<p>
-        	{{doc.sec1.bloc2.p1}}
+        	{{{doc.sec1.bloc2.p1}}}
         </p>
       	<p>
-        	{{doc.sec1.bloc2.p2}}
+        	{{{doc.sec1.bloc2.p2}}}
         </p>
       	<p>
-        	{{doc.sec1.bloc2.p3}}
+        	{{{doc.sec1.bloc2.p3}}}
         </p>
         
     </div>
     <div>
-      <h3>{{doc.sec1.bloc3.headline}}</h3>
+      <h3>{{{doc.sec1.bloc3.headline}}}</h3>
       <p>
-        	{{doc.sec1.bloc3.p1}}
+        	{{{doc.sec1.bloc3.p1}}}
         </p>
       	<p>
-        	{{doc.sec1.bloc3.p2}}
+        	{{{doc.sec1.bloc3.p2}}}
         </p>
     </div>
   </div>
 </div>
 
 <div class="text_div">
-  <h2>{{doc.sec2.headline}}</h2>
+  <h2>{{{doc.sec2.headline}}}</h2>
   <p>
-    {{doc.sec2.intro.p1}}
+    {{{doc.sec2.intro.p1}}}
   </p>
   <p>
-    {{doc.sec2.intro.p2}}
+    {{{doc.sec2.intro.p2}}}
   </p>
   <p>
-    {{doc.sec2.intro.p3}}
+    {{{doc.sec2.intro.p3}}}
   </p>
 </div>
 
@@ -76,105 +76,35 @@
 
   <div id='sections'>
     <div>
-      <h3>{{doc.sec2.bloc1.headline}}</h3>
+      <h3>{{{doc.sec2.bloc1.headline}}}</h3>
       <p>
-        {{doc.sec2.bloc1.p1}}
+        {{{doc.sec2.bloc1.p1}}}
       </p>
       <p>
-        {{doc.sec2.bloc1.p2}}
+        {{{doc.sec2.bloc1.p2}}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec2.bloc2.p1}}
+        {{{doc.sec2.bloc2.p1}}}
       </p>
       <p>
-        {{doc.sec2.bloc2.p2}}
+        {{{doc.sec2.bloc2.p2}}}
       </p>
       <p>
-        {{doc.sec2.bloc2.p3}}
+        {{{doc.sec2.bloc2.p3}}}
       </p>
     </div>
-
-    {{!-- <div>
-      <h3>Revenue per user</h3>
-      Spotify reports that the monthly Average Revenue Per User (ARPU) €4.19 for premium users and €0.33 for freemium users. The ARPU tells us how much money Spotify makes per user each month, on average, globally. 
-      <p class='highlight'>
-      	The numbers reported mean that premium subscribers generate over 12 times more revenue than freemium users.
-      </p>
-    </div>
-
-    <div>
-      <h3> Contribution to total revenue </h3>
-      To put the same numbers in a different perspective: premium subscribers represent around 45% of Spotify users and generate about 90% of the total revenue, which also means that the 55% of ad-supported users only generate about 10% of the revenue.
-      <p>
-      	The area of the rectangles on the graph represents the revenue.
-      </p>
-    </div>
-
-    <div>
-      <p>Remember that the artist royalties are a share of DSP revenue. So, everything else remaining equal, artist royalties go up if DSP revenue goes up</p>
-      <p>
-        <h3> How can the DSPs generate more revenue? </h3>
-      </p>
-    </div>
-
-    <div>
-      <h3> Increase ARPU </h3>
-      In the case of Premium users, the ARPU is affected by the commercial offering of the DSP. For example increasing the prices of the subscription plans would increase the ARPU. 
-
-      <p>
-        The risk of a price increase is that some users may cancel their subscriptions. 
-      </p>
-    </div>
-
-    <div>
-      Conversly, promotional offers (e.g. three months free when joining) tends to decrease the ARPU. 
-      <p>
-        On the other hand promotional offers may help increasing the number of subscriptions, and therefore the revenue in the long run.
-      </p>
-    </div>
-
-    <div>
-      In the case of Freemium users, the ARPU essentially depends on the value of the users auditive attention on the advertisement market.  
-
-      <!-- <p>
-        DSPs do not unilaterally control the advertisment market, so pushing the Freemium ARPU up is difficult.
-      </p>  -->
-      <!-- <p>What is for sure is that building a great product with which the users will be very engaged will help. </p> -->
-    </div>
-
-    <div>
-      <h3> Converting Freemium users to Premium </h3>
-      Premium users are over 10 times more profitable than Freemium users. Converting Freemium users to Premium may therefore have a huge impact on revenue. 
-    </div>
-
-    <div>
-      Now you may ask: why bother with Freemium users since they generate so little revenue? 
-      <p>
-        Some DSPs don't and only offer Premium subscriptions. 
-      </p>
-      <p>
-        Some do, using the Freemium tier to attract to the platform users who would not buy a subscription outright, and hopefully later "convert" some of them into Premium subscribers.
-      </p>
-        
-    </div>
-
-    <div style="padding-bottom:250px">
-      <h3>Increase number of users</h3>
-      Last but not least: increasing the total number of users on the DSP will mechanically increase revenue, by increasing the number of subscriptions and/or by increasing the size of the pool of customers available to advertisers. 
-    </div> --}}
-
   </div>
 
 
 </div>
 
 <div class="text_div">
-	<h2>{{doc.sec3.headline}}</h2>
+	<h2>{{{doc.sec3.headline}}}</h2>
 	<p>
-    {{doc.sec3.intro}}
+    {{{doc.sec3.intro}}}
 	</p>
 </div>
 
@@ -184,161 +114,160 @@
   <div id='sections'>
 
     <div>
-      <h3>{{doc.sec3.bloc1.headline}}</h3>
+      <h3>{{{doc.sec3.bloc1.headline}}}</h3>
       <p>
-        {{doc.sec3.bloc1.p1}}
+        {{{doc.sec3.bloc1.p1}}}
       </p>
       <p>
-        {{doc.sec3.bloc1.p2}}
-      </p>
-    </div>
-
-    <div>
-      <p>
-        {{doc.sec3.bloc2.p1}}
-      </p>
-      <p>
-        {{doc.sec3.bloc2.p2}}
+        {{{doc.sec3.bloc1.p2}}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc3.p1}}
+        {{{doc.sec3.bloc2.p1}}}
       </p>
       <p>
-        {{doc.sec3.bloc3.p2}}
-      </p>
-    </div>
-
-    <div>
-      <h3>{{doc.sec3.bloc4.headline}}</h3>
-      <p>
-        {{doc.sec3.bloc4.p1}}
+        {{{doc.sec3.bloc2.p2}}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc5.p1}}
+        {{{doc.sec3.bloc3.p1}}}
+      </p>
+      <p>
+        {{{doc.sec3.bloc3.p2}}}
+      </p>
+    </div>
+
+    <div>
+      <h3>{{{doc.sec3.bloc4.headline}}}</h3>
+      <p>
+        {{{doc.sec3.bloc4.p1}}}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{{doc.sec3.bloc5.p1}}}
       </p> 
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc6.p1}}
+        {{{doc.sec3.bloc6.p1}}}
       </p>
     </div>
 
     <div>
-      <h3>{{doc.sec3.bloc7.headline}}</h3>
+      <h3>{{{doc.sec3.bloc7.headline}}}</h3>
       <p>
-        {{doc.sec3.bloc7.p1}}
+        {{{doc.sec3.bloc7.p1}}}
       </p>
       <p>
-        {{doc.sec3.bloc7.p2}}
-      </p>
-    </div>
-
-    <div>
-      <p>
-        {{doc.sec3.bloc8.p1}}
-      </p>
-      <p>
-        {{doc.sec3.bloc8.p2}}
-      </p>
-    </div>
-    <div>
-      <p>
-        {{doc.sec3.bloc9.p1}}
+        {{{doc.sec3.bloc7.p2}}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc10.p1}}
+        {{{doc.sec3.bloc8.p1}}}
       </p>
       <p>
-        {{doc.sec3.bloc10.p2}}
+        {{{doc.sec3.bloc8.p2}}}
+      </p>
+    </div>
+    <div>
+      <p>
+        {{{doc.sec3.bloc9.p1}}}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{{doc.sec3.bloc10.p1}}}
+      </p>
+      <p>
+        {{{doc.sec3.bloc10.p2}}}
       </p> 
     </div>
 
     <div>
        <p>
-        {{doc.sec3.bloc11.p1}}
+        {{{doc.sec3.bloc11.p1}}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc12.p1}}
+        {{{doc.sec3.bloc12.p1}}}
       </p> 
     </div>
 
     <div>
-      <h3>{{doc.sec3.bloc13.headline}}</h3>
+      <h3>{{{doc.sec3.bloc13.headline}}}</h3>
       <p>
-        {{doc.sec3.bloc13.p1}}
+        {{{doc.sec3.bloc13.p1}}}
       </p>
       <p>
-        {{doc.sec3.bloc13.p2}}
-      </p>
-    </div>
-
-    <div>
-      <p>
-        {{doc.sec3.bloc14.p1}}
-      </p>
-      <p>
-        {{doc.sec3.bloc14.p2}}
+        {{{doc.sec3.bloc13.p2}}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc15.p1}}
+        {{{doc.sec3.bloc14.p1}}}
+      </p>
+      <p>
+        {{{doc.sec3.bloc14.p2}}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc16.p1}}
+        {{{doc.sec3.bloc15.p1}}}
+      </p>
+    </div>
+
+    <div>
+      <p>
+        {{{doc.sec3.bloc16.p1}}}
       </p>
       <p>
-        {{doc.sec3.bloc16.p2}}
+        {{{doc.sec3.bloc16.p2}}}
       </p>
     </div>
 
 
     <div>
       <p>
-        {{doc.sec3.bloc17.p1}}
+        {{{doc.sec3.bloc17.p1}}}
       </p>
     </div>
 
     <div>
       <p>
-        {{doc.sec3.bloc18.p1}}
+        {{{doc.sec3.bloc18.p1}}}
       </p>
       <p>
-        {{doc.sec3.bloc18.p2}}
+        {{{doc.sec3.bloc18.p2}}}
       </p>
     </div>
 
 
     <div style="padding-bottom: 100px;">
-      <h3>{{doc.sec3.sim.headline}}</h3>
+      <h3>{{{doc.sec3.sim.headline}}}</h3>
       <p>
-        {{doc.sec3.sim.p1}}
+        {{{doc.sec3.sim.p1}}}
       </p>
       <p>
-        {{doc.sec3.sim.p2}}
+        {{{doc.sec3.sim.p2}}}
       </p>
           <input type="range" min="0" max="100" value="80" id="DSPrevenue" class="slider" style="width:200px;">
           <br>
           <label for="DSPrevenue" 
                style="display: inline-block; width: 280px; text-align: left;">
-               <!-- DSP revenue = <span id="DSPrevenue-value">…</span> -->
                DSP Revenue
           </label>
       </p>
@@ -377,37 +306,11 @@
 
 
 <div class="text_div" style="padding-top:100px">
-  <h2>{{doc.outro.headline}}</h2>
+  <h2>{{{doc.outro.headline}}}</h2>
 
   <p>
-    {{doc.outro.p1}}
+    {{{doc.outro.p1}}}
   </p>
-
-<!--   <h2>On the per-stream rate</h2>
-  <p>
-    Per-stream royalty rates are regularly quoted in the press when discussing artists streaming revenue. Although this metric has its merits it often leads to the misconception that artist are payed based on a fixed per-stream rate, which is not true. 
-  </p>
-  <p>
-    Hopefully this article would have made it clear that there are a number of parameters that influence the royalty payment that an artist may receive from Digital Streaming Platforms, and that a number of these parameters will vary greatly from one track, artist and DSP to the next. It is likely that these parameters will also vary over time (e.g. the DSP revenue varies over time). 
-  </p> -->
-{{!-- 
-  <h2>Making Artists a living</h2>
-  <p>
-    At the time of writing, only few artists make a living solely from their streaming royalties. 
-    <!-- Are there levers that can be pulled to increase artists recording streaming royalties?  -->
-  </p>
-  <p>
-    The current economics of music streaming royalties are built on a revenue share model. 
-    As a result there are two ways for artists to get a bigger royalties check: get a bigger share of the pie by increasing proportion of streams of their tracks, or making the pie bigger by increasing the DSPs revenue.
-    The former is every artist's career development challenge: grow their audience and grow fan engagement. The latter could be achieved by attracting more users to the music streaming platforms in general and more specifically to get more of them to pay for a subscription. There will not be more money for artists unless there is more money being spent for the consumption of their music. 
-  </p>
-  <p>
-     Potential alternative economic models are also debated in the music industry. This debate, however, is beyond the scope of this article. The interested reader may refer to some of the references below. 
-  </p>
-  <p>
-    Ultimately, the financial income of musical artists is made of the money the fans spend on the enjoyment of their music. 
-    Keeping on supporting artists, be it by subscribing to their social media channels, getting a music streaming subscription, attending their shows or buying merch will always be the way. 
-  </p> --}}
 
 </div>
 
@@ -428,9 +331,6 @@
 </div>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
-
-{{!-- <script src="graph-scroll.js"></script>
-<script src="graphs_d3.js"></script> --}}
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async
