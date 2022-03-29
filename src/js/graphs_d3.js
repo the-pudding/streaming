@@ -8,9 +8,9 @@ function render(){
 
   // var width = height = d3.select('#graph').node().offsetWidth
   var width = d3.select('#graph').node().offsetWidth
-  var height = width/1.5;
+  var height = width;
 
-  console.log(width, innerWidth);
+  //console.log(width, innerWidth);
 
   // if (innerWidth <= 925){
   //   width = innerWidth
@@ -715,7 +715,7 @@ function render(){
   var artist_shareOfStreams_default = 30;
   var artist_share_default = 0.7;
 
-  var margin_revshare = {top: 80, right: 20, bottom: 40, left: 60};
+  var margin_revshare = {top: 80, right: 60, bottom: 80, left: 60};
   var revshare_scale_ends = {x_min:0, x_max:100, y_min:0, y_max:100};
   var width_revshare = width;
   var height_revshare = height + margin_revshare.top - 50;
@@ -724,7 +724,7 @@ function render(){
                           "share_of_streams":55,
                           "dsp_revenue":dsp_revenue_default,
                           "annotation":"Other Tracks",
-                          "color":"#000000",
+                          "color":"#ffffff",
                           "color_highlight":'#363636',
                           "opacity":0.4,
                           "opacity_highlight":0.3},
@@ -1024,18 +1024,7 @@ function render(){
         .attr("width", x(data.dsp_share.share_of_streams) )
         .attr("height", y(data.dsp_share.dsp_revenue)) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         .attr("id",data.dsp_share.label)
-        .style("fill", data.dsp_share.color)
-        .style("fill-opacity", data.dsp_share.opacity)
-        .on('mouseover', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.dsp_share.opacity_highlight);
-        })
-        .on('mouseout', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.dsp_share.opacity);
-        })
+        .style("fill", "#FB576F")
 
     // Draw other tracks rectangle
     svg_revshare
@@ -1045,18 +1034,7 @@ function render(){
         .attr("width", x(data.other_tracks.share_of_streams) )
         .attr("height", y(revshare_scale_ends.y_max-data.other_tracks.dsp_revenue)) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         .attr("id",data.other_tracks.label)
-        .style("fill", data.other_tracks.color)
-        .style("fill-opacity", data.other_tracks.opacity)
-        .on('mouseover', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.other_tracks.opacity_highlight);
-        })
-        .on('mouseout', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.other_tracks.opacity);
-        })
+        .style("fill", "#ffffff")
 
     // Draw Distributor share rectangle
     svg_revshare
@@ -1066,18 +1044,7 @@ function render(){
         .attr("width", x(data.dist_share.share_of_streams) )
         .attr("height", y(revshare_scale_ends.y_max-data.dist_share.dsp_revenue*data.dist_share.share))
         .attr("id","distributor_share")
-        .style("fill", data.dist_share.color)
-        .style("fill-opacity", data.dist_share.opacity)
-        .on('mouseover', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity',data.dist_share.opacity_highlight);
-        })
-        .on('mouseout', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.dist_share.opacity);
-        })
+        .style("fill", "#5FE6F9")
 
     // Draw Artist share rectangle
     svg_revshare
@@ -1087,18 +1054,7 @@ function render(){
         .attr("width", x(data.artist_share.share_of_streams) )
         .attr("height", y(revshare_scale_ends.y_max-data.artist_share.dsp_revenue*data.artist_share.share))
         .attr("id","artist_share")
-        .style("fill", data.artist_share.color)
-        .style("fill-opacity", data.artist_share.opacity)
-        .on('mouseover', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity',data.artist_share.opacity_highlight);
-        })
-        .on('mouseout', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.artist_share.opacity);
-        })
+        .style("fill", "#1ED760")
   }
 
   function revshare_draw_dollars(N=20){
@@ -1124,11 +1080,11 @@ function render(){
         var idx = i+j*N;
         g_dollars
           .append("image")
-          .attr('xlink:href', './assets/images/round_dollar_fill_negative_with_edges.png')
+          .attr('xlink:href', './assets/images/money_nofill.png')
           .attr("x", x(i*revshare_scale_ends.x_max/N))
           .attr("y",y(j*revshare_scale_ends.x_max/N))
-          .attr("width", x(revshare_scale_ends.x_max/N) + 1)
-          .attr("height", x(revshare_scale_ends.x_max/N) + 1) 
+          .attr("width", x(revshare_scale_ends.x_max/N)+1)
+          .attr("height", x(revshare_scale_ends.x_max/N)+1) 
           .attr("id","dollar_"+idx)
       }
     }
@@ -1232,7 +1188,7 @@ function render(){
               // .style('stroke', color);   
 
             legend.append("image")  
-                  .attr('xlink:href', './assets/images/round_dollar_fill_negative_with_edges.png')
+                  .attr('xlink:href', './assets/images/money_nofill.png')
                   .attr("width", legendRectSize + 1)
                   .attr("height", legendRectSize + 1);                       
               
@@ -1558,6 +1514,6 @@ function render(){
   ////////////////////////////////////
 
 }
-render()
-d3.select(window).on('resize', render)
+//render()
+//d3.select(window).on('resize', render)
 export default { render };

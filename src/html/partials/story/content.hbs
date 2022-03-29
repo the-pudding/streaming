@@ -21,7 +21,7 @@
 </div>
 
 <div id='container' class='container-0'>
-  <div id='graph'></div>
+  <div id='graph' class='diagram-container'></div>
   <div id='sections'>
     <div>
       <h3>{{{doc.sec1.bloc1.headline}}}</h3>
@@ -256,7 +256,7 @@
     </div>
 
 
-    <div style="padding-bottom: 100px;">
+    <div>
       <h3>{{{doc.sec3.sim.headline}}}</h3>
       <p>
         {{{doc.sec3.sim.p1}}}
@@ -264,7 +264,15 @@
       <p>
         {{{doc.sec3.sim.p2}}}
       </p>
-          <input type="range" min="0" max="100" value="80" id="DSPrevenue" class="slider" style="width:200px;">
+    </div>
+
+  </div>
+
+</div>
+
+<div class="controls">
+      <p>
+            <input type="range" min="0" max="100" value="80" id="DSPrevenue" class="slider" style="width:200px;">
           <br>
           <label for="DSPrevenue" 
                style="display: inline-block; width: 280px; text-align: left;">
@@ -298,12 +306,7 @@
                Artist share = <span id="Artistshare-value">…</span> %
           </label>
       </p>
-    </div>
-
-  </div>
-
 </div>
-
 
 <div class="text_div" style="padding-top:100px">
   <h2>{{{doc.outro.headline}}}</h2>
@@ -312,22 +315,6 @@
     {{{doc.outro.p1}}}
   </p>
 
-</div>
-
-
-<div id="references" class="text_div">
-  <h2>References</h2>
-  <ol>
-    <li><a href="https://www.digitalmusicnews.com/2016/04/13/were-an-indie-rock-band-in-france-want-to-see-our-streaming-royalties/"> https://www.digitalmusicnews.com/2016/04/13/were-an-indie-rock-band-in-france-want-to-see-our-streaming-royalties/</a></li>
-    <li><a href="https://musically.com/2019/11/22/artist-zoe-keating-reveals-latest-spotify-per-stream-payouts/">https://musically.com/2019/11/22/artist-zoe-keating-reveals-latest-spotify-per-stream-payouts/</a></li>
-    <li><a href = "https://investors.spotify.com/financials/press-release-details/2020/Spotify-Technology-S.A.-Announces-Financial-Results-for-Third-Quarter-2020/default.aspx">https://investors.spotify.com/financials/press-release-details/2020/Spotify-Technology-S.A.-Announces-Financial-Results-for-Third-Quarter-2020/default.aspx</a></li>
-    <li><a href="https://artists.spotify.com/videos/the-game-plan/how-spotify-pays-you?utm_source=emailwelcome&utm_medium=crmemail&utm_campaign=2019q1_creator_single_creator_welcome_2">https://artists.spotify.com/videos/the-game-plan/how-spotify-pays-you?utm_source=emailwelcome&utm_medium=crmemail&utm_campaign=2019q1_creator_single_creator_welcome_2</a></li>
-    <li><a href="https://musically.com/2020/05/05/spotify-should-pay-musicians-more-lets-talk-about-how/">https://musically.com/2020/05/05/spotify-should-pay-musicians-more-lets-talk-about-how/</a></li>
-  </ol>
-</div>
-
-<div id="photo_credit" class="text_div" style="padding-bottom: 100px">
-  Artist Photo by Oleg Magni from Pexels
 </div>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>

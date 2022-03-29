@@ -47,7 +47,7 @@ function init() {
   // load custom js code
   // graph_scroll();
   // console.log('type graph_d3', typeof graph_d3)
-  graph_d3.render();
+  //graph_d3.render();
   
 }
 
