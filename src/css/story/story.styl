@@ -153,20 +153,38 @@ p.highlight {
     opacity: 0.90;
     filter: drop-shadow(0 0 10px $white);
 
-.legend-Freemium rect
-    fill: $white;
-    filter: drop-shadow(0 0 10px $white);
+.legend-1
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    padding: 2rem 0 0 75px;
 
-.legend-Premium rect
-    fill: $green;
-    filter: drop-shadow(0 0 10px $green);
-
-.legend text
+.legend-1 p    
     font-family: $poppins;
     text-transform: uppercase;
     font-weight: 500;
     font-size: 14px;
-    fill: $white;
+    color: $white;
+    margin: 0;
+    padding: 0 1rem 0 0;
+
+.preLegend::before
+    display: inline-block;
+    width:12px;
+    height:12px;
+    content: '';
+    background-color: $green;
+    margin: 0 4px;
+    box-shadow: 0 0 10px $green;
+
+.freeLegend::before
+    display: inline-block;
+    width:12px;
+    height:12px;
+    content: '';
+    background-color: $white;
+    margin: 0 4px;
+    box-shadow: 0 0 10px $white;
 
 circle{
   fill: steelblue;
@@ -183,6 +201,18 @@ circle{
 .container-2 #graph
   height 30rem;
   max-height 30rem
+
+#dsp_share
+  fill: $red;
+
+#other_tracks
+  fill: $white;
+
+#distributor_share
+  fill: $blue;
+
+#artist_share 
+  fill: $green;
 
 .slider {
   -webkit-appearance: none;

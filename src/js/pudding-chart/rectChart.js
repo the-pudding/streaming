@@ -50,10 +50,10 @@ d3.selection.prototype.chartRect = function init(options) {
     // dimensions
     let width = 0;
     let height = 0;
-    const MARGIN_TOP = 80;
-    const MARGIN_BOTTOM = 100;
+    const MARGIN_TOP = 20;
+    const MARGIN_BOTTOM = 140;
     const MARGIN_LEFT = 80;
-    const MARGIN_RIGHT = 60;
+    const MARGIN_RIGHT = 40;
 
     // scales
     let scaleX = null;
@@ -61,6 +61,9 @@ d3.selection.prototype.chartRect = function init(options) {
 
     let axisX;
     let axisY;
+
+    let axisXLabel;
+    let axisYLabel;
 
     let freemiumRect;
     let premiumRect;
@@ -127,6 +130,11 @@ d3.selection.prototype.chartRect = function init(options) {
         }
     }
 
+    function tickScale(width) {
+        if (width >= 400) { return 10 }
+        else { return 5 }
+    }
+
     const Chart = {
       // called once at start
       init() {
@@ -181,20 +189,31 @@ d3.selection.prototype.chartRect = function init(options) {
 
         scaleX = d3.scaleLinear()
           .domain([0, rect_total_users_max])
-          .range([MARGIN_LEFT, width - MARGIN_RIGHT]);
+          .range([0, width]);
         
         scaleY = d3.scaleLinear()
           .domain([0, rect_arpu_max])
-          .range([height - MARGIN_BOTTOM, MARGIN_TOP]);
+          .range([height, 0]);
 
-        axisX = $axis.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(scaleX).tickSize(-height + MARGIN_TOP + MARGIN_BOTTOM).tickPadding(10));
+        axisX
+            .attr('transform', `translate(${0}, ${height})`)
+            .call(d3.axisBottom(scaleX)
+            .tickSize(-height)
+            .ticks(tickScale(width))
+            .tickPadding(10));
         
-        if (rect_rendering_options.y_axis==true) {
-            axisY = $axis.append("g")
-                .call(d3.axisLeft(y).tickSize(-width + MARGIN_LEFT + MARGIN_RIGHT).tickPadding(10));
-        }
+        axisY
+            .call(d3.axisLeft(scaleY)
+            .tickSize(-width)
+            .tickPadding(10));
+        
+        axisXLabel
+            .attr("x", width/2)
+            .attr("y", 50)
+
+        axisYLabel
+            .attr("y", -50)
+            .attr("x", -height/2)
 
         freemiumRect
             .attr("x", scaleX(data_rect.premium.n_users) )
@@ -214,6 +233,21 @@ d3.selection.prototype.chartRect = function init(options) {
       render() {
         // offset chart for margins
         $vis.attr('transform', `translate(${MARGIN_LEFT}, ${MARGIN_TOP})`);
+        $axis.attr('transform', `translate(${MARGIN_LEFT}, ${MARGIN_TOP})`);
+        
+        axisX = $axis.append("g")
+        axisY = $axis.append("g")
+
+        axisXLabel = axisX.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "middle")
+            .text("Number of users (Millions)");
+        
+        axisYLabel = axisY.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "middle")
+            .attr("transform", "rotate(-90)")
+            .text("Revenue per user")
 
         freemiumRect = $vis.append("rect")
             .attr("id",data_rect.freemium.label)
