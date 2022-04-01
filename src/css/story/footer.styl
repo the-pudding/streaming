@@ -1,8 +1,9 @@
 footer.pudding-footer
 	padding 3rem 1rem
-	border-top 4px solid $black
+	border-top 7px solid $purple
 	font-family $sans
 	margin-top 3rem
+	box-shadow 0 0 20px $purple
 
 	.footer-recirc
 		max-width 65rem
@@ -24,7 +25,7 @@ footer.pudding-footer
 					margin-right 0
 
 		.article__headline
-			font-family $sans-display
+			font-family $sans
 			set-type-size(large, false)
 			line-height 1
 			font-weight 700
@@ -37,7 +38,7 @@ footer.pudding-footer
 		max-width 65rem
 		display flex
 		flex-direction column
-		font-family $sans-display
+		font-family $sans
 		+mq('bp-5')
 			flex-direction row
 
@@ -70,24 +71,24 @@ footer.pudding-footer
 					border none
 
 				p
-					font-family $sans-display
+					font-family $sans
 					margin 0
 					padding-left 0.5rem
 					padding-top 0.1rem
 					line-height 1
-					color $gray
+					color $white
 					+mq('bp-4')
 						set-type-size(large)
 
 				svg
-					fill $gray
+					fill $white
 					stroke none
 					vertical-align middle
 					circle, polyline, line
 						fill none
-						stroke $gray
+						stroke $white
 				.feather-mail path, .feather-lock path, .feather-rss path
-						stroke $gray
+						stroke $white
 						fill none
 
 		&__about
@@ -103,6 +104,8 @@ footer.pudding-footer
 				margin 0
 				set-type-size(root, false)
 				line-height 1.4
+				color $white
 			svg
 				width 12rem
 				margin-bottom 0.5rem
+				fill $white

@@ -1,4 +1,5 @@
 /* global d3 */
+import { remove } from 'lodash';
 import { graphScroll } from '../graph-scroll';
 
 /*
@@ -17,6 +18,7 @@ d3.selection.prototype.chartRev = function init(options) {
     let $svg = null;
     let $axis = null;
     let $vis = null;
+    let $container = d3.select('.container-2 #graph')
 
     // data
     let data = $chart.datum();
@@ -67,7 +69,7 @@ d3.selection.prototype.chartRev = function init(options) {
           "opacity_highlight":0.4}
     }
 
-   console.log(data_revshare)
+   //console.log(data_revshare)
 
     // dimensions
     let width = 0;
@@ -76,6 +78,8 @@ d3.selection.prototype.chartRev = function init(options) {
     const MARGIN_BOTTOM = 40;
     const MARGIN_LEFT = 40;
     const MARGIN_RIGHT = 40;
+    let widthContainer = 0;
+    let heightContainer = 0;
 
     // scales
     let scaleX = null;
@@ -84,7 +88,11 @@ d3.selection.prototype.chartRev = function init(options) {
     let axisX;
     let axisY;
 
+    let dollarWidth;
+    let dollarData = [];
+
     let $dollars;
+    let $dollarImages;
     let $DSPShareRect;
     let $otherTracksRect;
     let $distTracksRect;
@@ -96,25 +104,26 @@ d3.selection.prototype.chartRev = function init(options) {
 
     // helper functions
     function drawDollars(N) {
-      $dollars = $vis.append("g")
-        .attr("class","dollars");
+
+      dollarWidth = width/N;
 
       var i;
       var j;
       for (i=0; i<N;  i++){
         for (j=N; j>0;  j--){
           var idx = i+j*N;
-          $dollars
+
+      $dollarImages = $dollars
             .append("image")
             .attr('xlink:href', './assets/images/money_nofill.png')
-            .attr("x", scaleX(i*revshare_scale_ends.x_max/N))
-            .attr("y", scaleY(j*revshare_scale_ends.x_max/N))
-            .attr("width", scaleX(revshare_scale_ends.x_max/N)+1)
-            .attr("height", scaleX(revshare_scale_ends.x_max/N)+1) 
+            .attr("x", i*dollarWidth)
+            .attr("y", j*dollarWidth)
+            .attr("width", dollarWidth)
+            .attr("height", dollarWidth) 
             .attr("id","dollar_"+idx)
+            .attr("class", "dollar-imgs")
         }
       }
-
     }
 
     const Chart = {
@@ -130,7 +139,6 @@ d3.selection.prototype.chartRev = function init(options) {
 
         Chart.render();
         Chart.resize();
-        drawDollars(20);
 
         let gs2 = graphScroll()
             .container(d3.select('.container-2'))
@@ -144,11 +152,19 @@ d3.selection.prototype.chartRev = function init(options) {
       },
       // on resize, update new dimensions
       resize() {
+
         let strokeWidth = 10;
 
         // defaults to grabbing dimensions from container element
         width = $chart.node().offsetWidth - MARGIN_LEFT - MARGIN_RIGHT - strokeWidth;
-        height = $chart.node().offsetHeight - MARGIN_TOP - MARGIN_BOTTOM;
+        height = $chart.node().offsetWidth - MARGIN_TOP - MARGIN_BOTTOM;
+
+        //container widths
+        widthContainer = $container.node().offsetWidth - strokeWidth;
+        heightContainer = $container.node().offsetWidth - strokeWidth;
+
+        $container.style('height', heightContainer)
+
         $svg
           .attr('width', width + MARGIN_LEFT + MARGIN_RIGHT)
           .attr('height', height + MARGIN_TOP + MARGIN_BOTTOM);
@@ -162,43 +178,44 @@ d3.selection.prototype.chartRev = function init(options) {
           .range([-height, 0]);
 
         axisX
-          .attr('transform', `translate(${0}, ${height})`)
+          .attr('transform', `translate(${0}, ${width})`)
           .call(d3.axisBottom(scaleX)
           .tickSize(-height)
           .tickPadding(10))
           .style("opacity", 0);
       
         axisY
+            .attr('transform', `translate(${0}, ${width})`)
             .call(d3.axisLeft(scaleY)
             .tickSize(-width)
             .tickPadding(10))
             .style("opacity", 0);
         
-        console.log(scaleY(data_revshare.dsp_share.dsp_revenue))
-        
         $DSPShareRect
-            .attr("x", scaleX(revshare_scale_ends.x_min) )
-            .attr("y",scaleY(revshare_scale_ends.y_max))
-            .attr("width", scaleX(data_revshare.dsp_share.share_of_streams) )
-            .attr("height", scaleY(data_revshare.dsp_share.dsp_revenue)) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
+            .attr("x", revshare_scale_ends.x_min )
+            .attr("y", revshare_scale_ends.y_min + dollarWidth )
+            .attr("width", 0)
+            .attr("height", 0) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         
         $otherTracksRect
-            .attr("x", scaleX(revshare_scale_ends.x_min) )
-            .attr("y",scaleY(data_revshare.other_tracks.dsp_revenue))
-            .attr("width", scaleX(data_revshare.other_tracks.share_of_streams) )
-            .attr("height", scaleY(revshare_scale_ends.y_max-data_revshare.other_tracks.dsp_revenue)) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
+            .attr("x", revshare_scale_ends.x_min )
+            .attr("y", revshare_scale_ends.y_min + dollarWidth )
+            .attr("width", width )
+            .attr("height", height - dollarWidth/2) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         
         $distTracksRect
-            .attr("x", scaleX(data_revshare.other_tracks.share_of_streams) )
-            .attr("y", scaleY(data_revshare.dist_share.dsp_revenue * (1 - data_revshare.artist_share.share)))
-            .attr("width", scaleX(data_revshare.dist_share.share_of_streams) )
-            .attr("height", scaleY(revshare_scale_ends.y_max-data_revshare.dist_share.dsp_revenue*data_revshare.dist_share.share))
+            .attr("x", revshare_scale_ends.x_min )
+            .attr("y", revshare_scale_ends.y_min + dollarWidth )
+            .attr("width", 0)
+            .attr("height", 0)
 
         $artistTracksRect
-            .attr("x", scaleX(data_revshare.other_tracks.share_of_streams) )
-            .attr("y",scaleY(data_revshare.artist_share.dsp_revenue))
-            .attr("width", scaleX(data_revshare.artist_share.share_of_streams) )
-            .attr("height", scaleY(revshare_scale_ends.y_max-data_revshare.artist_share.dsp_revenue*data_revshare.artist_share.share))
+            .attr("x", revshare_scale_ends.x_min )
+            .attr("y", revshare_scale_ends.y_min + dollarWidth )
+            .attr("width", 0)
+            .attr("height", 0)
+
+          drawDollars(20)
 
         return Chart;
       },
@@ -206,6 +223,8 @@ d3.selection.prototype.chartRev = function init(options) {
       render() {
         // offset chart for margins
         $vis.attr('transform', `translate(${MARGIN_LEFT}, ${MARGIN_TOP})`);
+
+        $axis.attr('transform', `translate(${MARGIN_LEFT}, ${MARGIN_TOP})`);
 
         axisX = $axis.append("g")
         axisY = $axis.append("g")
@@ -215,6 +234,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distTracksRect = $vis.append("rect").attr("id", "distributor_share")
         $artistTracksRect = $vis.append("rect").attr("id", "artist_share")
 
+        $dollars = $vis.append("g").attr("class","dollars");
 
         return Chart;
       },

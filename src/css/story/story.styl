@@ -29,12 +29,14 @@ h2
     text-align: center;
     padding: 6rem 0 0 0;
     max-width: $column-width;
+    margin: 1rem auto;
 
 h3
     font-family: $sans-display;
     text-transform: uppercase;
     font-weight: 500;
     color: $dark-purple;
+    margin: 0 auto;
 
 p 
     max-width: $column-width;
@@ -50,8 +52,11 @@ p.highlight {
 
 .text_div{
   max-width: 700px;
-  margin: auto;
+  margin: 0 auto;
 }
+
+.text_div:last-of-type
+  margin-bottom: 10rem;
 
 .bold{
   font-weight: bold;
@@ -199,8 +204,8 @@ circle{
 }*/
 
 .container-2 #graph
-  height 30rem;
-  max-height 30rem
+  //height 30rem;
+  //max-height 30rem
 
 #dsp_share
   fill: $red;
@@ -214,14 +219,24 @@ circle{
 #artist_share 
   fill: $green;
 
+.controls
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 40rem;
+  margin: 0 auto;
+
+.controls p
+  width: 50%;
+  padding: 0rem 2rem 1rem 2rem;
+
 .slider {
   -webkit-appearance: none;
-  width: 15%;
+  width: 100%;
   height: 10px;
   border-radius: 5px;
-  background: #d3d3d3;
+  background: rgba($white, 0.8);
   outline: none;
-  opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
 }
@@ -233,12 +248,19 @@ circle{
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 15px;
-  height: 15px;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
-  background: #7c95bd;
+  background: $purple;
+  box-shadow: 0 0 5px $purple;
   cursor: pointer;
 }
+
+label
+  font-family: $poppins;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 16px;
 
 .slider::-moz-range-thumb {
   width: 25px;
