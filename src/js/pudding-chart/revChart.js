@@ -23,10 +23,34 @@ d3.selection.prototype.chartRev = function init(options) {
     // data
     let data = $chart.datum();
 
+    let shares_default = {"track1":{"artist":0.5,
+                          "distr_label":0.5}
+              };
+
+    let streams_default = {"track1":600000,
+                    "other_tracks":2000000,
+                };
+
+    const total_streams_maxv = 10000000000;
+    const track_streams_maxv = 5000000000;
+
     let dsp_revenue_default = 70;
     let dsp_share_default = 100;
     let artist_shareOfStreams_default = 30;
     let artist_share_default = 0.7;
+
+    var shares = shares_default;
+    var streams = streams_default;
+    var total_other_streams;
+    var track_streams;
+    var dsp_revenue = dsp_revenue_default;  
+    var dsp_share = dsp_share_default;
+    var artist_shareOfStreams = 0;
+    var artist_share = artist_share_default;
+    var revshare_drawn = false;
+    var revshare_x_ticks_drawn = false;
+    var revshare_x_label_drawn = false;
+    let transition_duration = 1000;
 
     let data_revshare = {
       "other_tracks":
@@ -69,6 +93,17 @@ d3.selection.prototype.chartRev = function init(options) {
           "opacity_highlight":0.4}
     }
 
+    let revshare_rendering_options = {
+      "y_axis":false,
+      "y_axis_ticks":false,
+      "x_axis_ticks":false,
+      "x_axis_label":false,
+      "annotations":false,
+      "legend_other_tracks":false,
+      "legend_artist":false,
+      "legend_dist":false
+    }
+
    //console.log(data_revshare)
 
     // dimensions
@@ -89,6 +124,7 @@ d3.selection.prototype.chartRev = function init(options) {
     let axisY;
 
     let dollarWidth;
+    let dollarNum = 20;
     let dollarData = [];
 
     let $dollars;
@@ -105,8 +141,6 @@ d3.selection.prototype.chartRev = function init(options) {
     // helper functions
     function drawDollars(N) {
 
-      dollarWidth = width/N;
-
       var i;
       var j;
       for (i=0; i<N;  i++){
@@ -116,13 +150,200 @@ d3.selection.prototype.chartRev = function init(options) {
       $dollarImages = $dollars
             .append("image")
             .attr('xlink:href', './assets/images/money_nofill.png')
-            .attr("x", i*dollarWidth)
-            .attr("y", j*dollarWidth)
-            .attr("width", dollarWidth)
-            .attr("height", dollarWidth) 
             .attr("id","dollar_"+idx)
             .attr("class", "dollar-imgs")
+            .attr("data-i", i)
+            .attr("data-j", j)
         }
+      }
+    }
+
+    function updateData() {
+      data_revshare.dsp_share.dsp_revenue = dsp_share;
+  
+      data_revshare.other_tracks.dsp_revenue = dsp_revenue;
+      data_revshare.other_tracks.share_of_streams = 100 - artist_shareOfStreams;
+  
+      data_revshare.artist_share.dsp_revenue = dsp_revenue;
+      data_revshare.artist_share.share_of_streams = artist_shareOfStreams;
+      data_revshare.artist_share.share = artist_share;
+  
+      data_revshare.dist_share.dsp_revenue = dsp_revenue;
+      data_revshare.dist_share.share_of_streams = artist_shareOfStreams;
+      data_revshare.dist_share.share = 1 - artist_share;
+    }
+
+    function updateChart(i) {
+      console.log(i)
+      switch(i) {
+        case 0:
+          $otherTracksRect.transition().duration(transition_duration)
+            .attr("height", 0)
+            .attr("y", height + MARGIN_TOP + MARGIN_BOTTOM)
+        break;
+      case 1:
+        $otherTracksRect.transition().duration(transition_duration)
+            .attr("height", height - dollarWidth/2)
+            .attr("y", dollarWidth)
+        
+        $DSPShareRect.transition().duration(transition_duration)
+            .attr("height", 0)
+        break;
+      case 2:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $DSPShareRect.transition().duration(transition_duration)
+          .attr("height", height*0.3)
+        break;
+      case 3:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $DSPShareRect.transition().duration(transition_duration)
+          .attr("height", 0)
+        break;
+      case 4:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("height", height - dollarWidth/2)
+          .attr("y", dollarWidth)
+        break;
+      case 5:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+        
+        $artistTracksRect.transition().duration(transition_duration)
+          .attr("width", 0)
+        break;
+      case 6:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $artistTracksRect.transition().duration(transition_duration)
+          .attr("width", dollarWidth)
+          .attr("x", width - dollarWidth)
+          break;
+      case 7:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $artistTracksRect.transition().duration(transition_duration)
+          .attr("width", width*0.5)
+          .attr("x", width*0.5)
+        break;
+      case 8:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $artistTracksRect.transition().duration(transition_duration)
+          .attr("width", width*0.3)
+          .attr("x", width*0.7)
+        break;
+      case 9:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $artistTracksRect.transition().duration(transition_duration)
+          .attr("width", width*0.3)
+          .attr("x", width*0.7)
+        break;
+      case 10:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $artistTracksRect.transition().duration(transition_duration)
+          .attr("width", dollarWidth)
+          .attr("x", width - dollarWidth)
+        break;
+      case 11:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $artistTracksRect.transition().duration(transition_duration)
+          .attr("width", width*0.3)
+          .attr("x", width*0.7)
+        
+        $distTracksRect.transition().duration(transition_duration)
+          .attr("width", 0)
+        break;
+      case 12:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $distTracksRect.transition().duration(transition_duration)
+          .attr("width", width*0.3)
+          .attr("x", width*0.7)
+        break;
+      case 13:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $distTracksRect.transition().duration(transition_duration)
+          .attr("width", width*0.3)
+          .attr("x", width*0.7)
+          .attr("y", height*0.8 + dollarWidth/2)
+          .attr("height", height*0.2)
+        break;
+      case 14:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $distTracksRect.transition().duration(transition_duration)
+          .attr("width", width*0.3)
+          .attr("x", width*0.7)
+          .attr("y", height*0.5 + dollarWidth/2)
+          .attr("height", height*0.5)
+        break;
+      case 15:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+
+        $distTracksRect.transition().duration(transition_duration)
+          .attr("width", width*0.3)
+          .attr("x", width*0.7)
+          .attr("y", height - dollarWidth/2)
+          .attr("height", dollarWidth)
+        break;
+      case 16:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+        break;
+      case 17:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", height*0.3 + dollarWidth)
+          .attr("height", height*0.7 - dollarWidth/2)
+        break;
+      case 18:
+        $otherTracksRect.transition().duration(transition_duration)
+            .attr("height", height - dollarWidth/2)
+            .attr("y", dollarWidth)
+        
+        $artistTracksRect.transition().duration(transition_duration)
+            .attr("width", dollarWidth/2)
+            .attr("x", width - dollarWidth/2)
+            .attr("y", dollarWidth)
+            .attr("height", height - dollarWidth/2)
+        
+        $distTracksRect.transition().duration(transition_duration)
+            .attr("width", dollarWidth/2)
+            .attr("x", width - dollarWidth/2)
+            .attr("y", height*0.7 + dollarWidth)
+            .attr("height", height*0.3 - dollarWidth/2)
+        break;
       }
     }
 
@@ -147,7 +368,9 @@ d3.selection.prototype.chartRev = function init(options) {
             .sections(d3.selectAll('.container-2 #sections > div'))
             .offset(100)
             .on('active', function(i){
-                //console.log('graph 2 change', i)
+                updateChart(i)
+
+
             });
       },
       // on resize, update new dimensions
@@ -194,7 +417,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $DSPShareRect
             .attr("x", revshare_scale_ends.x_min )
             .attr("y", revshare_scale_ends.y_min + dollarWidth )
-            .attr("width", 0)
+            .attr("width", width)
             .attr("height", 0) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         
         $otherTracksRect
@@ -204,18 +427,33 @@ d3.selection.prototype.chartRev = function init(options) {
             .attr("height", height - dollarWidth/2) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         
         $distTracksRect
-            .attr("x", revshare_scale_ends.x_min )
-            .attr("y", revshare_scale_ends.y_min + dollarWidth )
+            .attr("x", width - dollarWidth)
+            .attr("y", height*0.8 + dollarWidth/2)
             .attr("width", 0)
-            .attr("height", 0)
+            .attr("height", height*0.2)
 
         $artistTracksRect
-            .attr("x", revshare_scale_ends.x_min )
-            .attr("y", revshare_scale_ends.y_min + dollarWidth )
+            .attr("x", width - dollarWidth)
+            .attr("y", height*0.3 + dollarWidth)
             .attr("width", 0)
-            .attr("height", 0)
-
-          drawDollars(20)
+            .attr("height", height*0.7 - dollarWidth/2)
+  
+        dollarWidth = width/dollarNum;
+        
+        $dollarImages = d3.selectAll('.dollar-imgs')
+          .each(function(d, i) {
+            d3.select(this)
+              .attr("width", dollarWidth)
+              .attr("height", dollarWidth)
+              .attr("x", function(d) {
+                let elementX = d3.select(this).attr('data-i') * dollarWidth;
+                return elementX;
+              })
+              .attr("y", function(d) {
+                let elementY = d3.select(this).attr('data-j') * dollarWidth;
+                return elementY;
+              })
+          })
 
         return Chart;
       },
@@ -229,12 +467,14 @@ d3.selection.prototype.chartRev = function init(options) {
         axisX = $axis.append("g")
         axisY = $axis.append("g")
 
-        $DSPShareRect = $vis.append("rect").attr("id", data_revshare.dsp_share.label)
         $otherTracksRect = $vis.append("rect").attr("id", data_revshare.other_tracks.label)
-        $distTracksRect = $vis.append("rect").attr("id", "distributor_share")
+        $DSPShareRect = $vis.append("rect").attr("id", data_revshare.dsp_share.label)
         $artistTracksRect = $vis.append("rect").attr("id", "artist_share")
-
+        $distTracksRect = $vis.append("rect").attr("id", "distributor_share")
+        
         $dollars = $vis.append("g").attr("class","dollars");
+
+        drawDollars(dollarNum);
 
         return Chart;
       },
