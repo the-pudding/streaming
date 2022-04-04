@@ -1,6 +1,6 @@
 /* global d3 */
-import { remove } from 'lodash';
 import { graphScroll } from '../graph-scroll';
+import noUiSlider from 'nouislider'
 
 /*
  USAGE (example: line chart)
@@ -133,12 +133,34 @@ d3.selection.prototype.chartRev = function init(options) {
     let $otherTracksRect;
     let $distTracksRect;
     let $artistTracksRect;
+    
+    let $DSPrevenue = d3.select("#DSPrevenue");
+    let $TotalOtherStreams = d3.select("#TotalOtherStreams");
+    let $Trackstreams = d3.select("#Trackstreams");
+    let $Artistshare = d3.select("#Artistshare");
+
+    let $DSPrevenueValue; 
+    let $TotalOtherStreamsValue;
+    let $TrackstreamsValue;
+    let $ArtistshareValue;
 
     const revshare_scale_ends = {x_min:0, x_max:100, y_min:0, y_max:100};
     const rect_total_users_max = 400;
     const rect_arpu_max = 5;
 
     // helper functions
+    function setUpSlider(target) {
+      let el = target.node();
+      let slider;
+
+      slider = noUiSlider.create(el, {
+          start: 80,
+          range: {
+            min: 60,
+            max: 100
+          }
+        })
+    }
     function drawDollars(N) {
 
       var i;
@@ -360,6 +382,15 @@ d3.selection.prototype.chartRev = function init(options) {
 
         Chart.render();
         Chart.resize();
+        setUpSlider($DSPrevenue);
+        setUpSlider($TotalOtherStreams);
+        setUpSlider($Trackstreams);
+        setUpSlider($Artistshare);
+
+        $DSPrevenue.on("change", function() {
+          $DSPrevenueValue = slider.noUiSlider.get();
+          console.log($DSPrevenueValue)
+        })
 
         let gs2 = graphScroll()
             .container(d3.select('.container-2'))
@@ -372,6 +403,19 @@ d3.selection.prototype.chartRev = function init(options) {
 
 
             });
+        
+        // $DSPrevenue.on("input", function() {
+        //   getSliderValues()
+        // })
+        // $TotalOtherStreams.on("input", function() {
+        //   getSliderValues()
+        // })
+        // $Trackstreams.on("input", function() {
+        //   getSliderValues()
+        // })
+        // $Artistshare.on("input", function() {
+        //   getSliderValues()
+        // })
       },
       // on resize, update new dimensions
       resize() {
