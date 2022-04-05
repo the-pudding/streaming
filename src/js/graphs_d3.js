@@ -10,20 +10,22 @@ function render(){
   var width = d3.select('#graph').node().offsetWidth
   var height = width;
 
-  if (innerWidth <= 925){
-    width = innerWidth
-    height = innerHeight*.7
-  }
+  //console.log(width, innerWidth);
+
+  // if (innerWidth <= 925){
+  //   width = innerWidth
+  //   height = innerHeight*.7
+  // }
 
 
 
   ///////////////// Middle men section /////////////////////
 
-  var singer_params = {width:80, height:80,x:0,y:250}
-  var distributor_params = {width:100, height:100,x:175,y:250}
-  var spotify_params = {width:50, height:50,x:350,y:125}
-  var apple_params = {width:50, height:50,x:350,y:250}
-  var deezer_params = {width:50, height:50,x:350,y:375}
+  var singer_params = {width:100, height:100,x:50,y:height/2}
+  var distributor_params = {width:100, height:100,x:width/2 - 50,y:height/2}
+  var spotify_params = {width:100, height:100,x:width-150,y:75}
+  var apple_params = {width:100, height:100,x:width-150,y:height/2}
+  var deezer_params = {width:100, height:100,x:width-150,y:height-75}
   var dist_text_params = {x:distributor_params.x + distributor_params.width/2, y:distributor_params.y+distributor_params.height/2 + 20}
 
   var margin_diag = {top: 20, right: 20, bottom: 40, left: 60}; // Overall diagram area margins
@@ -33,35 +35,35 @@ function render(){
                           //   x_end:distributor_params.x +distributor_params.width/2, y_end:distributor_params.y,
                           //   delay1:0, delay2:1000 },
                           {label:"spotify",
-                            x_start:singer_params.x+singer_params.width, y_start:singer_params.y,
-                            x_mid:distributor_params.x+distributor_params.width/2, y_mid:distributor_params.y,
-                            x_end:spotify_params.x, y_end:spotify_params.y,
+                            x_start:singer_params.x+singer_params.width-25, y_start:singer_params.y-25,
+                            x_mid:distributor_params.x+distributor_params.width/2-75, y_mid:distributor_params.y-25,
+                            x_end:spotify_params.x-25, y_end:spotify_params.y-25,
                             delay1:1000, delay2:500 },
-                          {label:"apple",x_start:singer_params.x+singer_params.width, y_start:singer_params.y,
-                            x_mid:distributor_params.x+distributor_params.width/2, y_mid:distributor_params.y,
-                            x_end:apple_params.x, y_end:apple_params.y,
+                          {label:"apple",x_start:singer_params.x+singer_params.width-25, y_start:singer_params.y-25,
+                            x_mid:distributor_params.x+distributor_params.width/2-75, y_mid:distributor_params.y-25,
+                            x_end:apple_params.x-25, y_end:apple_params.y-25,
                             delay1:1000, delay2:500 },
-                          {label:"deezer",x_start:singer_params.x+singer_params.width, y_start:singer_params.y,
-                            x_mid:distributor_params.x+distributor_params.width/2, y_mid:distributor_params.y,
-                            x_end:deezer_params.x, y_end:deezer_params.y,
+                          {label:"deezer",x_start:singer_params.x+singer_params.width-25, y_start:singer_params.y-25,
+                            x_mid:distributor_params.x+distributor_params.width/2-75, y_mid:distributor_params.y-25,
+                            x_end:deezer_params.x-25, y_end:deezer_params.y-25,
                             delay1:1000, delay2:500 },
                           ];
 
   var data_diag_dollars = [
                           {label:"spotify",
-                            x_end:singer_params.x+singer_params.width, y_end:singer_params.y,
-                            x_mid:distributor_params.x+distributor_params.width/2, y_mid:distributor_params.y,
-                            x_start:spotify_params.x, y_start:spotify_params.y,
+                            x_end:singer_params.x+singer_params.width-25, y_end:singer_params.y-25,
+                            x_mid:distributor_params.x+distributor_params.width/2-75, y_mid:distributor_params.y-25,
+                            x_start:spotify_params.x-25, y_start:spotify_params.y-25,
                             delay1:500, delay2:500 },
                           {label:"apple",
-                            x_end:singer_params.x+singer_params.width, y_end:singer_params.y,
-                            x_mid:distributor_params.x+distributor_params.width/2, y_mid:distributor_params.y,
-                            x_start:apple_params.x, y_start:apple_params.y,
+                            x_end:singer_params.x+singer_params.width-25, y_end:singer_params.y-25,
+                            x_mid:distributor_params.x+distributor_params.width/2-75, y_mid:distributor_params.y-25,
+                            x_start:apple_params.x-25, y_start:apple_params.y-25,
                             delay1:500, delay2:500 },
                           {label:"deezer",
-                            x_end:singer_params.x+singer_params.width, y_end:singer_params.y,
-                            x_mid:distributor_params.x+distributor_params.width/2, y_mid:distributor_params.y,
-                            x_start:deezer_params.x, y_start:deezer_params.y,
+                            x_end:singer_params.x+singer_params.width-25, y_end:singer_params.y-25,
+                            x_mid:distributor_params.x+distributor_params.width/2-75, y_mid:distributor_params.y-25,
+                            x_start:deezer_params.x-25, y_start:deezer_params.y-25,
                             delay1:500, delay2:500 },
                           ];
 
@@ -72,12 +74,12 @@ function render(){
       .attr("height", height)
     .append("g")
       .attr("id", "dist_diag")
-      .attr("transform", "translate(" + margin_diag.left + "," + margin_diag.top + ")");
+      .attr("transform", "translate(" + 0 + "," + 0 + ")");
 
   var draw_diagram = function(){
 
     var image_singer = svg_diag.append('image')
-      .attr('xlink:href', './assets/images/singer.png')
+      .attr('xlink:href', './assets/images/artist_neon.png')
       .attr('width', singer_params.width)
       .attr('height',singer_params.height)
       .attr('x',singer_params.x)
@@ -91,21 +93,21 @@ function render(){
     //   .attr('y',distributor_params.y - distributor_params.height/2);
 
     var logo_spotify = svg_diag.append('image')
-      .attr('xlink:href', './assets/images/spotify-logo.png')
+      .attr('xlink:href', './assets/images/spotify_neon.png')
       .attr('width', spotify_params.width)
       .attr('height',spotify_params.height)
       .attr('x',spotify_params.x)
       .attr('y',spotify_params.y - spotify_params.height/2);
 
     var logo_apple = svg_diag.append('image')
-      .attr('xlink:href', './assets/images/apple-logo.png')
+      .attr('xlink:href', './assets/images/apple_neon.png')
       .attr('width', apple_params.width)
       .attr('height',apple_params.height)
       .attr('x',apple_params.x)
       .attr('y',apple_params.y - apple_params.height/2);
 
     var logo_deezer = svg_diag.append('image')
-      .attr('xlink:href', './assets/images/deezer-logo.png')
+      .attr('xlink:href', './assets/images/deezer_neon.png')
       .attr('width', deezer_params.width)
       .attr('height',deezer_params.height)
       .attr('x',deezer_params.x)
@@ -120,7 +122,7 @@ function render(){
         break;
       case 1:
         var image_distributor = svg_diag.append('image')
-          .attr('xlink:href', './assets/images/home.png')
+          .attr('xlink:href', './assets/images/lable_neon.png')
           .attr('width', distributor_params.width)
           .attr('height',distributor_params.height)
           .attr('x',distributor_params.x)
@@ -171,13 +173,13 @@ function render(){
     var music_notes = svg_diag.append("g")
                               .attr("id","music_notes")
 
-    var size_music_notes = 30;
+    var size_music_notes = 50;
 
     music_notes.selectAll("#music_notes")
               .data(data_music_notes)
               .enter()
               .append("image")
-              .attr('xlink:href', './assets/images/music.png')
+              .attr('xlink:href', './assets/images/note_neon.png')
               .attr('width', size_music_notes)
               .attr('height',size_music_notes)
               .attr("x", function(d){ return d.x_start; })
@@ -209,13 +211,13 @@ function render(){
     var dollars = svg_diag.append("g")
                           .attr("id","diag_dist_dollars")
 
-    var size_dollars = 30;
+    var size_dollars = 50;
 
     dollars.selectAll("#diag_dist_dollars")
               .data(data_diag_dollars)
               .enter()
               .append("image")
-              .attr('xlink:href', './assets/images/round_dollar_fill_negative_with_edges_grey_bckgnd.png')
+              .attr('xlink:href', './assets/images/money_neon.png')
               .attr('width', size_dollars)
               .attr('height',size_dollars)
               .attr("x", function(d){ return d.x_start; })
@@ -249,10 +251,11 @@ function render(){
       .graph(d3.selectAll('container-0 #graph'))
       .eventId('uniqueId0')  // namespace for scroll and resize events
       .sections(d3.selectAll('.container-0 #sections > div'))
+      .offset(100)
       // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
       .on('active', function(i){
-        console.log('graph 0 change', i)
-        console.log("gs0 i", i)
+        //console.log('graph 0 change', i)
+        //console.log("gs0 i", i)
         update_diagram(i);
         toggle_diag_animations(i);
       });
@@ -265,16 +268,16 @@ function render(){
                           "n_users":185,
                           "rev_per_user":0.33,
                           "rev":"$",
-                          "color":"#000000",
-                          "color_highlight":'#363636',
-                          "opacity":0.5},
+                          "color":"#ffffff",
+                          "color_highlight":'#ffffff',
+                          "opacity":0.9},
               "premium":{"label":"Premium",
                           "n_users":144,
                           "rev_per_user":0.33,
                           "rev":"$",
-                          "color":"#1dc500",
-                          "color_highlight":'#6bff53',
-                          "opacity":0.5}
+                          "color":"#1ed760",
+                          "color_highlight":'#1ed760',
+                          "opacity":0.9}
               };
 
   var rect_rendering_options = {"y_axis":false,
@@ -286,7 +289,7 @@ function render(){
   var rect_drawn = false;
   var rect_text_drawn = false;
 
-  var margin_rect = {top: 20, right: 20, bottom: 40, left: 60};
+  var margin_rect = {top: 80, right: 60, bottom: 100, left: 80};
 
   var svg_rect = d3.select(".container-1 #graph")
       .html('')
@@ -324,27 +327,29 @@ function render(){
     svg_rect
       .append("g")
       .attr("transform", "translate(0," + (height - margin_rect.top - margin_rect.bottom) + ")")
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x).tickSize(-height+margin_rect.top+margin_rect.bottom).tickPadding(10));
 
     // Add X axis label:
     svg_rect.append("text")
+        .attr("class", "axis-label")
         .attr("text-anchor", "middle")
         .attr("x", (width - margin_rect.left - margin_rect.right)/2 )
-        .attr("y", height - margin_rect.top - 0.1*margin_rect.bottom)
+        .attr("y", height - margin_rect.bottom - 20)
         .text("Number of users (Millions)");
 
     // Add Y axis
     if (rect_rendering_options.y_axis==true){
       svg_rect
         .append("g")
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y).tickSize(-width+margin_rect.left+margin_rect.right).tickPadding(10));
       
       // Y axis label:
       svg_rect.append("text")
-          .attr("text-anchor", "end")
+          .attr("class", "axis-label")
+          .attr("text-anchor", "middle")
           .attr("transform", "rotate(-90)")
-          .attr("y", -margin_rect.left+20)
-          .attr("x", -margin_rect.top)
+          .attr("y", -margin_rect.left + 35)
+          .attr("x", -height/2 + margin_rect.bottom)
           .text("Revenue per user")
     }
 
@@ -356,8 +361,8 @@ function render(){
         .attr("height", y(5-data.freemium.rev_per_user)) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         .attr("width", x(data.freemium.n_users) )
         .attr("id",data.freemium.label)
-        .style("fill", data.freemium.color)
-        .style("fill-opacity", data.freemium.opacity)
+        //.style("fill", data.freemium.color)
+        //.style("fill-opacity", data.freemium.opacity)
         // .style("stroke", "#5c5b5b")
         .on('mouseover', function(d, i) {
           // console.log("mouseover on", this);
@@ -365,7 +370,7 @@ function render(){
           // to having a red fill
           d3.select(this)
             .transition()
-            .style('fill', data.freemium.color_highlight);
+            .style('opacity', 1)
         })
         .on('mouseout', function(d, i) {
           // console.log("mouseover on", this);
@@ -373,7 +378,7 @@ function render(){
           // to having a red fill
           d3.select(this)
             .transition()
-            .style('fill', data.freemium.color);
+            .style('opacity', 0.90)
         })
 
     // Draw Premium rectangle
@@ -384,8 +389,8 @@ function render(){
         .attr("height", y(5-data.premium.rev_per_user))
         .attr("width", x(data.premium.n_users) )
         .attr("id","premium")
-        .style("fill", data.premium.color)
-        .style("fill-opacity", data.premium.opacity)
+        //.style("fill", data.premium.color)
+        //.style("fill-opacity", data.premium.opacity)
         // .style("stroke", "#b8211c")
         .on('mouseover', function(d, i) {
           // console.log("mouseover on", this);
@@ -393,7 +398,7 @@ function render(){
           // to having a red fill
           d3.select(this)
             .transition()
-            .style('fill',data.premium.color_highlight);
+            .style('opacity', 1)
         })
         .on('mouseout', function(d, i) {
           // console.log("mouseover on", this);
@@ -401,7 +406,7 @@ function render(){
           // to having a red fill
           d3.select(this)
             .transition()
-            .style('fill', data.premium.color);
+            .style('opacity', 0.90);
         })
 
     svg_rect.transition()
@@ -412,20 +417,20 @@ function render(){
               .data(data_rect_values)                                   
               .enter()                                                
               .append('g')                                            
-              .attr('class', 'legend')                                
+              .attr('class', d => `legend legend-${d.label}`)                                
               .attr('transform', function(d, i) {                   
                 var height = legendRectSize + legendSpacing;       
                 var offset =  height * data_rect_values.length / 2;   
-                var horz = -2 * legendRectSize + legend_x;                       
+                var horz = (i===0) ? 100 : 0 ;                     
                 var vert = i * height - offset + legend_y;                       
-                return 'translate(' + horz + ',' + vert + ')';       
+                return 'translate(' + horz + ',' + -margin_rect.top/2 + ')';       
               });                                                    
 
             legend.append('rect')                                  
               .attr('width', legendRectSize)                        
               .attr('height', legendRectSize)                         
-              .style('fill', function(d){return d.color;})
-              .style('opacity',function(d){return d.opacity;})                
+              //.style('fill', function(d){return d.color;})
+              //.style('opacity',function(d){return d.opacity;})                
               // .style('stroke', color);                              
               
             legend.append('text')                                     
@@ -460,8 +465,8 @@ function render(){
                 .attr("height", y(rect_arpu_max-data.premium.rev_per_user))
                 .attr("width", x(data.premium.n_users) )
                 .attr("id","premium")
-                .style("fill", data.premium.color)
-                .style("fill-opacity", data.premium.opacity)
+                //.style("fill", data.premium.color)
+                //.style("fill-opacity", data.premium.opacity)
                 
     premium_rect.on('mouseover', function(d, i) {
       // console.log("mouseover on", this);
@@ -469,7 +474,7 @@ function render(){
       // to having a red fill
       d3.select(this)
         .transition()
-        .style('fill',data.premium.color_highlight);
+        //.style('fill',data.premium.color_highlight);
     })
     premium_rect.on('mouseout', function(d, i) {
       // console.log("mouseover on", this);
@@ -477,7 +482,7 @@ function render(){
       // to having a red fill
       d3.select(this)
         .transition()
-        .style('fill', data.premium.color);
+        //.style('fill', data.premium.color);
     })
 
     // Modify size of freemium rectangle
@@ -500,13 +505,14 @@ function render(){
       svg_rect
         .append("g")
         .attr("id","y-axis")
-        .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y).tickSize(-width+margin_rect.left+margin_rect.right).tickPadding(10));
       // Y axis label:
       svg_rect.append("text")
+          .attr("class", "axis-label")
           .attr("text-anchor", "end")
           .attr("transform", "rotate(-90)")
-          .attr("y", -margin_rect.left+20)
-          .attr("x", -margin_rect.top)
+          .attr("y", -margin_rect.left + 35)
+          .attr("x", -height/2 + margin_rect.bottom)
           .attr("id","Y_axis_label")
           .text("Average Revenue Per User (€/month)")
 
@@ -546,9 +552,9 @@ function render(){
                 .attr('text-anchor','middle')
                 .attr('dominant-baseline','central')
                 .attr("id",function(d){
-                  console.log(d.n_users * d.rev_per_user/3);
+                  //console.log(d.n_users * d.rev_per_user/3);
                   return "text_"+ d.label})
-                .attr("font-size", function(d){return Math.round(d.n_users * d.rev_per_user / 3)});
+                .attr("font-size", function(d){return Math.round(d.n_users * d.rev_per_user / 5)});
                 // .attr('x',)
         rect_text_drawn = true;
       }
@@ -569,7 +575,7 @@ function render(){
                         return 'translate(' + horz + ',' + vert + ')';
                       })
                 .selectAll("text")
-                .attr("font-size", function(d){return Math.round(d.n_users * d.rev_per_user / 3)}); 
+                .attr("font-size", function(d){return Math.round(d.n_users * d.rev_per_user / 5)}); 
       }
     }
     else{
@@ -607,16 +613,16 @@ function render(){
                           "n_users":185,
                           "rev_per_user":0.33,
                           "rev":"$",
-                          "color":"#000000",
-                          "color_highlight":'#363636',
-                          "opacity":0.5},
+                          "color":"#ffffff",
+                          "color_highlight":'#ffffff',
+                          "opacity":1},
               "premium":{"label":"Premium",
                           "n_users":144,
                           "rev_per_user":0.33,
                           "rev":"$",
-                          "color":"#1dc500",
-                          "color_highlight":'#6bff53',
-                          "opacity":0.5}
+                          "color":"#ffffff",
+                          "color_highlight":'#1ed760',
+                          "opacity":1}
               };
         rect_rendering_options = {"y_axis":false,
                                 "rev_text":false};
@@ -663,10 +669,11 @@ function render(){
       .graph(d3.selectAll('container-1 #graph'))
       .eventId('uniqueId1')  // namespace for scroll and resize events
       .sections(d3.selectAll('.container-1 #sections > div'))
+      .offset(100)
       // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
       .on('active', function(i){
 
-        console.log('graph 1 change', i)
+        //console.log('graph 1 change', i)
         // if (i==0 & rect_drawn==true){
         //   delete_rect();
         //   rect_drawn = false;
@@ -708,7 +715,7 @@ function render(){
   var artist_shareOfStreams_default = 30;
   var artist_share_default = 0.7;
 
-  var margin_revshare = {top: 80, right: 20, bottom: 40, left: 60};
+  var margin_revshare = {top: 80, right: 60, bottom: 80, left: 60};
   var revshare_scale_ends = {x_min:0, x_max:100, y_min:0, y_max:100};
   var width_revshare = width;
   var height_revshare = height + margin_revshare.top - 50;
@@ -717,7 +724,7 @@ function render(){
                           "share_of_streams":55,
                           "dsp_revenue":dsp_revenue_default,
                           "annotation":"Other Tracks",
-                          "color":"#000000",
+                          "color":"#ffffff",
                           "color_highlight":'#363636',
                           "opacity":0.4,
                           "opacity_highlight":0.3},
@@ -997,7 +1004,7 @@ function render(){
     if (revshare_rendering_options.y_axis==true){
       svg_revshare
         .append("g")
-        .call(d3.axisLeft(y).tickValues([]));
+        .call(d3.axisLeft(y).tickValues([]).tickSize(-margin_rect.left-margin_rect.right).tickPadding(10));
       
       // Y axis label:
       svg_revshare.append("text")
@@ -1017,18 +1024,7 @@ function render(){
         .attr("width", x(data.dsp_share.share_of_streams) )
         .attr("height", y(data.dsp_share.dsp_revenue)) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         .attr("id",data.dsp_share.label)
-        .style("fill", data.dsp_share.color)
-        .style("fill-opacity", data.dsp_share.opacity)
-        .on('mouseover', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.dsp_share.opacity_highlight);
-        })
-        .on('mouseout', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.dsp_share.opacity);
-        })
+        .style("fill", "#FB576F")
 
     // Draw other tracks rectangle
     svg_revshare
@@ -1038,18 +1034,7 @@ function render(){
         .attr("width", x(data.other_tracks.share_of_streams) )
         .attr("height", y(revshare_scale_ends.y_max-data.other_tracks.dsp_revenue)) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         .attr("id",data.other_tracks.label)
-        .style("fill", data.other_tracks.color)
-        .style("fill-opacity", data.other_tracks.opacity)
-        .on('mouseover', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.other_tracks.opacity_highlight);
-        })
-        .on('mouseout', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.other_tracks.opacity);
-        })
+        .style("fill", "#ffffff")
 
     // Draw Distributor share rectangle
     svg_revshare
@@ -1059,18 +1044,7 @@ function render(){
         .attr("width", x(data.dist_share.share_of_streams) )
         .attr("height", y(revshare_scale_ends.y_max-data.dist_share.dsp_revenue*data.dist_share.share))
         .attr("id","distributor_share")
-        .style("fill", data.dist_share.color)
-        .style("fill-opacity", data.dist_share.opacity)
-        .on('mouseover', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity',data.dist_share.opacity_highlight);
-        })
-        .on('mouseout', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.dist_share.opacity);
-        })
+        .style("fill", "#5FE6F9")
 
     // Draw Artist share rectangle
     svg_revshare
@@ -1080,18 +1054,7 @@ function render(){
         .attr("width", x(data.artist_share.share_of_streams) )
         .attr("height", y(revshare_scale_ends.y_max-data.artist_share.dsp_revenue*data.artist_share.share))
         .attr("id","artist_share")
-        .style("fill", data.artist_share.color)
-        .style("fill-opacity", data.artist_share.opacity)
-        .on('mouseover', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity',data.artist_share.opacity_highlight);
-        })
-        .on('mouseout', function(d, i) {
-          d3.select(this)
-            .transition()
-            .style('fill-opacity', data.artist_share.opacity);
-        })
+        .style("fill", "#1ED760")
   }
 
   function revshare_draw_dollars(N=20){
@@ -1117,11 +1080,11 @@ function render(){
         var idx = i+j*N;
         g_dollars
           .append("image")
-          .attr('xlink:href', './assets/images/round_dollar_fill_negative_with_edges.png')
+          .attr('xlink:href', './assets/images/money_nofill.png')
           .attr("x", x(i*revshare_scale_ends.x_max/N))
           .attr("y",y(j*revshare_scale_ends.x_max/N))
-          .attr("width", x(revshare_scale_ends.x_max/N) + 1)
-          .attr("height", x(revshare_scale_ends.x_max/N) + 1) 
+          .attr("width", x(revshare_scale_ends.x_max/N)+1)
+          .attr("height", x(revshare_scale_ends.x_max/N)+1) 
           .attr("id","dollar_"+idx)
       }
     }
@@ -1225,7 +1188,7 @@ function render(){
               // .style('stroke', color);   
 
             legend.append("image")  
-                  .attr('xlink:href', './assets/images/round_dollar_fill_negative_with_edges.png')
+                  .attr('xlink:href', './assets/images/money_nofill.png')
                   .attr("width", legendRectSize + 1)
                   .attr("height", legendRectSize + 1);                       
               
@@ -1383,7 +1346,7 @@ function render(){
           .append("g")
           .attr("transform", "translate(0," + (height_revshare - margin_revshare.top - margin_revshare.bottom) + ")")
           .attr("id","xticks")
-          .call(d3.axisBottom(x));
+          .call(d3.axisBottom(x).tickSize(-height+margin_rect.top+margin_rect.bottom).tickPadding(10));
         revshare_x_ticks_drawn = true;
       }
     }
@@ -1432,9 +1395,10 @@ function render(){
       .graph(d3.selectAll('container-2 #graph'))
       .eventId('uniqueId2')  // namespace for scroll and resize events
       .sections(d3.selectAll('.container-2 #sections > div'))
+      .offset(100)
       // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
       .on('active', function(i){
-        console.log('graph 2 change', i)
+        //console.log('graph 2 change', i)
         revshare_data_modifier(i)
         if (i==0){
           if (revshare_drawn==false){
@@ -1550,6 +1514,6 @@ function render(){
   ////////////////////////////////////
 
 }
-render()
-d3.select(window).on('resize', render)
+//render()
+//d3.select(window).on('resize', render)
 export default { render };
