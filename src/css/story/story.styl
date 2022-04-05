@@ -15,10 +15,10 @@ h1
     font-weight: 300;
     max-width: 30rem;
     text-shadow: 0 0 20px $white;
-    animation: flicker 5s linear 3;
+    animation: flicker 10s linear infinite;
 
 h1:hover 
-    animation: flicker 5s linear infinite;
+    animation: flicker 10s linear infinite;
 
 h2
     font-family: $sans-display;
@@ -74,6 +74,18 @@ p.highlight {
 	font-weight: bold;
 }
 
+.logo-artist
+  animation: flicker2 8s linear infinite;
+
+.logo-spotify
+  animation: flicker2 12s linear infinite 0.5s;
+
+.logo-apple
+  animation: flicker 6s linear infinite 1s;
+
+.logo-deezer
+  animation: flicker 10s linear infinite 1.5s;
+
 #container{
   position: relative;
 }
@@ -89,7 +101,7 @@ p.highlight {
 #sections > div{
   background: white;
   opacity: .2;
-  margin-bottom: 200px;
+  margin-bottom: 50vh;
   padding: 1rem;
   border-radius: 10px;
   border: 5px solid $purple;
@@ -125,10 +137,10 @@ p.highlight {
 }
 
 .diagram-container 
-  height 30rem;
-  max-height 30rem
+  height 32rem;
+  max-height 32rem
 
-#dist_text
+#dist_text, #artist_text, #streamers_text
   fill: $white;
   font-family: $poppins
   text-transform: uppercase;
@@ -216,10 +228,11 @@ circle{
   flex-direction: column;
 
 .container-2 #graph .legend
-  padding: 2rem 45px 0 45px;
+  padding: 0 3rem 2.5rem 3rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  order: 2;
 
 .legend-block
   display: flex;
@@ -331,6 +344,18 @@ circle{
 		
 	}
 	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		opacity: 0.4;
+	
+    }
+}
+
+@keyframes flicker2 {
+	0%, 10.999%, 27%, 59.999%, 62%, 67.999%, 76%, 100% {
+		//text-shadow: none;
+    opacity: .99;
+		
+	}
+	17%, 20.999%, 64%, 65.999%, 67%, 72.999% {
 		opacity: 0.4;
 	
     }

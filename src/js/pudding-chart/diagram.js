@@ -39,6 +39,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
     let iconWidth_1_2;
     let iconWidth_3_4;
     let iconWidth_6_4; 
+    let iconWidth_5_4;
     let artist_params;
     let distributor_params;
     let spotify_params;
@@ -163,16 +164,26 @@ d3.selection.prototype.chartDiagram = function init(options) {
       updateDiagram(i) {
         switch (i){
             case 0:
-                logo_label.transition().duration(500).style('opacity', 0)
+                logo_spotify.transition().duration(500).style('animation', 'flicker2 10s linear infinite 0.5s')
+                logo_deezer.transition().duration(500).style('animation', 'flicker 10s linear infinite 1.5s')
+                logo_apple.transition().duration(500).style('animation', 'flicker 7s linear infinite 1s')
+                logo_artist.transition().duration(500).style('animation', 'flicker2 7s linear infinite')
+                logo_label.transition().duration(500).style('opacity', 0).style('animation', 'none')
                 text_distributor.transition().duration(500).style('opacity', 0)
                 $musicNotes.transition().duration(500).style('opacity', 0).remove()
                 $money.transition().duration(500).style('opacity', 0).remove()
                 break;
             case 1:
-                logo_label.transition().duration(500).style('opacity', 1)
+                logo_spotify.transition().duration(500).style('animation', 'none')
+                logo_deezer.transition().duration(500).style('animation', 'none')
+                logo_apple.transition().duration(500).style('animation', 'none')
+                logo_artist.transition().duration(500).style('animation', 'none')
+                logo_label.transition().duration(500).style('opacity', 1).style('animation', 'flicker 5s linear infinite')
                 text_distributor.transition().duration(500).style('opacity', 1)
                 $money.transition().duration(500).style('opacity', 0).remove()
                 break;
+            case 2:
+              logo_label.transition().duration(500).style('opacity', 1).style('animation', 'none')
           }
       },
       toggleAnimations(i) {
@@ -206,18 +217,21 @@ d3.selection.prototype.chartDiagram = function init(options) {
             iconWidth_1_4 = iconWidth*0.25;
             iconWidth_1_2 = iconWidth*0.5;
             iconWidth_3_4 = iconWidth*0.75;
+            iconWidth_5_4 = iconWidth*1.25
             iconWidth_6_4 = iconWidth*1.5;
         } else if (width >= 400) {
             iconWidth = 80;
             iconWidth_1_4 = iconWidth*0.25;
             iconWidth_1_2 = iconWidth*0.5;
             iconWidth_3_4 = iconWidth*0.75;
+            iconWidth_5_4 = iconWidth*1.25
             iconWidth_6_4 = iconWidth*1.5;
         } else {
             iconWidth = 60;
             iconWidth_1_4 = iconWidth*0.25;
             iconWidth_1_2 = iconWidth*0.5;
             iconWidth_3_4 = iconWidth*0.75;
+            iconWidth_5_4 = iconWidth*1.25
             iconWidth_6_4 = iconWidth*1.5;
         }
 
@@ -229,8 +243,8 @@ d3.selection.prototype.chartDiagram = function init(options) {
         apple_params = {width:iconWidth, height:iconWidth,x:width-iconWidth_6_4,y:height/2};
         deezer_params = {width:iconWidth, height:iconWidth,x:width-iconWidth_6_4,y:height-iconWidth_3_4};
         dist_text_params = {x:distributor_params.x + distributor_params.width/2, y:distributor_params.y+distributor_params.height/2 + iconWidth_1_4};
-        //artist_text_params = {x:artist_params.x + artist_params.width/2, y:artist_params.y+artist_params.height/2 + iconWidth_1_4};
-        //streaming_text_params = {x:deezer_params.x + iconWidth_6_4, y:deezer_params.y+deezer_params.height/2 + iconWidth_1_4};
+        artist_text_params = {x:artist_params.x + iconWidth/2, y:artist_params.y+artist_params.height/2 + iconWidth_1_4};
+        streaming_text_params = {x:deezer_params.x + iconWidth*1.1, y:deezer_params.y+deezer_params.height/2 + iconWidth_1_4};
 
 
 
@@ -302,13 +316,13 @@ d3.selection.prototype.chartDiagram = function init(options) {
             .attr('x',dist_text_params.x)
             .attr('y',dist_text_params.y);
         
-        // text_artist
-        //     .attr('x',artist_text_params.x)
-        //     .attr('y',artist_text_params.y);
+        text_artist
+            .attr('x',artist_text_params.x)
+            .attr('y',artist_text_params.y);
         
-        // text_streaming
-        //     .attr('x',streaming_text_params.x)
-        //     .attr('y',streaming_text_params.y);
+        text_streaming
+            .attr('x',streaming_text_params.x)
+            .attr('y',streaming_text_params.y);
 
             //console.log(width, iconWidth)
             
@@ -320,20 +334,25 @@ d3.selection.prototype.chartDiagram = function init(options) {
         $vis.attr('transform', `translate(${MARGIN_LEFT}, ${MARGIN_TOP})`);
 
         logo_artist = $vis.append('image')
-        .attr('xlink:href', './assets/images/artist_neon.png')
+          .attr('xlink:href', './assets/images/artist_neon.png')
+          .attr('class', 'logo-artist')
   
         logo_spotify = $vis.append('image')
             .attr('xlink:href', './assets/images/spotify_neon.png')
+            .attr('class', 'logo-spotify')
     
         logo_apple = $vis.append('image')
             .attr('xlink:href', './assets/images/apple_neon.png')
+            .attr('class', 'logo-apple')
     
         logo_deezer = $vis.append('image')
             .attr('xlink:href', './assets/images/deezer_neon.png')
+            .attr('class', 'logo-deezer')
         
         logo_label = $vis.append('image')
             .attr('xlink:href', './assets/images/lable_neon.png')
             .attr('id',"dist_image")
+            .attr('class', 'logo-label')
             .style('opacity', 0)
         
         text_distributor = $vis.append('text')
@@ -343,17 +362,17 @@ d3.selection.prototype.chartDiagram = function init(options) {
             .attr('id',"dist_text")
             .style('opacity', 0)
         
-        // text_artist = $vis.append('text')
-        //     .text("Artist")
-        //     .attr('text-anchor','middle')
-        //     .attr('dominant-baseline','central')
-        //     .attr('id',"dist_text");
+        text_artist = $vis.append('text')
+            .text("Artist")
+            .attr('text-anchor','middle')
+            .attr('dominant-baseline','central')
+            .attr('id',"artist_text");
         
-        // text_streaming = $vis.append('text')
-        //     .text("Streaming")
-        //     .attr('text-anchor','middle')
-        //     .attr('dominant-baseline','central')
-        //     .attr('id',"dist_text");
+        text_streaming = $vis.append('text')
+            .text("Streaming")
+            .attr('text-anchor','middle')
+            .attr('dominant-baseline','central')
+            .attr('id',"streamers_text");
 
 
         return Chart;
