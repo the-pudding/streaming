@@ -212,8 +212,52 @@ circle{
 }*/
 
 .container-2 #graph
-  //height 30rem;
-  //max-height 30rem
+  display: flex;
+  flex-direction: column;
+
+.container-2 #graph .legend
+  padding: 2rem 45px 0 45px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+.legend-block
+  display: flex;
+  flex-direction: row;
+  width: 33.33%;
+  justify-content: center;
+  opacity: 0;
+
+.legend-block p 
+  margin: 0;
+  padding: 0;
+  color: $white;
+  font-family: $poppins;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+
+.legend-circle
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-image: url("../assets/images/dollar_sign.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 25px;
+  margin-right: 0.5rem;
+
+.legend-circle.other
+  background-color: $white;
+  box-shadow: 0 0 10px $white;
+
+.legend-circle.artist
+  background-color: $green;
+  box-shadow: 0 0 10px $green;
+
+.legend-circle.dist
+  background-color: $blue;
+  box-shadow: 0 0 10px $blue;
 
 #dsp_share
   fill: $red;
