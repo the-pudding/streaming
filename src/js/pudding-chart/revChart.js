@@ -804,10 +804,11 @@ d3.selection.prototype.chartRev = function init(options) {
             .attr("height", 0) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         
         $otherTracksRect
+            .attr("x", 0)
             .attr("y", dollarWidth*1)
             .attr("height", dollarWidth*20)
             .attr("width", width )
-            .attr("height", height - dollarWidth/2)
+            //.attr("height", height - dollarWidth/2)
              //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         
         $distTracksRect
