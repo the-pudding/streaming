@@ -137,8 +137,8 @@ p.highlight {
 }
 
 .diagram-container 
-  height 32rem;
-  max-height 32rem
+  height 34rem;
+  max-height 34rem
 
 #dist_text, #artist_text, #streamers_text
   fill: $white;
@@ -228,37 +228,46 @@ circle{
   flex-direction: column;
 
 .container-2 #graph .legend
-  padding: 0 3rem 2.5rem 3rem;
+  padding: 1rem 1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   order: 2;
+  flex-wrap: wrap;
 
 .legend-block
   display: flex;
   flex-direction: row;
   width: 33.33%;
+  align-items: center;
   justify-content: center;
   opacity: 0;
+  padding: 0.5rem;
 
 .legend-block p 
   margin: 0;
   padding: 0;
+  width: 33.33%;
   color: $white;
   font-family: $poppins;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
+  +mq('bp-3')
+    font-size: 14px
 
 .legend-circle
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-image: url("../assets/images/dollar_sign.png");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 25px;
+  background-size: contain;
   margin-right: 0.5rem;
+  +mq('bp-3')
+    width: 25px;
+    height: 25px;
 
 .legend-circle.other
   background-color: $white;
@@ -286,16 +295,22 @@ circle{
 
 .controls
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  max-width: 40rem;
+  max-width: none;
+  width: 100%;
   margin: 0 auto;
+  +mq('bp-3')
+    flex-direction: row;
+    max-width: 40rem;
 
 .controls .sliderContainer
-  width: 50%;
+  width: 100%;
   height: 10px;
   padding: 2rem 1rem;
   margin-bottom: 2rem;
+  +mq('bp-3')
+    width: 50%;
 
 .details
   display: flex;
@@ -305,6 +320,9 @@ circle{
 .details p
   margin: 0;
   padding: 0;
+
+.details span
+  font-weight: 700;
 
 @keyframes flicker {
 	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {

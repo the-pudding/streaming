@@ -18,21 +18,24 @@ d3.selection.prototype.chartRev = function init(options) {
     let $svg = null;
     let $axis = null;
     let $vis = null;
-    let $container = d3.select('.container-2 #graph')
+    let $container = d3.select('.container-2 #graph');
+    let $otherBlock = d3.select("#other-block")
+    let $artistBlock = d3.select("#artist-block")
+    let $distBlock = d3.select("#dist-block")
+    let $DSPrevenue = d3.select("#DSPrevenue");
+    let $TotalOtherStreams = d3.select("#TotalOtherStreams");
+    let $Trackstreams = d3.select("#Trackstreams");
+    let $Artistshare = d3.select("#Artistshare");
+    let $TotalOtherStreamsText = d3.select("#Totalstreams-text");
+    let $TrackstreamsText = d3.select("#Trackstreams-text");
+    let $ArtistshareText = d3.selectAll("#Artistshare-text");
 
     // data
     let data = $chart.datum();
 
-    let shares_default = {"track1":{"artist":0.5,
-                          "distr_label":0.5}
-              };
+    let shares_default = {"track1":{"artist":0.5, "distr_label":0.5}};
 
-    let streams_default = {"track1":600000,
-                    "other_tracks":2000000,
-                };
-
-    const total_streams_maxv = 10000000000;
-    const track_streams_maxv = 5000000000;
+    let streams_default = {"track1":600000,"other_tracks":2000000,};
 
     let dsp_revenue_default = 70;
     let dsp_share_default = 100;
@@ -93,18 +96,7 @@ d3.selection.prototype.chartRev = function init(options) {
           "opacity_highlight":0.4}
     }
 
-    let revshare_rendering_options = {
-      "y_axis":false,
-      "y_axis_ticks":false,
-      "x_axis_ticks":false,
-      "x_axis_label":false,
-      "annotations":false,
-      "legend_other_tracks":false,
-      "legend_artist":false,
-      "legend_dist":false
-    }
-
-   //console.log(data_revshare)
+    let currStep;
 
     // dimensions
     let width = 0;
@@ -127,6 +119,7 @@ d3.selection.prototype.chartRev = function init(options) {
     let dollarNum = 20;
     let dollarData = [];
 
+    // svg components
     let $dollars;
     let $dollarImages;
     let $DSPShareRect;
@@ -134,19 +127,7 @@ d3.selection.prototype.chartRev = function init(options) {
     let $distTracksRect;
     let $artistTracksRect;
 
-    let $otherBlock = d3.select("#other-block")
-    let $artistBlock = d3.select("#artist-block")
-    let $distBlock = d3.select("#dist-block")
-    
-    let $DSPrevenue = d3.select("#DSPrevenue");
-    let $TotalOtherStreams = d3.select("#TotalOtherStreams");
-    let $Trackstreams = d3.select("#Trackstreams");
-    let $Artistshare = d3.select("#Artistshare");
-
-    let $TotalOtherStreamsText = d3.select("#TotalOtherStreams span");
-    let $TrackstreamsText = d3.select("#Trackstreams span");
-    let $ArtistshareText = d3.selectAll("#Artistshare-text");
-
+    // sliders
     let $DSPrevenueValue; 
     let $TotalOtherStreamsValue;
     let $TrackstreamsValue;
@@ -162,6 +143,8 @@ d3.selection.prototype.chartRev = function init(options) {
     const rect_arpu_max = 5;
 
     // helper functions
+    let formatComma = d3.format(",");
+
     function setupSliders() {
       function setUpDSPSlider() {
         let el = $DSPrevenue.node();
@@ -179,10 +162,10 @@ d3.selection.prototype.chartRev = function init(options) {
         let el = $TotalOtherStreams.node();
   
         $TotalOtherStreams_slider = noUiSlider.create(el, {
-            start: 1000,
+            start: 95,
             range: {
-              min: 1000,
-              max: 10000000000
+              min: 0,
+              max: 100
             }
           })
       }
@@ -191,10 +174,10 @@ d3.selection.prototype.chartRev = function init(options) {
         let el = $Trackstreams.node();
   
         $Trackstreams_slider = noUiSlider.create(el, {
-            start: 1000,
+            start: 75,
             range: {
-              min: 1000,
-              max: 5000000000
+              min: 0,
+              max: 100
             }
           })
       }
@@ -245,7 +228,7 @@ d3.selection.prototype.chartRev = function init(options) {
     }
 
     function updateChart(i) {
-      console.log(i)
+      //console.log(i)
       switch(i) {
         case 0:
           $otherTracksRect.transition().duration(transition_duration)
@@ -479,8 +462,6 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $artistBlock.transition().duration(transition_duration)
           .style("opacity", 1)
-        $artistBlock.select('p').transition().duration(transition_duration)
-          .text("Track Share")
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         break;
@@ -503,8 +484,6 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $artistBlock.transition().duration(transition_duration)
           .style("opacity", 1)
-        $artistBlock.select('p').transition().duration(transition_duration)
-          .text("Artists Share")
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         break;
@@ -668,114 +647,79 @@ d3.selection.prototype.chartRev = function init(options) {
       }
     }
 
-    function sliderChartDSP(vals) {
+    function updateSliderChart(vals) {
+      //console.log(vals)
+      let dspPercent = +vals.dspVal *0.01;
+      let dspHeight = dollarWidth*21*dspPercent;
+      let dspOffsetHeight = dollarWidth*21 - dspHeight ;
+      let artistPercent = +vals.artistVal *0.01;
+      let artistHeight = dspHeight*artistPercent;
+      let artistOffsetHeight = dspHeight - artistHeight
+      let trackStreamsVal = +vals.trackVal;
+      let trackStreamsPercent = +vals.trackVal *0.01;
+      let trackStreamsNum = trackStreamsPercent*5000000000
+      let totalStreamsVal = +vals.totVal;
+      let totalStreamsPercent = +vals.totVal *0.01;
+      let totalStreamsNum = totalStreamsPercent*10000000000
+      let trackProportion = trackStreamsNum/totalStreamsNum
+
+      //console.log(trackProportion)
+
+      // text
+      $ArtistshareText.text(`${Math.round(+vals.artistVal)}%`)
+      $TrackstreamsText.text(`${formatComma(Math.round(trackStreamsNum))}`)
+      $TotalOtherStreamsText.text(`${formatComma(Math.round(totalStreamsNum))}`)
+
+      // rects
       $otherTracksRect
         .transition().duration(transition_duration)
-        .attr("y", function() {
-          let flip = 100 - vals.dspVal
-          let percent = flip * 0.01
-          if (vals.dspVal == 0) { return dollarWidth*21 } 
-          else if (vals.dspVal == 100) { return dollarWidth } 
-          else { return dollarWidth*21*percent }
+        .attr("y", function() { 
+          if (dspPercent == 1) {return dollarWidth }
+          else {return dspOffsetHeight }
         })
-        .attr("height", function() {
-          let percent = vals.dspVal * 0.01
-          if (vals.dspVal == 0) { return 0 } 
-          else if (vals.dspVal == 100) { return dollarWidth*20 } 
-          else { return dollarWidth*21*percent }
+        .attr("height", function() { 
+          if (dspPercent == 1) { return dollarWidth*20 }
+          else { return dollarWidth*21*dspPercent}
         })
-
-        $artistTracksRect
-          .transition().duration(transition_duration)
-          .attr("y", function() {
-            let flip = 100 - vals.dspVal
-            let percent = flip * 0.01
-            if (vals.dspVal == 0) { return dollarWidth*21 } 
-            else if (vals.dspVal == 100) { return dollarWidth } 
-            else { return dollarWidth*21*percent }
-          })
-          .attr("height", function() {
-            let percent = vals.dspVal * 0.01
-            if (vals.dspVal == 0) { return 0 } 
-            else if (vals.dspVal == 100) { return dollarWidth*20 } 
-            else { return dollarWidth*21*percent }
-          })
+      
+      $artistTracksRect
+        .transition().duration(transition_duration)
+        .attr("y", function() { 
+          if (dspPercent == 1) {return dollarWidth }
+          else {return dspOffsetHeight }
+        })
+        .attr("height", function() { 
+          if (dspPercent == 1) { return dollarWidth*20 }
+          else { return dollarWidth*21*dspPercent}
+        })
+        .attr("x", function() {
+          return dollarWidth*21*trackProportion + dollarWidth/2
+        })
+        .attr("width", function() {
+          return dollarWidth*20 - dollarWidth*21*trackProportion - dollarWidth/2
+        })
       
       $distTracksRect
         .transition().duration(transition_duration)
-        .attr("y", function() {
-          let dspHeight = vals.dspVal * 0.01 * dollarWidth * 21
-          let flip = 100 - vals.artistVal
-          let percent = flip * 0.01
-
-          if (+vals.artistVal == 0 && +vals.dspVal !== 100) { 
-            console.log("case 1")
-            return dollarWidth*21 - dspHeight } 
-          else if (+vals.artistVal == 100) { 
-            console.log("case 2")
-            return dollarWidth } 
-          else if (+vals.dspVal == 100 && +vals.artistVal !== 100 && +vals.artistVal !== 0) { 
-            console.log("case 3")
-            return dollarWidth*21 - dspHeight*percent } 
-          else if (+vals.dspVal == 100 && +vals.artistVal == 0) { 
-              console.log("case 3X")
-              return dollarWidth } 
-          else { 
-            console.log("case 4")
-            return dollarWidth*21 - dspHeight*percent }
+        .attr("y", function() { 
+          if (artistPercent == 0 && dspPercent !== 1) { return dspOffsetHeight }
+          else if (artistPercent == 0 && dspPercent == 1) { return dollarWidth }
+          else if (artistPercent == 1 && dspPercent == 1) { return dollarWidth*21 }
+          else { return dollarWidth*21 - artistOffsetHeight }
         })
-        .attr("height", function() {
-          let dspHeight = vals.dspVal * 0.01 * dollarWidth * 21
-          let flip = 100 - vals.artistVal
-          let percent = flip * 0.01
-
-          if (+vals.artistVal == 0 && +vals.dspVal !== 100) { 
-            console.log("case 1")
-            return dspHeight } 
-          else if (+vals.artistVal == 100 && +vals.dspVal == 100) { 
-            console.log("case 2")
-            return dollarWidth*20 } 
-          else if (+vals.artistVal == 100 && +vals.dspVal !== 100) { 
-            console.log("case 2X")
-            return dspHeight*percent } 
-          else if (+vals.dspVal == 100 && +vals.artistVal !== 100 && +vals.artistVal !== 0) { 
-            console.log("case 3")
-            return dspHeight*percent } 
-          else if (+vals.dspVal == 100 && +vals.artistVal == 0) {
-            return dollarWidth*20
-          }
-          else { 
-            console.log("case 4")
-            return dspHeight*percent }
+        .attr("height", function() { 
+          if (artistPercent == 0 && dspPercent !== 1) { return dspHeight }
+          else if (artistPercent == 0 && dspPercent == 1) { return dspHeight - dollarWidth }
+          else if (artistPercent == 1 && dspPercent == 1) { return 0 }
+          else { return artistOffsetHeight }
         })
-    }
-
-    function sliderChartArtist(vals) {
-      $ArtistshareText.text(`${Math.round(vals.artistVal)}%`)
-
-      $distTracksRect
-        .transition().duration(transition_duration)
-        .attr("y", function() {
-          let dspHeight = vals.dspVal * 0.01 * dollarWidth * 21
-          let flip = 100 - vals.artistVal
-          let percent = flip * 0.01
-
-          if (vals.artistVal == 0) { return dollarWidth } 
-          else if (vals.artistVal == 100) { return dollarWidth*21 } 
-          else if (+vals.artistVal == 100 && +vals.dspVal !== 100) { 
-            console.log("case 2X ART")
-            return dspHeight*percent } 
-          else { return dollarWidth*21 - dspHeight*percent }
+        .attr("x", function() {
+          return dollarWidth*21*trackProportion + dollarWidth/2
         })
-        .attr("height", function() {
-          let dspHeight = vals.dspVal * 0.01 * dollarWidth * 21
-          let flip = 100 - vals.artistVal
-          let percent = flip * 0.01
-
-          if (vals.artistVal == 0) { return dspHeight*percent - dollarWidth } 
-          else if (vals.artistVal == 100) { return 0 } 
-          else { return dspHeight*percent }
+        .attr("width", function() {
+          return dollarWidth*20 - dollarWidth*21*trackProportion - dollarWidth/2
         })
+
     }
 
     const Chart = {
@@ -797,16 +741,19 @@ d3.selection.prototype.chartRev = function init(options) {
 
         $DSPrevenue.node().noUiSlider.on("change", function() {
           getSliderValues()
-          sliderChartDSP(sliderVals)
+          updateSliderChart(sliderVals)
         })
-        $TotalOtherStreams.node().noUiSlider.on("change", getSliderValues)
+        $TotalOtherStreams.node().noUiSlider.on("change", function() {
+          getSliderValues()
+          updateSliderChart(sliderVals)
+        })
         $Trackstreams.node().noUiSlider.on("change", function() {
-          //getSliderValues()
-          //sliderChartTracks(sliderVals)
+          getSliderValues()
+          updateSliderChart(sliderVals)
         })
         $Artistshare.node().noUiSlider.on("change", function() {
           getSliderValues()
-          sliderChartArtist(sliderVals)
+          updateSliderChart(sliderVals)
         })
 
         let gs2 = graphScroll()
@@ -816,9 +763,8 @@ d3.selection.prototype.chartRev = function init(options) {
             .sections(d3.selectAll('.container-2 #sections > div'))
             .offset(100)
             .on('active', function(i){
+                currStep = i;
                 updateChart(i)
-
-
             });
       },
       // on resize, update new dimensions
@@ -902,6 +848,8 @@ d3.selection.prototype.chartRev = function init(options) {
                 return elementY;
               })
           })
+          
+          if (currStep) { updateChart(currStep); }
 
         return Chart;
       },

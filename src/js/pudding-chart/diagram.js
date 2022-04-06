@@ -25,7 +25,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
     let width = 0;
     let height = 0;
     const MARGIN_TOP = 20;
-    const MARGIN_BOTTOM = 20;
+    const MARGIN_BOTTOM = 40;
     const MARGIN_LEFT = 20;
     const MARGIN_RIGHT = 40;
 
@@ -232,7 +232,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
             iconWidth_1_2 = iconWidth*0.5;
             iconWidth_3_4 = iconWidth*0.75;
             iconWidth_5_4 = iconWidth*1.25
-            iconWidth_6_4 = iconWidth*1.5;
+            iconWidth_6_4 = iconWidth*1.75;
         }
 
         sizeSmallIcons = iconWidth/2
@@ -244,8 +244,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
         deezer_params = {width:iconWidth, height:iconWidth,x:width-iconWidth_6_4,y:height-iconWidth_3_4};
         dist_text_params = {x:distributor_params.x + distributor_params.width/2, y:distributor_params.y+distributor_params.height/2 + iconWidth_1_4};
         artist_text_params = {x:artist_params.x + iconWidth/2, y:artist_params.y+artist_params.height/2 + iconWidth_1_4};
-        streaming_text_params = {x:deezer_params.x + iconWidth*1.1, y:deezer_params.y+deezer_params.height/2 + iconWidth_1_4};
-
+        streaming_text_params = {x:deezer_params.x + iconWidth + MARGIN_LEFT, y:deezer_params.y+deezer_params.height/2 + iconWidth_1_4};
 
 
         data_music_notes = [
