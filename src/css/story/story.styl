@@ -6,6 +6,20 @@ body
 
 #content 
     padding: 0 1rem;
+    position: relative;
+
+#coinPath-Container
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 1;
+
+.coinPath-path 
+  fill none
+  stroke $purple
+  stroke-width 3
 
 h1
     font-family: $sans-display;
