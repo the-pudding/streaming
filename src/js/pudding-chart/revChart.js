@@ -1,6 +1,7 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
 import noUiSlider from 'nouislider'
+import coinPathFunc from '../coin-path';
 
 /*
  USAGE (example: line chart)
@@ -622,6 +623,7 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         break;
       case 19:
+        coinPathFunc.drawPath(4)
         $otherTracksRect.transition().duration(transition_duration)
           .attr("y", dollarWidth*1)
           .attr("height", dollarWidth*20)

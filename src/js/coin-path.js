@@ -48,17 +48,16 @@ coinPathImg = $coinPathSVG
 		.tween("pathTween", function(){return pathTween(coinPath)})
 */
 
-function drawPath(path) {
-    console.log(path)
+function setupPath(path) {
 
-    $coinPathContainer.style('height', `${pageHeight}px`);
+    $coinPathContainer.style('height', `${pageHeight+300}px`);
 
     let coinPathW = $coinPathContainer.node().offsetWidth;
     let coinPathH = $coinPathContainer.node().offsetHeight;
     
     $coinPathSVG
 		.attr('width', coinPathW)
-		.attr('height', coinPathH);
+		.attr('height', pageHeight+300);
 
     let horizLine1 = $hedContainer.node().getBoundingClientRect();
 	let horizLine1_mid = horizLine1.top + horizLine1.height/2;
@@ -77,39 +76,52 @@ function drawPath(path) {
 	let horizLine8 = $subhed4.node().getBoundingClientRect();
 	let horizLine8_mid = horizLine8.top + horizLine8.height/2;
 	let end = $footer.node().getBoundingClientRect();
-	let endTop = end.top;
+	let endBottom = end.bottom;
 
     if (path == 1) {
         coinPathData1.moveTo(0, horizLine1_mid)
-        coinPathData1.lineTo(coinPathW-sidePadding, horizLine1_mid)
-        coinPathData1.lineTo(coinPathW-sidePadding, horizLine2_mid)
-        coinPathData1.lineTo(0+sidePadding, horizLine2_mid)
-        coinPathData1.lineTo(0+sidePadding, horizLine3_mid)
+        coinPathData1.lineTo(coinPathW-sidePadding-sidePadding, horizLine1_mid)
+        coinPathData1.quadraticCurveTo(coinPathW-sidePadding, horizLine1_mid, coinPathW-sidePadding, horizLine1_mid+sidePadding)
+        coinPathData1.lineTo(coinPathW-sidePadding, horizLine2_mid-sidePadding)
+        coinPathData1.quadraticCurveTo(coinPathW-sidePadding, horizLine2_mid, coinPathW-sidePadding-sidePadding, horizLine2_mid)
+        coinPathData1.lineTo(0+sidePadding+sidePadding, horizLine2_mid)
+        coinPathData1.quadraticCurveTo(0+sidePadding, horizLine2_mid, 0+sidePadding, horizLine2_mid+sidePadding)
+        coinPathData1.lineTo(0+sidePadding, horizLine3_mid-sidePadding)
+        coinPathData1.quadraticCurveTo(0+sidePadding, horizLine3_mid, 0+sidePadding+sidePadding, horizLine3_mid)
         coinPathData1.lineTo(coinPathW/2, horizLine3_mid)
     }
 
     if (path == 2) {
         coinPathData2.moveTo(coinPathW/2, horizLine3_mid+scrollyBlockHeight1)
-        coinPathData2.lineTo(coinPathW-sidePadding, horizLine3_mid+scrollyBlockHeight1)
-        coinPathData2.lineTo(coinPathW-sidePadding, horizLine4_mid)
-        coinPathData2.lineTo(0+sidePadding, horizLine4_mid)
-        coinPathData2.lineTo(0+sidePadding, horizLine5_mid)
+        coinPathData2.lineTo(coinPathW-sidePadding-sidePadding, horizLine3_mid+scrollyBlockHeight1)
+        coinPathData2.quadraticCurveTo(coinPathW-sidePadding, horizLine3_mid+scrollyBlockHeight1, coinPathW-sidePadding, horizLine3_mid+scrollyBlockHeight1+sidePadding)
+        coinPathData2.lineTo(coinPathW-sidePadding, horizLine4_mid-sidePadding)
+        coinPathData2.quadraticCurveTo(coinPathW-sidePadding, horizLine4_mid, coinPathW-sidePadding-sidePadding, horizLine4_mid)
+        coinPathData2.lineTo(0+sidePadding+sidePadding, horizLine4_mid)
+        coinPathData2.quadraticCurveTo(0+sidePadding, horizLine4_mid, 0+sidePadding, horizLine4_mid+sidePadding)
+        coinPathData2.lineTo(0+sidePadding, horizLine5_mid-sidePadding)
+        coinPathData2.quadraticCurveTo(0+sidePadding, horizLine5_mid, 0+sidePadding+sidePadding, horizLine5_mid)
         coinPathData2.lineTo(coinPathW/2, horizLine5_mid)
     }
 
     if (path == 3) {
         coinPathData3.moveTo(coinPathW/2, horizLine5_mid+scrollyBlockHeight2)
-        coinPathData3.lineTo(coinPathW-sidePadding, horizLine5_mid+scrollyBlockHeight2)
-        coinPathData3.lineTo(coinPathW-sidePadding, horizLine6_mid)
-        coinPathData3.lineTo(0+sidePadding, horizLine6_mid)
-        coinPathData3.lineTo(0+sidePadding, horizLine7_mid)
+        coinPathData3.lineTo(coinPathW-sidePadding-sidePadding, horizLine5_mid+scrollyBlockHeight2)
+        coinPathData3.quadraticCurveTo(coinPathW-sidePadding, horizLine5_mid+scrollyBlockHeight2, coinPathW-sidePadding, horizLine5_mid+scrollyBlockHeight2+sidePadding)
+        coinPathData3.lineTo(coinPathW-sidePadding, horizLine6_mid-sidePadding)
+        coinPathData3.quadraticCurveTo(coinPathW-sidePadding, horizLine6_mid, coinPathW-sidePadding-sidePadding, horizLine6_mid)
+        coinPathData3.lineTo(0+sidePadding+sidePadding, horizLine6_mid)
+        coinPathData3.quadraticCurveTo(0+sidePadding, horizLine6_mid, 0+sidePadding, horizLine6_mid+sidePadding)
+        coinPathData3.lineTo(0+sidePadding, horizLine7_mid-sidePadding)
+        coinPathData3.quadraticCurveTo(0+sidePadding, horizLine7_mid, 0+sidePadding+sidePadding, horizLine7_mid)
         coinPathData3.lineTo(coinPathW/2, horizLine7_mid)
     }
 
     if (path == 4) {
         coinPathData4.moveTo(coinPathW/2, horizLine7_mid+scrollyBlockHeight3)
-        coinPathData4.lineTo(coinPathW-sidePadding, horizLine7_mid+scrollyBlockHeight3)
-        coinPathData4.lineTo(coinPathW-sidePadding, endTop)
+        coinPathData4.lineTo(coinPathW-sidePadding-sidePadding, horizLine7_mid+scrollyBlockHeight3)
+        coinPathData4.quadraticCurveTo(coinPathW-sidePadding, horizLine7_mid+scrollyBlockHeight3, coinPathW-sidePadding, horizLine7_mid+scrollyBlockHeight3+sidePadding)
+        coinPathData4.lineTo(coinPathW-sidePadding, endBottom+300)
     }
 
     $coinPath1
@@ -119,14 +131,32 @@ function drawPath(path) {
     $coinPath2
         .attr("d", coinPathData2)
         .attr("class", "coinPath-path")
+        .style("opacity", 0)
     
     $coinPath3
         .attr("d", coinPathData3)
         .attr("class", "coinPath-path")
+        .style("opacity", 0)
     
     $coinPath4
         .attr("d", coinPathData4)
         .attr("class", "coinPath-path")
+        .style("opacity", 0)
+}
+
+function drawPath(path) {
+    let $targetPath = d3.select(`#coinPath${path}`)
+    let length = $targetPath.node().getTotalLength()
+
+    $targetPath.style("opacity", 1)
+
+    $targetPath.attr("stroke-dasharray", length + " " + length)
+        .attr("stroke-dashoffset", length)
+        .transition()
+        .delay(200)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0)
+        .duration(length*1.5);
 }
 
 function pathTween(path) {
@@ -141,7 +171,8 @@ function pathTween(path) {
 }
 
 function init(path) {
+    setupPath(path)
     drawPath(path)
 }
 
-export default { init };
+export default { init, setupPath, drawPath };

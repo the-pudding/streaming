@@ -34,10 +34,12 @@ function resize() {
   	let previousWidth = 0;
   	const width = $body.node().offsetWidth;
 
-	coinPathFunc.init(1);
-	coinPathFunc.init(2);
-	coinPathFunc.init(3);
-	coinPathFunc.init(4);
+	coinPathFunc.setupPath(1);
+	coinPathFunc.setupPath(2);
+	coinPathFunc.setupPath(3);
+	coinPathFunc.setupPath(4);
+
+	coinPathFunc.drawPath(1);
 	
   	if (previousWidth !== width) {
 		chartDiagram.resize();

@@ -1,5 +1,6 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
+import coinPathFunc from '../coin-path';
 
 /*
  USAGE (example: line chart)
@@ -159,6 +160,8 @@ d3.selection.prototype.chartDiagram = function init(options) {
             .on('active', function(i){
                 Chart.updateDiagram(i);
                 Chart.toggleAnimations(i);
+
+                if (i == 3) { coinPathFunc.drawPath(2) }
             });
       },
       updateDiagram(i) {

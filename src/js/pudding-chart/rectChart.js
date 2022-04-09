@@ -1,5 +1,6 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
+import coinPathFunc from '../coin-path';
 
 /*
  USAGE (example: line chart)
@@ -98,6 +99,9 @@ d3.selection.prototype.chartRect = function init(options) {
                 data_rect.premium.rev_per_user = 4.19;
                 rect_rendering_options.y_axis = true;
                 rect_rendering_options.rev_text = true;
+                break;
+            case 2: 
+                coinPathFunc.drawPath(3)
                 break;
             case 3:
                 rect_rendering_options.rev_text = true; 
