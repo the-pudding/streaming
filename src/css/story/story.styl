@@ -35,6 +35,14 @@ h1
 h1:hover 
     animation: flicker 10s linear infinite;
 
+#coinSpan
+  color: $bg-purple
+  padding: 0 0.5rem;
+  opacity: 0;
+
+#dist_diag
+  opacity: 0;
+
 h2
     font-family: $sans-display;
     text-transform: uppercase;
@@ -89,18 +97,6 @@ p.highlight {
 	font-weight: bold;
 }
 
-.logo-artist
-  animation: flicker2 8s linear infinite;
-
-.logo-spotify
-  animation: flicker2 12s linear infinite 0.5s;
-
-.logo-apple
-  animation: flicker 6s linear infinite 1s;
-
-.logo-deezer
-  animation: flicker 10s linear infinite 1.5s;
-
 #container{
   position: relative;
 }
@@ -144,11 +140,17 @@ p.highlight {
   position: -webkit-sticky;
   position: sticky;
   top: 100px;
-  border: 5px solid $purple;
+  border: 5px solid $bg-purple;
   border-radius: 10px;
-  box-shadow: 0 0 20px $purple;
+  box-shadow: none;
   background-color: $dark-purple;
   z-index: 1;
+}
+
+.flickerClass {
+  border: 5px solid $purple;
+  box-shadow: 0 0 20px $purple;
+  animation: flickerBorder 6s linear 3 1s;
 }
 
 .diagram-container 
@@ -351,14 +353,15 @@ circle{
     }
 }
 
-@keyframes flicker2 {
-	0%, 10.999%, 27%, 59.999%, 62%, 67.999%, 76%, 100% {
+@keyframes flickerBorder {
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
 		//text-shadow: none;
-    opacity: .99;
+    border-color: rgba($purple, 0.99);
+    box-shadow: 0 0 20px #5552CF;
 		
 	}
-	17%, 20.999%, 64%, 65.999%, 67%, 72.999% {
-		opacity: 0.4;
-	
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+		border-color: rgba($purple, 0.4);
+    box-shadow: 0 0 0px #5552CF;
     }
 }

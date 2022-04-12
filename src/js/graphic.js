@@ -40,6 +40,7 @@ function resize() {
 	coinPathFunc.setupPath(4);
 
 	coinPathFunc.drawPath(1);
+	coinPathFunc.addCoin(1);
 	
   	if (previousWidth !== width) {
 		chartDiagram.resize();

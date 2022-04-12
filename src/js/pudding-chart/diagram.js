@@ -1,6 +1,8 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
 import coinPathFunc from '../coin-path';
+import enterView from 'enter-view';
+import { entries } from 'lodash';
 
 /*
  USAGE (example: line chart)
@@ -135,10 +137,43 @@ d3.selection.prototype.chartDiagram = function init(options) {
                 .on("start", repeat)
             })
     }
+    /*
+    const createObserver = function() {
+      let options = {
+        root: null,
+        rootMargin: "100px",
+        threshold: 0.5
+      };
+
+      let observer = new IntersectionObserver(
+        function(entries, observer) {
+          console.log(entries)
+          handleIntersect(entries, observer);
+        },
+      options);
+
+      let targetElements = document.querySelectorAll("#container")
+      console.log(targetElements)
+
+      targetElements.forEach((targetElement) => {
+        observer.observe(targetElement);
+      });
+    }
+
+    const handleIntersect = function(entries, observer) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          console.log("intersecting")
+          observer.unobserve(entry.target)
+        }
+      });
+    };
+    */
 
     const Chart = {
       // called once at start
       init() {
+
         $svg = $chart.append('svg').attr('class', 'pudding-chart').attr('id', 'dist_diag');
 
         // create axis
@@ -150,6 +185,23 @@ d3.selection.prototype.chartDiagram = function init(options) {
         Chart.render();
         Chart.resize();
 
+        enterView({
+          selector: '#triggerDiv1',
+          offset: 0.4,
+          enter: function(el) {
+            d3.selectAll("#coinPath1,#coinImg1").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 0)
+          },
+          exit: function(el) {
+            d3.selectAll("#coinPath1").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 1)
+          }
+        })
+
         let gs0 = graphScroll()
             .container(d3.select('.container-0'))
             .graph(d3.selectAll('container-0 #graph'))
@@ -160,33 +212,23 @@ d3.selection.prototype.chartDiagram = function init(options) {
             .on('active', function(i){
                 Chart.updateDiagram(i);
                 Chart.toggleAnimations(i);
-
-                if (i == 3) { coinPathFunc.drawPath(2) }
             });
       },
       updateDiagram(i) {
         switch (i){
             case 0:
-                logo_spotify.transition().duration(500).style('animation', 'flicker2 10s linear infinite 0.5s')
-                logo_deezer.transition().duration(500).style('animation', 'flicker 10s linear infinite 1.5s')
-                logo_apple.transition().duration(500).style('animation', 'flicker 7s linear infinite 1s')
-                logo_artist.transition().duration(500).style('animation', 'flicker2 7s linear infinite')
-                logo_label.transition().duration(500).style('opacity', 0).style('animation', 'none')
+                logo_label.transition().duration(500).style('opacity', 0)
                 text_distributor.transition().duration(500).style('opacity', 0)
                 $musicNotes.transition().duration(500).style('opacity', 0).remove()
                 $money.transition().duration(500).style('opacity', 0).remove()
                 break;
             case 1:
-                logo_spotify.transition().duration(500).style('animation', 'none')
-                logo_deezer.transition().duration(500).style('animation', 'none')
-                logo_apple.transition().duration(500).style('animation', 'none')
-                logo_artist.transition().duration(500).style('animation', 'none')
-                logo_label.transition().duration(500).style('opacity', 1).style('animation', 'flicker 5s linear infinite')
+                logo_label.transition().duration(500).style('opacity', 1)
                 text_distributor.transition().duration(500).style('opacity', 1)
                 $money.transition().duration(500).style('opacity', 0).remove()
                 break;
             case 2:
-              logo_label.transition().duration(500).style('opacity', 1).style('animation', 'none')
+              logo_label.transition().duration(500).style('opacity', 1)
           }
       },
       toggleAnimations(i) {
@@ -202,6 +244,10 @@ d3.selection.prototype.chartDiagram = function init(options) {
                 $money.transition().duration(500).style('opacity', 0).remove()
                 $musicNotes.transition().duration(500).style('opacity', 0).remove()
                 animateMoney();
+                break;
+            case 3:
+                coinPathFunc.drawPath(2)
+                coinPathFunc.addCoin(2);
                 break;
           }
       },

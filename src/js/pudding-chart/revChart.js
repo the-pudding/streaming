@@ -2,6 +2,7 @@
 import { graphScroll } from '../graph-scroll';
 import noUiSlider from 'nouislider'
 import coinPathFunc from '../coin-path';
+import enterView from 'enter-view';
 
 /*
  USAGE (example: line chart)
@@ -757,6 +758,24 @@ d3.selection.prototype.chartRev = function init(options) {
           getSliderValues()
           updateSliderChart(sliderVals)
         })
+
+        enterView({
+          selector: '#triggerDiv3',
+          offset: 0.4,
+          enter: function(el) {
+              console.log("enter")
+            d3.selectAll("#coinPath3, #coinImg3").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 0)
+          },
+          exit: function(el) {
+            d3.selectAll("#coinPath3").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 1)
+          }
+      })
 
         let gs2 = graphScroll()
             .container(d3.select('.container-2'))

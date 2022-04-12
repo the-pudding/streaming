@@ -1,6 +1,7 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
 import coinPathFunc from '../coin-path';
+import enterView from 'enter-view';
 
 /*
  USAGE (example: line chart)
@@ -102,6 +103,7 @@ d3.selection.prototype.chartRect = function init(options) {
                 break;
             case 2: 
                 coinPathFunc.drawPath(3)
+                coinPathFunc.addCoin(3);
                 break;
             case 3:
                 rect_rendering_options.rev_text = true; 
@@ -152,6 +154,24 @@ d3.selection.prototype.chartRect = function init(options) {
 
         Chart.render();
         Chart.resize();
+
+        enterView({
+            selector: '#triggerDiv2',
+            offset: 0.4,
+            enter: function(el) {
+                console.log("enter")
+              d3.selectAll("#coinPath2, #coinImg2").transition()
+                .delay(200)
+                .duration(500)
+                .style("opacity", 0)
+            },
+            exit: function(el) {
+              d3.selectAll("#coinPath2").transition()
+                .delay(200)
+                .duration(500)
+                .style("opacity", 1)
+            }
+        })
 
          let gs1 = graphScroll()
             .container(d3.select('.container-1'))
