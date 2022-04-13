@@ -176,7 +176,7 @@ d3.selection.prototype.chartRev = function init(options) {
         let el = $Trackstreams.node();
   
         $Trackstreams_slider = noUiSlider.create(el, {
-            start: 6.66,
+            start: 5,
             range: {
               min: 0,
               max: 100
@@ -872,7 +872,11 @@ d3.selection.prototype.chartRev = function init(options) {
               })
           })
           
-          if (currStep) { updateChart(currStep); }
+          if (currStep !== 19) { updateChart(currStep); }
+          else  {
+            getSliderValues()
+            updateSliderChart(sliderVals)
+          }
 
         return Chart;
       },

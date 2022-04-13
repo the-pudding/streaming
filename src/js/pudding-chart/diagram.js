@@ -82,22 +82,28 @@ d3.selection.prototype.chartDiagram = function init(options) {
               .attr("y", function(d){ return d.y_start; })
               .transition()
               .duration(1000)
+              .ease(d3.easeCubicOut)
               .on("start",function repeat() {
                 d3.active(this)
                     .attr("x",function(d){ return d.x_mid; })
                     .attr("y",function(d){ return d.y_mid; })
+                    .style("opacity", 0)
                   .transition()
-                    .duration(1000)
+                    .duration(750)
+                    .ease(d3.easeCubicOut)
                     .delay(function(d){ return d.delay1; })
+                    .style("opacity", 1)
                     .attr("x",function(d){ return d.x_end; })
                     .attr("y",function(d){ return d.y_end; })
                   .transition()
                     .duration(0)
+                    .ease(d3.easeCubicOut)
                     .delay(function(d){ return d.delay2; })
                     .attr("x",function(d){ return d.x_start; })
                     .attr("y",function(d){ return d.y_start; })
                   .transition()
                     .duration(1000)
+                    .ease(d3.easeCubicOut)
                     .delay(function(d){ return d.delay1; })
                     .on("start", repeat)
               })
@@ -116,59 +122,34 @@ d3.selection.prototype.chartDiagram = function init(options) {
             .attr("y", function(d){ return d.y_start; })
             .transition()
             .duration(1000)
+            .ease(d3.easeCubicOut)
             .delay(function(d){ return d.delay1; })
             .on("start",function repeat() {
             d3.active(this)
                 .attr("x",function(d){ return d.x_mid; })
                 .attr("y",function(d){ return d.y_mid; })
+                .style("opacity", 0)
                 .transition()
-                .duration(1000)
-                .delay(function(d){ return d.delay1; })
-                .attr("x",function(d){ return d.x_end; })
-                .attr("y",function(d){ return d.y_end; })
+                  .duration(750)
+                  .ease(d3.easeCubicOut)
+                  .delay(function(d){ return d.delay1; })
+                  .style("opacity", 1)
+                  .attr("x",function(d){ return d.x_end; })
+                  .attr("y",function(d){ return d.y_end; })
                 .transition()
-                .duration(0)
-                .delay(function(d){ return d.delay2; })
-                .attr("x",function(d){ return d.x_start; })
-                .attr("y",function(d){ return d.y_start; })
+                  .duration(0)
+                  .ease(d3.easeCubicOut)
+                  .delay(function(d){ return d.delay2; })
+                  .attr("x",function(d){ return d.x_start; })
+                  .attr("y",function(d){ return d.y_start; })
                 .transition()
-                .duration(1000)
-                .delay(function(d){ return d.delay1; })
-                .on("start", repeat)
+                  .duration(1000)
+                  .ease(d3.easeCubicOut)
+                  .delay(function(d){ return d.delay1; })
+                  .on("start", repeat)
             })
     }
-    /*
-    const createObserver = function() {
-      let options = {
-        root: null,
-        rootMargin: "100px",
-        threshold: 0.5
-      };
 
-      let observer = new IntersectionObserver(
-        function(entries, observer) {
-          console.log(entries)
-          handleIntersect(entries, observer);
-        },
-      options);
-
-      let targetElements = document.querySelectorAll("#container")
-      console.log(targetElements)
-
-      targetElements.forEach((targetElement) => {
-        observer.observe(targetElement);
-      });
-    }
-
-    const handleIntersect = function(entries, observer) {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          console.log("intersecting")
-          observer.unobserve(entry.target)
-        }
-      });
-    };
-    */
 
     const Chart = {
       // called once at start
@@ -299,35 +280,35 @@ d3.selection.prototype.chartDiagram = function init(options) {
         data_music_notes = [
             {label:"spotify",
               x_start:artist_params.x+artist_params.width-iconWidth_1_4, y_start:artist_params.y-iconWidth_1_4,
-              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_3_4, y_mid:distributor_params.y-iconWidth_1_4,
+              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_1_4, y_mid:distributor_params.y-iconWidth_1_4,
               x_end:spotify_params.x+iconWidth_1_2, y_end:spotify_params.y-iconWidth_1_4,
-              delay1:1000, delay2:500 },
+              delay1:250, delay2:500 },
             {label:"apple",x_start:artist_params.x+artist_params.width-iconWidth_1_4, y_start:artist_params.y-iconWidth_1_4,
-              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_3_4, y_mid:distributor_params.y-iconWidth_1_4,
+              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_1_4, y_mid:distributor_params.y-iconWidth_1_4,
               x_end:apple_params.x+iconWidth_1_2, y_end:apple_params.y-iconWidth_1_4,
-              delay1:1000, delay2:500 },
+              delay1:250, delay2:500 },
             {label:"deezer",x_start:artist_params.x+artist_params.width-iconWidth_1_4, y_start:artist_params.y-iconWidth_1_4,
-              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_3_4, y_mid:distributor_params.y-iconWidth_1_4,
+              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_1_4, y_mid:distributor_params.y-iconWidth_1_4,
               x_end:deezer_params.x+iconWidth_1_2, y_end:deezer_params.y-iconWidth_1_4,
-              delay1:1000, delay2:500 },
+              delay1:250, delay2:500 },
         ];
 
         data_diag_dollars = [
             {label:"spotify",
               x_end:artist_params.x+artist_params.width-iconWidth_1_4, y_end:artist_params.y-iconWidth_1_4,
-              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_3_4, y_mid:distributor_params.y-iconWidth_1_4,
+              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_1_4, y_mid:distributor_params.y-iconWidth_1_4,
               x_start:spotify_params.x+iconWidth_1_2, y_start:spotify_params.y-iconWidth_1_4,
-              delay1:500, delay2:500 },
+              delay1:250, delay2:500 },
             {label:"apple",
               x_end:artist_params.x+artist_params.width-iconWidth_1_4, y_end:artist_params.y-iconWidth_1_4,
-              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_3_4, y_mid:distributor_params.y-iconWidth_1_4,
+              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_1_4, y_mid:distributor_params.y-iconWidth_1_4,
               x_start:apple_params.x+iconWidth_1_2, y_start:apple_params.y-iconWidth_1_4,
-              delay1:500, delay2:500 },
+              delay1:250, delay2:500 },
             {label:"deezer",
               x_end:artist_params.x+artist_params.width-iconWidth_1_4, y_end:artist_params.y-iconWidth_1_4,
-              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_3_4, y_mid:distributor_params.y-iconWidth_1_4,
+              x_mid:distributor_params.x+distributor_params.width/2-iconWidth_1_4, y_mid:distributor_params.y-iconWidth_1_4,
               x_start:deezer_params.x+iconWidth_1_2, y_start:deezer_params.y-iconWidth_1_4,
-              delay1:500, delay2:500 },
+              delay1:250, delay2:500 },
         ];
 
         logo_artist

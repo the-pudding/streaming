@@ -40,6 +40,43 @@ h1:hover
   padding: 0 0.5rem;
   opacity: 0;
 
+.redSpan
+  background-color: $red;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  box-decoration-break: clone;
+
+.greenSpan
+  background-color: $green;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  box-decoration-break: clone;
+
+.purpleSpan
+  background-color: $purple;
+  color: $white;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  box-decoration-break: clone;
+
+.blueSpan
+  background-color: $blue;
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  box-decoration-break: clone;
+
+.whiteSpan
+  background-color: $white;
+  border: 1px solid rgba($purple, 0.25)
+  font-weight: bold;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  box-decoration-break: clone;
+
 // #dist_diag, .pudding-chart
 //   opacity: 0;
 
@@ -60,6 +97,7 @@ h3
     font-weight: 500;
     color: $dark-purple;
     margin: 0 auto;
+    font-size: 18px;
 
 p 
     max-width: $column-width;
@@ -101,18 +139,20 @@ p.highlight {
   position: relative;
 }
 
-#sections{
-  max-width: 400px;
-  margin: 0 auto;
-  color: $dark-purple;
-  position: relative;
-  z-index: set-index('overlay');
-}
+#sections
+  max-width 330px
+  margin 0 auto
+  color $dark-purple
+  position relative
+  z-index set-index('overlay')
+  +mq('bp-3')
+    max-width 400px
+
 
 #sections > div{
   background: white;
   opacity: .2;
-  margin-bottom: 400px;
+  margin-bottom: 600px;
   padding: 1rem;
   border-radius: 10px;
   border: 5px solid $purple;
@@ -325,9 +365,10 @@ circle{
   width: 100%;
   height: 10px;
   padding: 2rem 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
   +mq('bp-3')
     width: 50%;
+    margin-bottom: 1.5rem;
 
 .details
   display: flex;
