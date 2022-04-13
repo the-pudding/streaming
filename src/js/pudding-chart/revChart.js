@@ -164,7 +164,7 @@ d3.selection.prototype.chartRev = function init(options) {
         let el = $TotalOtherStreams.node();
   
         $TotalOtherStreams_slider = noUiSlider.create(el, {
-            start: 95,
+            start: 100,
             range: {
               min: 0,
               max: 100
@@ -176,7 +176,7 @@ d3.selection.prototype.chartRev = function init(options) {
         let el = $Trackstreams.node();
   
         $Trackstreams_slider = noUiSlider.create(el, {
-            start: 75,
+            start: 6.66,
             range: {
               min: 0,
               max: 100
@@ -661,17 +661,16 @@ d3.selection.prototype.chartRev = function init(options) {
       let trackStreamsVal = +vals.trackVal;
       let trackStreamsPercent = +vals.trackVal *0.01;
       let trackStreamsNum = trackStreamsPercent*5000000000
-      let totalStreamsVal = +vals.totVal;
-      let totalStreamsPercent = +vals.totVal *0.01;
-      let totalStreamsNum = totalStreamsPercent*10000000000
-      let trackProportion = trackStreamsNum/totalStreamsNum
-
-      //console.log(trackProportion)
+      let otherStreamsVal = +vals.totVal;
+      let otherStreamsPercent = +vals.totVal *0.01;
+      let otherStreamsNum = otherStreamsPercent*10000000000
+      let totalStreamsNum = trackStreamsNum + otherStreamsNum
+      let streamProportion = trackStreamsNum/totalStreamsNum
 
       // text
       $ArtistshareText.text(`${Math.round(+vals.artistVal)}%`)
       $TrackstreamsText.text(`${formatComma(Math.round(trackStreamsNum))}`)
-      $TotalOtherStreamsText.text(`${formatComma(Math.round(totalStreamsNum))}`)
+      $TotalOtherStreamsText.text(`${formatComma(Math.round(otherStreamsNum))}`)
 
       // rects
       $otherTracksRect
@@ -696,10 +695,12 @@ d3.selection.prototype.chartRev = function init(options) {
           else { return dollarWidth*21*dspPercent}
         })
         .attr("x", function() {
-          return dollarWidth*21*trackProportion + dollarWidth/2
+          if (otherStreamsVal == 0) { return 0 }
+          else { return dollarWidth*20 - dollarWidth*21*streamProportion }
         })
         .attr("width", function() {
-          return dollarWidth*20 - dollarWidth*21*trackProportion - dollarWidth/2
+          if (otherStreamsVal == 0) { return dollarWidth*20 }
+          else { return dollarWidth*21*streamProportion }
         })
       
       $distTracksRect
@@ -717,10 +718,12 @@ d3.selection.prototype.chartRev = function init(options) {
           else { return artistOffsetHeight }
         })
         .attr("x", function() {
-          return dollarWidth*21*trackProportion + dollarWidth/2
+          if (otherStreamsVal == 0) { return 0 }
+          else { return dollarWidth*20 - dollarWidth*21*streamProportion }
         })
         .attr("width", function() {
-          return dollarWidth*20 - dollarWidth*21*trackProportion - dollarWidth/2
+          if (otherStreamsVal == 0) { return dollarWidth*20 }
+          else { return dollarWidth*21*streamProportion }
         })
 
     }
@@ -763,7 +766,6 @@ d3.selection.prototype.chartRev = function init(options) {
           selector: '#triggerDiv3',
           offset: 0.4,
           enter: function(el) {
-              console.log("enter")
             d3.selectAll("#coinPath3, #coinImg3").transition()
               .delay(200)
               .duration(500)

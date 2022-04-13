@@ -159,7 +159,6 @@ d3.selection.prototype.chartRect = function init(options) {
             selector: '#triggerDiv2',
             offset: 0.4,
             enter: function(el) {
-                console.log("enter")
               d3.selectAll("#coinPath2, #coinImg2").transition()
                 .delay(200)
                 .duration(500)

@@ -158,7 +158,6 @@ function drawPath(path) {
         .attr("stroke-dashoffset", length)
         .transition()
         .delay(function() {
-            console.log(path)
             if (path == 1) { return 0}
             else { return 500 }
         })
@@ -166,15 +165,13 @@ function drawPath(path) {
         .attr("stroke-dashoffset", 0)
         .duration(length)
         .on("end", function() {
-                console.log(path, "yup")
-                d3.selectAll(`.container-${path-1} #graph svg`).transition()
-                    .delay(0)
-                    .duration(0)
+                d3.selectAll(`.container-${path-1} #graph svg`)
+                    .style("opacity", 1)
+
+                d3.selectAll(`.legend-1`)
                     .style("opacity", 1)
                 
-                d3.select(`.container-${path-1} #graph`).transition()
-                    .delay(0)
-                    .duration(0)
+                d3.select(`.container-${path-1} #graph`)
                     .style("border", "5px solid #5552CF")
                     .style("box-shadow", "0 0 20px #5552CF")
                     .style("animation", "flickerBorder 3s linear 1 1s")
