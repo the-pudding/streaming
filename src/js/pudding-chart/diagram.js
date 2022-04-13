@@ -274,8 +274,9 @@ d3.selection.prototype.chartDiagram = function init(options) {
         deezer_params = {width:iconWidth, height:iconWidth,x:width-iconWidth_6_4,y:height-iconWidth_3_4};
         dist_text_params = {x:distributor_params.x + distributor_params.width/2, y:distributor_params.y+distributor_params.height/2 + iconWidth_1_4};
         artist_text_params = {x:artist_params.x + iconWidth/2, y:artist_params.y+artist_params.height/2 + iconWidth_1_4};
-        streaming_text_params = {x:deezer_params.x + iconWidth + MARGIN_LEFT, y:deezer_params.y+deezer_params.height/2 + iconWidth_1_4};
+        streaming_text_params = {x:spotify_params.x + MARGIN_RIGHT + MARGIN_LEFT + iconWidth/2, y:deezer_params.y+deezer_params.height/2 + iconWidth_1_4};
 
+        console.log(width-iconWidth_6_4, spotify_params.x)
 
         data_music_notes = [
             {label:"spotify",
