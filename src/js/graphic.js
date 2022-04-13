@@ -4,6 +4,7 @@ import coinPathFunc from './coin-path';
 import './pudding-chart/diagram';
 import './pudding-chart/rectChart';
 import './pudding-chart/revChart';
+import './pudding-chart/forceChart';
 
 /* DOM */
 let $chartDiagramContainer = d3.select('.diagram-container');
@@ -12,7 +13,7 @@ let $chartRevContainer = d3.select('.container-2 #graph');
 
 /* charts */
 let chartDiagram;
-let chartRect;
+let chartForce;
 let chartRev;
 let data;
 
@@ -21,8 +22,8 @@ function setupchartDiagram(data) {
 	chartDiagram = $chartDiagramContainer.datum(data).chartDiagram();
 }
 
-function setupchartRect(data) {
-	chartRect = $chartRectContainer.datum(data).chartRect();
+function setupchartForce(data) {
+	chartForce = $chartRectContainer.datum(data).chartForce();
 }
 
 function setupchartRev(data) {
@@ -44,7 +45,7 @@ function resize() {
 	
   	if (previousWidth !== width) {
 		chartDiagram.resize();
-		chartRect.resize();
+		chartForce.resize();
 		chartRev.resize();
 		// coinPath.remove();
 		// coinPathImg.transition().duration(0).remove();
@@ -54,7 +55,7 @@ function resize() {
 
 function init() {
 	setupchartDiagram(data);
-	setupchartRect(data);
+	setupchartForce(data);
 	setupchartRev(data);
 	//setupCoinPath()
 	resize();
