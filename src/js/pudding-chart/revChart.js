@@ -21,6 +21,7 @@ d3.selection.prototype.chartRev = function init(options) {
     let $axis = null;
     let $vis = null;
     let $container = d3.select('.container-2 #graph');
+    let $sections = d3.select('.container-2 #sections');
     let $otherBlock = d3.select("#other-block")
     let $artistBlock = d3.select("#artist-block")
     let $distBlock = d3.select("#dist-block")
@@ -31,6 +32,7 @@ d3.selection.prototype.chartRev = function init(options) {
     let $TotalOtherStreamsText = d3.select("#Totalstreams-text");
     let $TrackstreamsText = d3.select("#Trackstreams-text");
     let $ArtistshareText = d3.selectAll("#Artistshare-text");
+    let $controlsContainer = d3.select(".controls")
 
     // data
     let data = $chart.datum();
@@ -250,6 +252,9 @@ d3.selection.prototype.chartRev = function init(options) {
             .style("opacity", 0)
           $distBlock.transition().duration(transition_duration)
             .style("opacity", 0)
+          $controlsContainer.transition().duration(1000)
+            .style("top", "-10rem")
+          $sections.style("pointer-events", "auto")
         break;
       case 1:
         $otherTracksRect.transition().duration(transition_duration)
@@ -269,6 +274,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 0)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 2:
         $otherTracksRect.transition().duration(transition_duration)
@@ -288,6 +296,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 0)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 3:
         $otherTracksRect.transition().duration(transition_duration)
@@ -307,6 +318,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 0)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 4:
         $otherTracksRect.transition().duration(transition_duration)
@@ -326,6 +340,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 0)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 5:
         $otherTracksRect.transition().duration(transition_duration)
@@ -346,6 +363,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 0)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 6:
         $otherTracksRect.transition().duration(transition_duration)
@@ -366,7 +386,10 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
-          break;
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
+        break;
       case 7:
         $otherTracksRect.transition().duration(transition_duration)
           .attr("y", dollarWidth*7)
@@ -386,6 +409,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 8:
         $otherTracksRect.transition().duration(transition_duration)
@@ -406,6 +432,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 9:
         $otherTracksRect.transition().duration(transition_duration)
@@ -426,6 +455,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 10:
         $otherTracksRect.transition().duration(transition_duration)
@@ -446,6 +478,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 11:
         $otherTracksRect.transition().duration(transition_duration)
@@ -466,6 +501,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 12:
         $otherTracksRect.transition().duration(transition_duration)
@@ -488,6 +526,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 13:
         $otherTracksRect.transition().duration(transition_duration)
@@ -510,6 +551,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 14:
         $otherTracksRect.transition().duration(transition_duration)
@@ -534,6 +578,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 15:
         $otherTracksRect.transition().duration(transition_duration)
@@ -554,6 +601,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 16:
         $otherTracksRect.transition().duration(transition_duration)
@@ -576,6 +626,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 17:
         $otherTracksRect.transition().duration(transition_duration)
@@ -599,6 +652,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 18:
         $otherTracksRect.transition().duration(transition_duration)
@@ -622,6 +678,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "-10rem")
+        $sections.style("pointer-events", "auto")
         break;
       case 19:
         coinPathFunc.drawPath(4)
@@ -646,6 +705,9 @@ d3.selection.prototype.chartRev = function init(options) {
           .style("opacity", 1)
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("top", "3rem")
+        $sections.style("pointer-events", "none")
         break;
       }
     }
@@ -777,7 +839,24 @@ d3.selection.prototype.chartRev = function init(options) {
               .duration(500)
               .style("opacity", 1)
           }
-      })
+        })
+
+        enterView({
+          selector: '#subhed-4',
+          offset: 0.8,
+          enter: function(el) {
+            $controlsContainer.transition().duration(1000)
+              .style("top", "-10rem")
+          },
+          exit: function(el) {
+            $controlsContainer.transition().duration(1000)
+              .style("top", "3rem")
+          }
+        })
+
+        $controlsContainer.on("click", function() {
+          d3.select("#DSPrevenue .noUi-handle").style("animation-play-state", "paused")
+        })
 
         let gs2 = graphScroll()
             .container(d3.select('.container-2'))

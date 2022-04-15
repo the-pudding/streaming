@@ -179,7 +179,7 @@ p.highlight {
   margin: 0 auto;
   position: -webkit-sticky;
   position: sticky;
-  top: 100px;
+  top: 12rem;
   border: 5px solid $bg-purple;
   border-radius: 10px;
   box-shadow: none;
@@ -361,36 +361,54 @@ circle{
   fill: $green;
 
 .controls
+  position: fixed;
+  top: -10rem;
+  left: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   max-width: none;
   width: 100%;
   margin: 0 auto;
-  +mq('bp-3')
-    flex-direction: row;
-    max-width: 40rem;
+  background-color: rgba($dark-purple, 0.95);
+  padding: 1rem 2rem;
+  z-index: 999;
+  height: 14rem;
+  box-shadow: 0 4px 10px $dark-purple
+  +mq('bp-5')
+    height: 12rem;
+  +mq('bp-6')
+    height: 8.5rem;
 
 .controls .sliderContainer
-  width: 100%;
+  width: 50%;
   height: 10px;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem;
   margin-bottom: 0.5rem;
-  +mq('bp-3')
-    width: 50%;
-    margin-bottom: 1.5rem;
+  +mq('bp-6')
+    width: 25%;
 
 .details
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-.details p
+.sliderContainer label
   margin: 0;
   padding: 0;
+  font-size: 14px;
+  +mq('bp-3')
+    font-size: 16px;
+  +mq('bp-5')
+    font-size: 18px;
 
 .details span
   font-weight: 700;
+
+#DSPrevenue .noUi-handle
+  animation shake 1s
+  animation-iteration-count infinite
+  animation-play-state running
 
 @keyframes flicker {
 	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
@@ -415,4 +433,22 @@ circle{
 		border-color: rgba($purple, 0.4);
     box-shadow: 0 0 0px #5552CF;
     }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
+  }
 }

@@ -115,10 +115,10 @@ d3.selection.prototype.chartForce = function init(options) {
       updateChart(i) {
         switch (i){
           case 0:
-            text_premium.style("opacity", 0)
-            text_freemium.style("opacity", 0)
-            text_premium_num.style("opacity", 0)
-            text_freemium_num.style("opacity", 0)
+            text_premium.transition().duration(500).style("opacity", 0)
+            text_freemium.transition().duration(500).style("opacity", 0)
+            text_premium_num.transition().duration(500).style("opacity", 0)
+            text_freemium_num.transition().duration(500).style("opacity", 0)
             text_premium_num.text("45%")
             text_freemium_num.text("55%")
 
@@ -136,12 +136,13 @@ d3.selection.prototype.chartForce = function init(options) {
                 .force("collide", forceCollide)
                 .alphaTarget(0.5)
                 .restart()
+
               break;
           case 1:
-              text_premium.style("opacity", 1)
-              text_freemium.style("opacity", 1)
-              text_premium_num.style("opacity", 1)
-              text_freemium_num.style("opacity", 1)
+              text_premium.transition().duration(500).style("opacity", 1)
+              text_freemium.transition().duration(500).style("opacity", 1)
+              text_premium_num.transition().duration(500).style("opacity", 1)
+              text_freemium_num.transition().duration(500).style("opacity", 1)
               text_premium_num.text("45%")
               text_freemium_num.text("55%")
 
@@ -165,10 +166,10 @@ d3.selection.prototype.chartForce = function init(options) {
 
               break;
           case 2:
-            text_premium.style("opacity", 1)
-            text_freemium.style("opacity", 1)
-            text_premium_num.style("opacity", 1)
-            text_freemium_num.style("opacity", 1)
+            text_premium.transition().duration(500).style("opacity", 1)
+            text_freemium.transition().duration(500).style("opacity", 1)
+            text_premium_num.transition().duration(500).style("opacity", 1)
+            text_freemium_num.transition().duration(500).style("opacity", 1)
             text_premium_num.text("12x more revenue")
             text_freemium_num.text("")
 
