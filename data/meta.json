@@ -1,13 +1,13 @@
 {
 	"title": "How Artists Get Paid From Streaming",
 	"titleSpan": "How Artists Get Paid Fr<span id=coinSpan>o</span>m Streaming",
-	"description": "Sentence case dek goes down here. Modify these in data/meta.json.",
+	"description": "We explain how your money gets from you to a streaming platform, and finally to an artist.",
 	"site": "https://pudding.cool",
 	"siteName": "The Pudding",
-	"url": "https://pudding.cool/year/month/name/",
+	"url": "https://pudding.cool/2022/04/streaming/",
 	"keywords": "tk",
-	"imgFacebook": "https://pudding.cool/year/month/name/assets/social/social-facebook.jpg",
-	"imgTwitter": "https://pudding.cool/year/month/name/assets/social/social-twitter.jpg",
+	"imgFacebook": "https://pudding.cool/2022/04/streaming/assets/social/social-facebook.jpg",
+	"imgTwitter": "https://pudding.cool/2022/04/streaming/assets/social/social-twitter.jpg",
 	"author": {
 		"name": "Elio Quinton",
 		"url": "https://pudding.cool/author/elio",
