@@ -35,12 +35,12 @@ function resize() {
   	let previousWidth = 0;
   	const width = $body.node().offsetWidth;
 
-	coinPathFunc.setupPath(1);
-	coinPathFunc.setupPath(2);
-	coinPathFunc.setupPath(3);
-	coinPathFunc.setupPath(4);
+	coinPathFunc.calcPath(1);
+	coinPathFunc.calcPath(2);
+	coinPathFunc.calcPath(3);
+	coinPathFunc.calcPath(4);
 
-	coinPathFunc.drawPath(1);
+	coinPathFunc.setupPaths();
 	coinPathFunc.addCoin(1);
 	
   	if (previousWidth !== width) {
@@ -57,7 +57,6 @@ function init() {
 	setupchartDiagram(data);
 	setupchartForce(data);
 	setupchartRev(data);
-	//setupCoinPath()
 	resize();
 }
 

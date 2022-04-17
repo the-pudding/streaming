@@ -52,7 +52,7 @@ coinPathImg = $coinPathSVG
 		.tween("pathTween", function(){return pathTween(coinPath)})
 */
 
-function setupPath(path) {
+function calcPath(path) {
 
     $coinPathContainer.style('height', `${pageHeight+300}px`);
 
@@ -128,20 +128,24 @@ function setupPath(path) {
         coinPathData4.lineTo(coinPathW-sidePadding, endBottom+300)
     }
 
+    setupPaths()
+}
+
+function setupPaths() {
     $coinPath1
         .attr("d", coinPathData1)
         .attr("class", "coinPath-path")
-    
+
     $coinPath2
         .attr("d", coinPathData2)
         .attr("class", "coinPath-path")
         .style("opacity", 0)
-    
+
     $coinPath3
         .attr("d", coinPathData3)
         .attr("class", "coinPath-path")
         .style("opacity", 0)
-    
+
     $coinPath4
         .attr("d", coinPathData4)
         .attr("class", "coinPath-path")
@@ -234,4 +238,4 @@ function init(path) {
     })
 }
 
-export default { init, setupPath, drawPath, addCoin };
+export default { init, calcPath, setupPaths, drawPath, addCoin };
