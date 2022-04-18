@@ -33,8 +33,28 @@ let scrollyBlockHeight1 = d3.select('.container-0 #sections').node().offsetHeigh
 let scrollyBlockHeight2 = d3.select('.container-1 #sections').node().offsetHeight;
 let scrollyBlockHeight3 = d3.select('.container-2 #sections').node().offsetHeight;
 
-let lastScrollTop = 0;
-let scrollDirection;
+/* PATH DIMENSIONS */
+let horizLine1;
+let horizLine1_mid;
+let horizLine2;
+let horizLine2_mid;
+let horizLine3;
+let horizLine3_mid;
+let horizLine4;
+let horizLine4_mid;
+let horizLine5;
+let horizLine5_mid;
+let horizLine6;
+let horizLine6_mid;
+let horizLine7;
+let horizLine7_mid;
+let horizLine8;
+let horizLine8_mid;
+let end;
+let endBottom;
+let coinPathW;
+let coinPathH;
+let yPos;
 
 /*
 coinPathImg = $coinPathSVG
@@ -56,31 +76,34 @@ function calcPath(path) {
 
     $coinPathContainer.style('height', `${pageHeight+300}px`);
 
-    let coinPathW = $coinPathContainer.node().offsetWidth;
-    let coinPathH = $coinPathContainer.node().offsetHeight;
+    coinPathW = $coinPathContainer.node().offsetWidth;
+    coinPathH = $coinPathContainer.node().offsetHeight;
+
+    yPos = window.scrollY;
+    console.log(yPos)
     
     $coinPathSVG
 		.attr('width', coinPathW)
 		.attr('height', pageHeight+300);
 
-    let horizLine1 = $hedSpan.node().getBoundingClientRect();
-	let horizLine1_mid = horizLine1.top + horizLine1.height/2;
-	let horizLine2 = $subhed1.node().getBoundingClientRect();
-	let horizLine2_mid = horizLine2.top + horizLine2.height/2 - 50;
-	let horizLine3 = $chartDiagramContainer.node().getBoundingClientRect();
-	let horizLine3_mid = horizLine3.top + horizLine3.height/2;
-	let horizLine4 = $subhed2.node().getBoundingClientRect();
-	let horizLine4_mid = horizLine4.top + horizLine4.height/2 - 50;
-	let horizLine5 = $chartRectContainer.node().getBoundingClientRect();
-	let horizLine5_mid = horizLine5.top + horizLine5.height/2;
-	let horizLine6 = $subhed3.node().getBoundingClientRect();
-	let horizLine6_mid = horizLine6.top + horizLine6.height/2 - 50;
-	let horizLine7 = $chartRevContainer.node().getBoundingClientRect();
-	let horizLine7_mid = horizLine7.top + horizLine7.height/2;
-	let horizLine8 = $subhed4.node().getBoundingClientRect();
-	let horizLine8_mid = horizLine8.top + horizLine8.height/2;
-	let end = $footer.node().getBoundingClientRect();
-	let endBottom = end.bottom;
+    horizLine1 = $hedSpan.node().getBoundingClientRect();
+	horizLine1_mid = horizLine1.top + horizLine1.height/2;
+	horizLine2 = $subhed1.node().getBoundingClientRect();
+	horizLine2_mid = horizLine2.top + horizLine2.height/2 - 50;
+	horizLine3 = $chartDiagramContainer.node().getBoundingClientRect();
+	horizLine3_mid = horizLine3.top + horizLine3.height/2;
+	horizLine4 = $subhed2.node().getBoundingClientRect();
+	horizLine4_mid = horizLine4.top + horizLine4.height/2 - 50;
+	horizLine5 = $chartRectContainer.node().getBoundingClientRect();
+	horizLine5_mid = horizLine5.top + horizLine5.height/2;
+    horizLine6 = $subhed3.node().getBoundingClientRect();
+	horizLine6_mid = horizLine6.top + horizLine6.height/2 - 50;
+	horizLine7 = $chartRevContainer.node().getBoundingClientRect();
+	horizLine7_mid = horizLine7.top + horizLine7.height/2;
+	horizLine8 = $subhed4.node().getBoundingClientRect();
+	horizLine8_mid = horizLine8.top + horizLine8.height/2;
+	end = $footer.node().getBoundingClientRect();
+	endBottom = end.bottom;
 
     if (path == 1) {
         coinPathData1.moveTo(0, horizLine1_mid)
@@ -127,8 +150,6 @@ function calcPath(path) {
         coinPathData4.quadraticCurveTo(coinPathW-sidePadding, horizLine7_mid+scrollyBlockHeight3, coinPathW-sidePadding, horizLine7_mid+scrollyBlockHeight3+sidePadding)
         coinPathData4.lineTo(coinPathW-sidePadding, endBottom+300)
     }
-
-    setupPaths()
 }
 
 function setupPaths() {
@@ -155,6 +176,7 @@ function setupPaths() {
 function drawPath(path) {
     let $targetPath = d3.select(`#coinPath${path}`)
     let length = $targetPath.node().getTotalLength()
+    let currPath = path - 1;
 
     $targetPath.style("opacity", 1)
 
@@ -169,13 +191,13 @@ function drawPath(path) {
         .attr("stroke-dashoffset", 0)
         .duration(length)
         .on("end", function() {
-                d3.selectAll(`.container-${path-1} #graph svg`)
+                d3.selectAll(`.container-${currPath} #graph svg`)
                     .style("opacity", 1)
 
                 d3.selectAll(`.legend-1`)
                     .style("opacity", 1)
                 
-                d3.select(`.container-${path-1} #graph`)
+                d3.select(`.container-${currPath} #graph`)
                     .style("border", "5px solid #5552CF")
                     .style("box-shadow", "0 0 20px #5552CF")
                     .style("animation", "flickerBorder 3s linear 1 1s")
@@ -230,12 +252,12 @@ function rotateTween() {
 }
 
 function init(path) {
-    setupPath(path)
-    drawPath(path)
-
-    window.addEventListener("scroll", function() {
-        checkScrollDirection();
-    })
+    calcPath(1)
+    calcPath(2)
+    calcPath(3)
+    calcPath(4)
+    setupPaths()
+    drawPath(1)
 }
 
 export default { init, calcPath, setupPaths, drawPath, addCoin };

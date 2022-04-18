@@ -57,6 +57,7 @@ function init() {
 	setupchartDiagram(data);
 	setupchartForce(data);
 	setupchartRev(data);
+	coinPathFunc.init();
 	resize();
 }
 

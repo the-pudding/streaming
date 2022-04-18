@@ -253,7 +253,7 @@ d3.selection.prototype.chartRev = function init(options) {
           $distBlock.transition().duration(transition_duration)
             .style("opacity", 0)
           $controlsContainer.transition().duration(1000)
-            .style("top", "-10rem")
+            .style("bottom", "-10rem")
           $sections.style("pointer-events", "auto")
         break;
       case 1:
@@ -275,7 +275,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 2:
@@ -297,7 +297,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 3:
@@ -319,7 +319,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 4:
@@ -341,7 +341,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 5:
@@ -364,7 +364,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 6:
@@ -387,7 +387,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 7:
@@ -410,7 +410,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 8:
@@ -433,7 +433,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 9:
@@ -456,7 +456,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 10:
@@ -479,7 +479,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 11:
@@ -502,7 +502,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 0)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 12:
@@ -527,7 +527,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 13:
@@ -552,7 +552,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 14:
@@ -579,7 +579,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 15:
@@ -602,7 +602,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 16:
@@ -627,7 +627,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 17:
@@ -653,7 +653,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 18:
@@ -679,7 +679,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("top", "-10rem")
+          .style("bottom", "-10rem")
         $sections.style("pointer-events", "auto")
         break;
       case 19:
@@ -706,7 +706,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("top", "3rem")
+          .style("bottom", "0rem")
         $sections.style("pointer-events", "none")
         break;
       }
@@ -826,7 +826,7 @@ d3.selection.prototype.chartRev = function init(options) {
 
         enterView({
           selector: '#triggerDiv3',
-          offset: 0.4,
+          offset: 0,
           enter: function(el) {
             d3.selectAll("#coinPath3, #coinImg3").transition()
               .delay(200)
@@ -843,14 +843,14 @@ d3.selection.prototype.chartRev = function init(options) {
 
         enterView({
           selector: '#subhed-4',
-          offset: 0.8,
+          offset: 0.2,
           enter: function(el) {
             $controlsContainer.transition().duration(1000)
-              .style("top", "-10rem")
+              .style("bottom", "-10rem")
           },
           exit: function(el) {
             $controlsContainer.transition().duration(1000)
-              .style("top", "3rem")
+              .style("bottom", "0rem")
           }
         })
 

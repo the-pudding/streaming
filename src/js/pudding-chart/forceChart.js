@@ -86,7 +86,7 @@ d3.selection.prototype.chartForce = function init(options) {
 
         enterView({
           selector: '#triggerDiv2',
-          offset: 0.4,
+          offset: 0,
           enter: function(el) {
             d3.selectAll("#coinPath2, #coinImg2").transition()
               .delay(200)
@@ -202,6 +202,8 @@ d3.selection.prototype.chartForce = function init(options) {
               
             break;
           case 3:
+            coinPathFunc.drawPath(3)
+            coinPathFunc.addCoin(3);
             break;   
         }
       },
