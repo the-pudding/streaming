@@ -215,11 +215,11 @@ function addCoin(path) {
     let horizLine1_midW = horizLine1.left + horizLine1.width/2 - coinWidth/2;
 
     $targetCoin
-        .attr('xlink:href', './assets/images/money_neon.png')
-        .attr("width", coinWidth)
-        .attr("height", coinWidth)
-        .attr("x", horizLine1_midW)
-        .attr("y", horizLine1_midH)
+        .style("opacity", 1)
+        .style("width", `${coinWidth}px`)
+        .style("height", `${coinWidth}px`)
+        .style("top", `${horizLine1_midH}px`)
+        .style("left", `${horizLine1_midW}px`)
         .transition()
         .delay(2000)
         .duration(length)
@@ -233,13 +233,9 @@ function pathTween(path) {
 	return function(t){
 		let point = path.node().getPointAtLength(r(t)); // Get the next point along the path
 		d3.select(this) // Select the circle
-			.attr("x", point.x - coinWidth/2) // Set the x
-			.attr("y", point.y - coinWidth/2) // Set the y
-
-            // .transition()
-            // .duration(length*1.5)
-            // .ease(d3.easeLinear)
-            // .attrTween("transform", rotateTween)
+            .style("animation", "spin 0.5s linear infinite")
+			.style("left", `${point.x - coinWidth/2}px`) // Set the x
+			.style("top", `${point.y - coinWidth/2}px`) // Set the y
 	}
 }
 
