@@ -103,7 +103,7 @@ d3.selection.prototype.chartRect = function init(options) {
                 break;
             case 2: 
                 coinPathFunc.drawPath(3)
-                coinPathFunc.addCoin(3);
+                //coinPathFunc.addCoin(3);
                 break;
             case 3:
                 rect_rendering_options.rev_text = true; 

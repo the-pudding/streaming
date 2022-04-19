@@ -201,10 +201,13 @@ function drawPath(path) {
                     .style("border", "5px solid #5552CF")
                     .style("box-shadow", "0 0 20px #5552CF")
                     .style("animation", "flickerBorder 3s linear 1 1s")
+                
+                addCoin(path)
         })
 }
 
 function addCoin(path) {
+    console.log("running")
     let $targetCoin = d3.select(`#coinImg${path}`)
     let $targetPath = d3.select(`#coinPath${path}`)
 
@@ -229,7 +232,12 @@ function addCoin(path) {
 
 function pathTween(path) {
 	let length = path.node().getTotalLength(); // Get the length of the path
-	let r = d3.interpolate(length/5.125, length); //Set up interpolation from 0 to the path length
+    let r;
+    if (path === 1) {
+        r = d3.interpolate(length/5.125, length);  
+    } else {
+        r = d3.interpolate(0, length);
+    } //Set up interpolation from 0 to the path length
 	return function(t){
 		let point = path.node().getPointAtLength(r(t)); // Get the next point along the path
 		d3.select(this) // Select the circle
@@ -237,14 +245,6 @@ function pathTween(path) {
 			.style("left", `${point.x - coinWidth/2}px`) // Set the x
 			.style("top", `${point.y - coinWidth/2}px`) // Set the y
 	}
-}
-
-function rotateTween() {
-    let i = d3.interpolate(0, 360);
-    return function(t) {
-        console.log(`rotate(${i(t)})`)
-        return "rotate(" + i(t) + ")";
-    }
 }
 
 function init(path) {

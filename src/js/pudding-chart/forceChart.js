@@ -203,7 +203,7 @@ d3.selection.prototype.chartForce = function init(options) {
             break;
           case 3:
             coinPathFunc.drawPath(3)
-            coinPathFunc.addCoin(3);
+            //coinPathFunc.addCoin(3);
             break;   
         }
       },

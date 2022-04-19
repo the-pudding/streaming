@@ -228,7 +228,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
                 break;
             case 3:
                 coinPathFunc.drawPath(2)
-                coinPathFunc.addCoin(2);
+                //coinPathFunc.addCoin(2);
                 break;
           }
       },
