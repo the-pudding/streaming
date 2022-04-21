@@ -32,8 +32,10 @@ function setupchartRev(data) {
 
 function resize() {
 	const $body = d3.select("body");
-  	let previousWidth = 0;
-  	const width = $body.node().offsetWidth;
+	let previousWidth = 0;
+	const width = $body.node().offsetWidth;
+
+	coinPathFunc.resetPaths();
 
 	coinPathFunc.calcPath(1);
 	coinPathFunc.calcPath(2);
@@ -42,15 +44,15 @@ function resize() {
 
 	coinPathFunc.setupPaths();
 	//coinPathFunc.addCoin(1);
-	
-  	if (previousWidth !== width) {
+
+	if (previousWidth !== width) {
 		chartDiagram.resize();
 		chartForce.resize();
 		chartRev.resize();
 		// coinPath.remove();
 		// coinPathImg.transition().duration(0).remove();
 		// setupCoinPath()
-  	}
+	}
 }
 
 function init() {

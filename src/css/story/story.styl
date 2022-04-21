@@ -1,467 +1,446 @@
 /* CUSTOM STORY STYLE */
 body
-    background-color: $bg-purple;
-    color: $white;
-    font-family: $sans;
-    overflow-x: hidden;
+	overflow-x hidden
+	background-color $bg-purple
+	color $white
+	font-family $sans
 
-#content 
-    padding: 0 1rem;
-    position: relative;
+#content
+	position relative
+	padding 0 1rem
 
 #coinPath-Container
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 1;
+	position absolute
+	top 0
+	left 0
+	z-index 0
+	width 100%
+	pointer-events none
 
-.coinPath-path 
-  fill none
-  stroke $purple
-  stroke-width 3
+.coinPath-path
+	fill none
+	stroke $purple
+	stroke-width 3
 
 .coinImg
-  width: 60px;
-  height: 60px;
-  position: absolute;
-  opacity: 0;
-  animation: none;
+	position absolute
+	width 60px
+	height 60px
+	opacity 0
+	animation none
 
 h1
-    font-family: $sans-display;
-    text-transform: uppercase;
-    set-type-size(xxxxx-large, false);
-    line-height: 1;
-    font-weight: 300;
-    max-width: 30rem;
-    text-shadow: 0 0 20px $white;
-    animation: flicker 10s linear infinite;
+	text-transform uppercase
+	font-family $sans-display
+	set-type-size(xxxxx-large, false)
+	max-width 30rem
+	text-shadow 0 0 20px $white
+	font-weight 300
+	line-height 1
+	animation flicker 10s linear infinite
 
-h1:hover 
-    animation: flicker 10s linear infinite;
+h1:hover
+	animation flicker 10s linear infinite
 
 #coinSpan
-  color: $bg-purple
-  padding: 0 0.5rem;
-  opacity: 0;
+	padding 0 0.5rem
+	color $bg-purple
+	opacity 0
 
 .redSpan
-  background-color: $red;
-  font-weight: bold;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  box-decoration-break: clone;
+	padding 0.25rem 0.75rem
+	border-radius 1rem
+	background-color $red
+	box-decoration-break clone
+	font-weight bold
 
 .greenSpan
-  background-color: $green;
-  font-weight: bold;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  box-decoration-break: clone;
+	padding 0.25rem 0.75rem
+	border-radius 1rem
+	background-color $green
+	box-decoration-break clone
+	font-weight bold
 
 .purpleSpan
-  background-color: $purple;
-  color: $white;
-  font-weight: bold;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  box-decoration-break: clone;
+	padding 0.25rem 0.75rem
+	border-radius 1rem
+	background-color $purple
+	box-decoration-break clone
+	color $white
+	font-weight bold
 
 .blueSpan
-  background-color: $blue;
-  font-weight: bold;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  box-decoration-break: clone;
+	padding 0.25rem 0.75rem
+	border-radius 1rem
+	background-color $blue
+	box-decoration-break clone
+	font-weight bold
 
 .whiteSpan
-  background-color: $white;
-  border: 1px solid rgba($purple, 0.25)
-  font-weight: bold;
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  box-decoration-break: clone;
+	padding 0.25rem 0.75rem
+	border 1px solid rgba($purple, 0.25)
+	border-radius 1rem
+	background-color $white
+	box-decoration-break clone
+	font-weight bold
 
 // #dist_diag, .pudding-chart
-//   opacity: 0;
-
+// opacity: 0;
 h2
-    font-family: $sans-display;
-    text-transform: uppercase;
-    set-type-size(xxx-large, false);
-    line-height: 1;
-    font-weight: 300;
-    text-align: center;
-    padding: 6rem 0 0 0;
-    max-width: $column-width;
-    margin: 1rem auto;
+	text-transform uppercase
+	font-family $sans-display
+	set-type-size(xxx-large, false)
+	margin 1rem auto
+	padding 6rem 0 0 0
+	max-width $column-width
+	text-align center
+	font-weight 300
+	line-height 1
 
 h3
-    font-family: $sans-display;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: $dark-purple;
-    margin: 0 auto;
-    font-size: 18px;
+	margin 0 auto
+	color $dark-purple
+	text-transform uppercase
+	font-weight 500
+	font-size 18px
+	font-family $sans-display
 
-p 
-    max-width: $column-width;
-    margin 0 auto;
-    padding: 1rem 0;
+p
+	margin 0 auto
+	padding 1rem 0
+	max-width $column-width
 
-p.normal {
-  font-weight: normal;
-}
-p.highlight {
-  font-weight: bold;
-}
+p.normal
+	font-weight normal
 
-.text_div{
-  max-width: 700px;
-  margin: 0 auto;
-}
+p.highlight
+	font-weight bold
+
+.text_div
+	margin 0 auto
+	max-width 700px
 
 .text_div:last-of-type
-  margin-bottom: 10rem;
+	margin-bottom 10rem
 
-.bold{
-  font-weight: bold;
-}
+.bold
+	font-weight bold
 
-.title{
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #434148;
-	font-weight: bold;
-}
+.title
+	color #434148
+	font-weight bold
+	font-family 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
 
-.legend{
-	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: #434148;
-	font-weight: bold;
-}
+.legend
+	color #434148
+	font-weight bold
+	font-family 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif
 
-#container{
-  position: relative;
-}
+#container
+	position relative
 
 #sections
-  max-width 330px
-  margin 0 auto
-  color $dark-purple
-  position relative
-  z-index set-index('overlay')
-  +mq('bp-3')
-    max-width 400px
+	position relative
+	z-index set-index('overlay')
+	margin 0 auto
+	max-width 330px
+	color $dark-purple
 
+	+mq('bp-3')
+		max-width 400px
 
-#sections > div{
-  background: white;
-  opacity: .2;
-  margin-bottom: 600px;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 5px solid $purple;
-  box-shadow: 0 0 20px $purple;
-  z-index: set-index('overlay');
-}
-#sections > div:last-child{
-  margin-bottom: 30px;
-}
-#sections > div.graph-scroll-active{
-  opacity: 1;
-}
+#sections > div
+	z-index set-index('overlay')
+	margin-bottom 600px
+	padding 1rem
+	border 5px solid $purple
+	border-radius 10px
+	background white
+	box-shadow 0 0 20px $purple
+	opacity 0.2
+
+#sections > div:last-child
+	margin-bottom 30px
+
+#sections > div.graph-scroll-active
+	opacity 1
 
 #sections > .last-div
-  height 40vh
-  opacity 0
-  pointer-events none
+	height 40vh
+	opacity 0
+	pointer-events none
 
 #sections > .last-div.graph-scroll-active
-  opacity 0
+	opacity 0
 
-#graph{
-  max-width: $column-width;
-  margin: 0 auto;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 6rem;
-  border: 5px solid $purple;
-  border-radius: 10px;
-  box-shadow: 0 0 20px $purple;
-  background-color: $dark-purple;
-  z-index: 1;
-}
+#graph
+	position -webkit-sticky
+	position sticky
+	top 6rem
+	z-index 1
+	margin 0 auto
+	max-width $column-width
+	border 5px solid $purple
+	border-radius 10px
+	background-color $dark-purple
+	box-shadow 0 0 20px $purple
 
-.flickerClass {
-  border: 5px solid $purple;
-  box-shadow: 0 0 20px $purple;
-  animation: flickerBorder 6s linear 3 1s;
-}
+.flickerClass
+	border 5px solid $purple
+	box-shadow 0 0 20px $purple
+	animation flickerBorder 6s linear 3 1s
 
-.diagram-container 
-  height 34rem;
-  max-height 34rem
+.diagram-container
+	max-height 34rem
+	height 34rem
 
 #dist_text, #artist_text, #streamers_text, #freemium_text, #premium_text
-  fill: $white;
-  font-family: $poppins
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 14px;
+	text-transform uppercase
+	font-weight 500
+	font-size 14px
+	font-family $poppins
+	fill $white
 
-#premium_num,  #freemium_num
-  fill $white
-  font-family $poppins
-  text-transform uppercase
-  font-weight 700
-  font-size 16px
-  +mq('bp-3')
-    font-size 20px
+#premium_num, #freemium_num
+	text-transform uppercase
+	font-weight 700
+	font-size 16px
+	font-family $poppins
+	fill $white
+
+	+mq('bp-3')
+		font-size 20px
 
 #premium_text, #premium_num
-  fill: $green
+	fill $green
 
 .container-1 #graph
-  height 30rem;
-  max-height 30rem
+	max-height 30rem
+	height 30rem
 
 .axis-label
-    fill: $white;
-    text-transform: uppercase;
-    font-family: $sans-display;
-    font-weight: 500;
-    font-size: 14px;
+	text-transform uppercase
+	font-weight 500
+	font-size 14px
+	font-family $sans-display
+	fill $white
 
 .tick line
-    stroke: $white;
-    opacity: 0.25;
+	opacity 0.25
+	stroke $white
 
-.tick text 
-    font-size: 14px;
+.tick text
+	font-size 14px
 
 .domain
-    display: none;   
+	display none
 
 .circle-premium
-    fill: $green;
-    filter: drop-shadow(0 0 2px $green);
+	filter drop-shadow(0 0 2px $green)
+	fill $green
 
 .circle-freemium
-    fill: $white;
-    filter: drop-shadow(0 0 2px $white);
+	filter drop-shadow(0 0 2px $white)
+	fill $white
 
 .legend-1
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    padding: 2rem 0 0 75px;
+	display flex
+	flex-direction row
+	justify-content start
+	padding 2rem 0 0 75px
 
-.legend-1 p    
-    font-family: $poppins;
-    text-transform: uppercase;
-    font-weight: 500;
-    font-size: 14px;
-    color: $white;
-    margin: 0;
-    padding: 0 1rem 0 0;
+.legend-1 p
+	margin 0
+	padding 0 1rem 0 0
+	color $white
+	text-transform uppercase
+	font-weight 500
+	font-size 14px
+	font-family $poppins
 
 .preLegend::before
-    display: inline-block;
-    width:12px;
-    height:12px;
-    content: '';
-    background-color: $green;
-    margin: 0 4px;
-    box-shadow: 0 0 10px $green;
+	display inline-block
+	margin 0 4px
+	width 12px
+	height 12px
+	background-color $green
+	box-shadow 0 0 10px $green
+	content ''
 
 .freeLegend::before
-    display: inline-block;
-    width:12px;
-    height:12px;
-    content: '';
-    background-color: $white;
-    margin: 0 4px;
-    box-shadow: 0 0 10px $white;
+	display inline-block
+	margin 0 4px
+	width 12px
+	height 12px
+	background-color $white
+	box-shadow 0 0 10px $white
+	content ''
 
-circle{
-  fill: steelblue;
-}
+circle
+	fill steelblue
 
-.mono{
-  font-family: monospace;
-}
+.mono
+	font-family monospace
 
-/*svg{
+/* svg{
   background-color: #efefef;
-}*/
-
+} */
 .container-2 #graph
-  display: flex;
-  flex-direction: column;
+	display flex
+	flex-direction column
 
 .container-2 #graph .legend
-  padding: 1rem 1.5rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  order: 2;
-  flex-wrap: wrap;
+	display flex
+	flex-direction row
+	order 2
+	flex-wrap wrap
+	justify-content space-between
+	padding 1rem 1.5rem
 
 .legend-block
-  display: flex;
-  flex-direction: row;
-  width: 33.33%;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  padding: 0.5rem;
+	display flex
+	flex-direction row
+	justify-content center
+	align-items center
+	padding 0.5rem
+	width 33.33%
+	opacity 0
 
-.legend-block p 
-  margin: 0;
-  padding: 0;
-  width: 33.33%;
-  color: $white;
-  font-family: $poppins;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 500;
-  +mq('bp-3')
-    font-size: 14px
+.legend-block p
+	margin 0
+	padding 0
+	width 33.33%
+	color $white
+	text-transform uppercase
+	font-weight 500
+	font-size 12px
+	font-family $poppins
+
+	+mq('bp-3')
+		font-size 14px
 
 .legend-circle
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-image: url("/assets/images/dollar_sign.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  margin-right: 0.5rem;
-  +mq('bp-3')
-    width: 25px;
-    height: 25px;
+	margin-right 0.5rem
+	width 20px
+	height 20px
+	border-radius 50%
+	background-image url('/assets/images/dollar_sign.png')
+	background-position center
+	background-size contain
+	background-repeat no-repeat
+
+	+mq('bp-3')
+		width 25px
+		height 25px
 
 .legend-circle.other
-  background-color: $white;
-  box-shadow: 0 0 10px $white;
+	background-color $white
+	box-shadow 0 0 10px $white
 
 .legend-circle.artist
-  background-color: $green;
-  box-shadow: 0 0 10px $green;
+	background-color $green
+	box-shadow 0 0 10px $green
 
 .legend-circle.dist
-  background-color: $blue;
-  box-shadow: 0 0 10px $blue;
+	background-color $blue
+	box-shadow 0 0 10px $blue
 
 #dsp_share
-  fill: $red;
+	fill $red
 
 #other_tracks
-  fill: $white;
+	fill $white
 
 #distributor_share
-  fill: $blue;
+	fill $blue
 
-#artist_share 
-  fill: $green;
+#artist_share
+	fill $green
 
 .controls
-  position: fixed;
-  bottom: -20rem;
-  left: 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: none;
-  width: 100%;
-  margin: 0 auto;
-  background-color: rgba($dark-purple, 0.95);
-  padding: 1rem 2rem;
-  z-index: 999;
-  height: 14rem;
-  box-shadow: 0 4px 10px $dark-purple
-  +mq('bp-5')
-    height: 12rem;
-  +mq('bp-6')
-    height: 8.5rem;
+	position fixed
+	bottom -20rem
+	left 0
+	z-index 999
+	display flex
+	flex-direction row
+	flex-wrap wrap
+	margin 0 auto
+	padding 1rem 2rem
+	max-width none
+	width 100%
+	height 14rem
+	background-color rgba($dark-purple, 0.95)
+	box-shadow 0 4px 10px $dark-purple
+
+	+mq('bp-5')
+		height 12rem
+
+	+mq('bp-6')
+		height 8.5rem
 
 .controls .sliderContainer
-  width: 50%;
-  height: 10px;
-  padding: 2rem 1.5rem;
-  margin-bottom: 0.5rem;
-  +mq('bp-6')
-    width: 25%;
+	margin-bottom 0.5rem
+	padding 2rem 1.5rem
+	width 50%
+	height 10px
+
+	+mq('bp-6')
+		width 25%
 
 .details
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+	display flex
+	flex-direction row
+	justify-content space-between
 
 .sliderContainer label
-  margin: 0;
-  padding: 0;
-  font-size: 14px;
-  +mq('bp-3')
-    font-size: 16px;
-  +mq('bp-5')
-    font-size: 18px;
+	margin 0
+	padding 0
+	font-size 14px
+
+	+mq('bp-3')
+		font-size 16px
+
+	+mq('bp-5')
+		font-size 18px
 
 .details span
-  font-weight: 700;
+	font-weight 700
 
 #DSPrevenue .noUi-handle
-  animation shake 1s
-  animation-iteration-count infinite
-  animation-play-state running
+	animation shake 1s
+	animation-play-state running
+	animation-iteration-count infinite
 
-@keyframes flicker {
-	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-		//text-shadow: none;
-    opacity: .99;
-		
-	}
-	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-		opacity: 0.4;
-	
-    }
-}
+@keyframes flicker
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%
+		opacity 0.99
 
-@keyframes flickerBorder {
-	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
-		//text-shadow: none;
-    border-color: rgba($purple, 0.99);
-    box-shadow: 0 0 20px #5552CF;
-		
-	}
-	20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
-		border-color: rgba($purple, 0.4);
-    box-shadow: 0 0 0px #5552CF;
-    }
-}
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999%
+		opacity 0.4
 
-@keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
-  
-  20%, 80% {
-    transform: translate3d(-1px, 0, 0);
-  }
+@keyframes flickerBorder
+	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%
+		border-color rgba($purple, 0.99)
+		box-shadow 0 0 20px #5552CF
 
-  30%, 50%, 70% {
-    transform: translate3d(-2px, 0, 0);
-  }
+	20%, 21.999%, 63%, 63.999%, 65%, 69.999%
+		border-color rgba($purple, 0.4)
+		box-shadow 0 0 0px #5552CF
 
-  40%, 60% {
-    transform: translate3d(2px, 0, 0);
-  }
-}
+@keyframes shake
+	10%, 90%
+		transform translate3d(-1px, 0, 0)
 
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
+	20%, 80%
+		transform translate3d(-1px, 0, 0)
+
+	30%, 50%, 70%
+		transform translate3d(-2px, 0, 0)
+
+	40%, 60%
+		transform translate3d(2px, 0, 0)
+
+@keyframes spin
+	100%
+		transform rotate(360deg)
