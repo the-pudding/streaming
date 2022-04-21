@@ -87,7 +87,6 @@ function calcPath(path) {
 	coinPathH = $coinPathContainer.node().offsetHeight;
 
 	yPos = window.scrollY;
-	console.log(yPos)
 
 	$coinPathSVG
 		.attr('width', coinPathW)

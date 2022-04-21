@@ -61,6 +61,10 @@ function init() {
 	setupchartRev(data);
 	coinPathFunc.init();
 	resize();
+	addEventListener("beforeunload", () => {
+		window.scrollTo(0, 0);
+	});
+
 }
 
 export default { init, resize };
