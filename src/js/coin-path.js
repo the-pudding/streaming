@@ -174,6 +174,11 @@ function setupPaths() {
 }
 
 function drawPath(path) {
+    d3.selectAll("#coinPath-Container").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 1)
+              
     let $targetPath = d3.select(`#coinPath${path}`)
     let length = $targetPath.node().getTotalLength()
     let currPath = path - 1;
@@ -191,16 +196,11 @@ function drawPath(path) {
         .attr("stroke-dashoffset", 0)
         .duration(length)
         .on("end", function() {
-                d3.selectAll(`.container-${currPath} #graph svg`)
-                    .style("opacity", 1)
-
-                d3.selectAll(`.legend-1`)
-                    .style("opacity", 1)
-                
-                d3.select(`.container-${currPath} #graph`)
-                    .style("border", "5px solid #5552CF")
-                    .style("box-shadow", "0 0 20px #5552CF")
-                    .style("animation", "flickerBorder 3s linear 1 1s")
+                console.log("end")
+                // d3.select(`.container-${currPath} #graph`)
+                //     .style("border", "5px solid #5552CF")
+                //     .style("box-shadow", "0 0 20px #5552CF")
+                //     .style("animation", "flickerBorder 3s linear 1 1s")
                 
                 addCoin(path)
         })
@@ -227,13 +227,13 @@ function addCoin(path) {
         .delay(2000)
         .duration(length)
         .ease(d3.easeLinear)
-        .tween("pathTween", function(){return pathTween($targetPath)})
+        .tween("pathTween", function(){return pathTween($targetPath, path)})
 }
 
-function pathTween(path) {
+function pathTween(path, pathNum) {
 	let length = path.node().getTotalLength(); // Get the length of the path
     let r;
-    if (path === 1) {
+    if (pathNum === 1) {
         r = d3.interpolate(length/5.125, length);  
     } else {
         r = d3.interpolate(0, length);

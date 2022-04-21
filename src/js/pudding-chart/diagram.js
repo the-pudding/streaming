@@ -170,13 +170,13 @@ d3.selection.prototype.chartDiagram = function init(options) {
           selector: '#triggerDiv1',
           offset: 0,
           enter: function(el) {
-            d3.selectAll("#coinPath1,#coinImg1").transition()
+            d3.selectAll("#coinPath-Container").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 0)
           },
           exit: function(el) {
-            d3.selectAll("#coinPath1").transition()
+            d3.selectAll("#coinPath-Container").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 1)

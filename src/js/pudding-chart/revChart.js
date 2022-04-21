@@ -828,13 +828,13 @@ d3.selection.prototype.chartRev = function init(options) {
           selector: '#triggerDiv3',
           offset: 0,
           enter: function(el) {
-            d3.selectAll("#coinPath3, #coinImg3").transition()
+            d3.selectAll("#coinPath-Container").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 0)
           },
           exit: function(el) {
-            d3.selectAll("#coinPath3").transition()
+            d3.selectAll("#coinPath-Container").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 1)

@@ -159,13 +159,13 @@ d3.selection.prototype.chartRect = function init(options) {
             selector: '#triggerDiv2',
             offset: 0.4,
             enter: function(el) {
-              d3.selectAll("#coinPath2, #coinImg2").transition()
+              d3.selectAll("#coinPath-Container").transition()
                 .delay(200)
                 .duration(500)
                 .style("opacity", 0)
             },
             exit: function(el) {
-              d3.selectAll("#coinPath2").transition()
+              d3.selectAll("#coinPath-Container").transition()
                 .delay(200)
                 .duration(500)
                 .style("opacity", 1)
