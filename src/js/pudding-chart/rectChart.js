@@ -157,7 +157,7 @@ d3.selection.prototype.chartRect = function init(options) {
 
         enterView({
             selector: '#triggerDiv2',
-            offset: 0.4,
+            offset: 0.5,
             enter: function(el) {
               d3.selectAll("#coinPath-Container").transition()
                 .delay(200)

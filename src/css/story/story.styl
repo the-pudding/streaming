@@ -42,11 +42,6 @@ h1
 h1:hover
 	animation flicker 10s linear infinite
 
-#coinSpan
-	padding 0 0.5rem
-	color $bg-purple
-	opacity 0
-
 .redSpan
 	padding 0.25rem 0.75rem
 	border-radius 1rem
@@ -234,6 +229,13 @@ p.highlight
 
 .domain
 	display none
+
+.bigCircle
+	stroke $purple
+	stroke-width 2px
+	fill rgba($white, 0.1)
+	stroke-dasharray 5,5
+	//animation dash 3s infinite
 
 .circle-premium
 	filter drop-shadow(0 0 2px $green)
@@ -441,6 +443,14 @@ circle
 	40%, 60%
 		transform translate3d(2px, 0, 0)
 
-@keyframes spin
+@keyframes dash
+	0%
+		stroke-dasharray 5, 5
+		stroke-dashoffset 0%
+	50%
+		stroke-dasharray 5, 5
+		stroke-dashoffset 100%
 	100%
-		transform rotate(360deg)
+		stroke-dasharray 5, 5
+		stroke-dashoffset 0%
+

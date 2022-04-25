@@ -2,6 +2,7 @@
 import { graphScroll } from '../graph-scroll';
 import coinPathFunc from '../coin-path';
 import enterView from 'enter-view';
+import { delay } from 'lodash';
 
 /*
  USAGE (example: line chart)
@@ -25,6 +26,8 @@ d3.selection.prototype.chartForce = function init(options) {
     let text_freemium;
     let text_premium_num;
     let text_freemium_num;
+    let fCircle;
+    let pCircle;
 
     // data
     let data = $chart.datum();
@@ -79,22 +82,20 @@ d3.selection.prototype.chartForce = function init(options) {
         // setup viz group
         $vis = $svg.append('g').attr('class', 'g-vis');
 
-        $circleGroup = $vis.append('g').attr('class', 'g-vis');
-
         Chart.render();
         Chart.resize();
 
         enterView({
           selector: '#triggerDiv2',
-          offset: 0,
+          offset: 0.4,
           enter: function(el) {
-            d3.selectAll("#coinPath-Container").transition()
+            d3.selectAll("#coinGroup2, #coinImg2").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 0)
           },
           exit: function(el) {
-            d3.selectAll("#coinPath-Container").transition()
+            d3.selectAll("#coinGroup2, #coinImg2").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 1)
@@ -126,18 +127,21 @@ d3.selection.prototype.chartForce = function init(options) {
                 .transition()
                 .duration(1000)
                 .attr("r", radius)
+            
+              fCircle.transition().duration(500).attr('r', 0)
+              pCircle.transition().duration(500).attr('r', 0)
 
-              forceX = d3.forceX(width/2).strength(0.05)
-              forceCollide = d3.forceCollide(radius*1.25)
+            forceX = d3.forceX(width/2).strength(0.05)
+            forceCollide = d3.forceCollide(radius*1.25)
 
-              simulation 
-                .force("x", forceX) 
-                .force("y", d3.forceY(height/2).strength(0.05)) 
-                .force("collide", forceCollide)
-                .alphaTarget(0.5)
-                .restart()
+            simulation 
+              .force("x", forceX) 
+              .force("y", d3.forceY(height/2).strength(0.05)) 
+              .force("collide", forceCollide)
+              .alphaTarget(0.5)
+              .restart()
 
-              break;
+            break;
           case 1:
               text_premium.transition().duration(500).style("opacity", 1)
               text_freemium.transition().duration(500).style("opacity", 1)
@@ -145,6 +149,9 @@ d3.selection.prototype.chartForce = function init(options) {
               text_freemium_num.transition().duration(500).style("opacity", 1)
               text_premium_num.text("45%")
               text_freemium_num.text("55%")
+
+              fCircle.transition().duration(500).delay(500).attr('r', width*0.55/2.65)
+              pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
 
               d3.selectAll(".circle-freemium, .circle-premium")
                 .transition()
@@ -172,6 +179,9 @@ d3.selection.prototype.chartForce = function init(options) {
             text_freemium_num.transition().duration(500).style("opacity", 1)
             text_premium_num.text("12x more revenue")
             text_freemium_num.text("")
+
+            fCircle.transition().duration(500).delay(500).attr('r', width*0.25/2.65/5)
+            pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
 
             d3.selectAll(".circle-freemium")
               .transition()
@@ -203,7 +213,6 @@ d3.selection.prototype.chartForce = function init(options) {
             break;
           case 3:
             coinPathFunc.drawPath(3)
-            //coinPathFunc.addCoin(3);
             break;   
         }
       },
@@ -236,19 +245,29 @@ d3.selection.prototype.chartForce = function init(options) {
         
         text_premium
           .attr('x',width*0.25)
-          .attr('y',height - 100);
+          .attr('y',height - 80);
         
         text_freemium
           .attr('x',width*0.75)
-          .attr('y',height - 100);
+          .attr('y',height - 80);
 
         text_premium_num
           .attr('x',width*0.25)
-          .attr('y',height - 80);
+          .attr('y',height - 60);
         
         text_freemium_num
           .attr('x',width*0.75)
-          .attr('y',height - 80);
+          .attr('y',height - 60);
+        
+        pCircle
+          .attr('cx', width*0.25) 
+          .attr('cy', height/2)
+          .attr('r', 0)
+        
+        fCircle
+          .attr('cx', width*0.75) 
+          .attr('cy', height/2)
+          .attr('r', 0)
         
         Chart.updateChart(currStep)
         
@@ -258,13 +277,14 @@ d3.selection.prototype.chartForce = function init(options) {
       render() {
         // offset chart for margins
         $vis.attr('transform', `translate(${MARGIN_LEFT}, ${MARGIN_TOP})`);
-
-        $circles = $circleGroup.selectAll(".circle")
-          .data(data)
-          .enter()
-          .append("circle")
-          .attr("class", d => `circle circle-${d.category}`)
-          .attr("id", d => `circle-${d.count}`)
+        
+        pCircle = $vis.append('circle')
+          .attr('class', 'bigCircle')
+          .attr('id', 'pCircle')
+      
+        fCircle = $vis.append('circle')
+          .attr('class', 'bigCircle')
+          .attr('id', 'fCircle')
 
         text_premium = $vis.append('text')
           .text("Premium")
@@ -293,6 +313,15 @@ d3.selection.prototype.chartForce = function init(options) {
           .attr('dominant-baseline','central')
           .attr('id',"freemium_num")
           .style("opacity", 0);
+        
+        $circleGroup = $vis.append('g').attr('class', 'g-circles');
+
+        $circles = $circleGroup.selectAll(".circle")
+          .data(data)
+          .enter()
+          .append("circle")
+          .attr("class", d => `circle circle-${d.category}`)
+          .attr("id", d => `circle-${d.count}`)
 
         return Chart;
       },

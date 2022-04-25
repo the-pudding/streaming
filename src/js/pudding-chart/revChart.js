@@ -826,15 +826,15 @@ d3.selection.prototype.chartRev = function init(options) {
 
         enterView({
           selector: '#triggerDiv3',
-          offset: 0,
+          offset: 0.4,
           enter: function(el) {
-            d3.selectAll("#coinPath-Container").transition()
+            d3.selectAll("#coinGroup3, #coinImg3").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 0)
           },
           exit: function(el) {
-            d3.selectAll("#coinPath-Container").transition()
+            d3.selectAll("#coinGroup3, #coinImg3").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 1)
@@ -842,7 +842,7 @@ d3.selection.prototype.chartRev = function init(options) {
         })
 
         enterView({
-          selector: '#subhed-4',
+          selector: '.pudding-footer',
           offset: 0.2,
           enter: function(el) {
             $controlsContainer.transition().duration(1000)

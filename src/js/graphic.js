@@ -17,6 +17,8 @@ let chartForce;
 let chartRev;
 let data;
 
+let lastScrollTop = 0;
+
 
 function setupchartDiagram(data) {
 	chartDiagram = $chartDiagramContainer.datum(data).chartDiagram();
@@ -28,6 +30,15 @@ function setupchartForce(data) {
 
 function setupchartRev(data) {
 	chartRev = $chartRevContainer.datum(data).chartRev();
+}
+
+function getScrollDirection() {
+	let st = window.pageYOffset || document.documentElement.scrollTop;
+	if (st > lastScrollTop) {
+		console.log("down")
+	} else {
+		console.log("down")
+	}
 }
 
 function resize() {
@@ -49,22 +60,24 @@ function resize() {
 		chartDiagram.resize();
 		chartForce.resize();
 		chartRev.resize();
-		// coinPath.remove();
-		// coinPathImg.transition().duration(0).remove();
-		// setupCoinPath()
 	}
 }
 
 function init() {
+	getScrollDirection();
+
 	setupchartDiagram(data);
 	setupchartForce(data);
 	setupchartRev(data);
-	coinPathFunc.init();
-	resize();
+
+	if (document.fonts.check("12px Poppins")) {
+		console.log(document.fonts.check("12px Poppins"))
+		coinPathFunc.init();
+		resize();
+	}
 	addEventListener("beforeunload", () => {
 		window.scrollTo(0, 0);
 	});
-
 }
 
 export default { init, resize };

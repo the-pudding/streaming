@@ -51,7 +51,7 @@ let horizLine7_mid;
 let horizLine8;
 let horizLine8_mid;
 let end;
-let endBottom;
+let endTop;
 let coinPathW;
 let coinPathH;
 let yPos;
@@ -86,8 +86,6 @@ function calcPath(path) {
 	coinPathW = $coinPathContainer.node().offsetWidth;
 	coinPathH = $coinPathContainer.node().offsetHeight;
 
-	yPos = window.scrollY;
-
 	$coinPathSVG
 		.attr('width', coinPathW)
 		.attr('height', pageHeight + 300);
@@ -109,7 +107,7 @@ function calcPath(path) {
 	horizLine8 = $subhed4.node().getBoundingClientRect();
 	horizLine8_mid = horizLine8.top + horizLine8.height / 2;
 	end = $footer.node().getBoundingClientRect();
-	endBottom = end.bottom;
+	endTop = end.top;
 
 	if (path == 1) {
 		coinPathData1.moveTo(0, horizLine1_mid)
@@ -154,7 +152,7 @@ function calcPath(path) {
 		coinPathData4.moveTo(coinPathW / 2, horizLine7_mid + scrollyBlockHeight3)
 		coinPathData4.lineTo(coinPathW - sidePadding - sidePadding, horizLine7_mid + scrollyBlockHeight3)
 		coinPathData4.quadraticCurveTo(coinPathW - sidePadding, horizLine7_mid + scrollyBlockHeight3, coinPathW - sidePadding, horizLine7_mid + scrollyBlockHeight3 + sidePadding)
-		coinPathData4.lineTo(coinPathW - sidePadding, endBottom + 300)
+		coinPathData4.lineTo(coinPathW - sidePadding, endTop + coinPathW)
 	}
 }
 
@@ -180,7 +178,7 @@ function setupPaths() {
 }
 
 function drawPath(path) {
-	d3.selectAll("#coinPath-Container").transition()
+	d3.selectAll(`#coinGroup${path}`).transition()
 		.delay(200)
 		.duration(500)
 		.style("opacity", 1)
@@ -202,18 +200,11 @@ function drawPath(path) {
 		.attr("stroke-dashoffset", 0)
 		.duration(length)
 		.on("end", function () {
-			console.log("end")
-			// d3.select(`.container-${currPath} #graph`)
-			//     .style("border", "5px solid #5552CF")
-			//     .style("box-shadow", "0 0 20px #5552CF")
-			//     .style("animation", "flickerBorder 3s linear 1 1s")
-
 			addCoin(path)
 		})
 }
 
 function addCoin(path) {
-	console.log("running")
 	let $targetCoin = d3.select(`#coinImg${path}`)
 	let $targetPath = d3.select(`#coinPath${path}`)
 
@@ -228,22 +219,21 @@ function addCoin(path) {
 		.style("width", `${coinWidth}px`)
 		.style("height", `${coinWidth}px`)
 		.style("top", `${horizLine1_midH}px`)
-		.style("left", `${horizLine1_midW}px`)
+		.style("left", `${-coinWidth*2}px`)
 		.transition()
-		.delay(2000)
+		.delay(500)
 		.duration(length)
 		.ease(d3.easeLinear)
 		.tween("pathTween", function () { return pathTween($targetPath, path) })
 }
 
 function pathTween(path, pathNum) {
+
+	console.log(path.node())
+
 	let length = path.node().getTotalLength(); // Get the length of the path
 	let r;
-	if (pathNum === 1) {
-		r = d3.interpolate(length / 5.125, length);
-	} else {
-		r = d3.interpolate(0, length);
-	} //Set up interpolation from 0 to the path length
+	r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
 	return function (t) {
 		let point = path.node().getPointAtLength(r(t)); // Get the next point along the path
 		d3.select(this) // Select the circle

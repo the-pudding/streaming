@@ -168,15 +168,15 @@ d3.selection.prototype.chartDiagram = function init(options) {
 
         enterView({
           selector: '#triggerDiv1',
-          offset: 0,
+          offset: 0.4,
           enter: function(el) {
-            d3.selectAll("#coinPath-Container").transition()
+            d3.selectAll("#coinGroup1, #coinImg1").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 0)
           },
           exit: function(el) {
-            d3.selectAll("#coinPath-Container").transition()
+            d3.selectAll("#coinGroup1, #coinImg1").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 1)
@@ -191,6 +191,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
             .offset(100)
             // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
             .on('active', function(i){
+               console.log(i)
                 Chart.updateDiagram(i);
                 Chart.toggleAnimations(i);
             });
@@ -227,7 +228,9 @@ d3.selection.prototype.chartDiagram = function init(options) {
                 animateMoney();
                 break;
             case 3:
-                coinPathFunc.drawPath(2)
+                setTimeout(function(){
+                  coinPathFunc.drawPath(2)
+                }, 500)
                 //coinPathFunc.addCoin(2);
                 break;
           }
