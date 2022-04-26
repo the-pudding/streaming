@@ -136,7 +136,7 @@ function calcPath(path) {
 		coinPathData4.moveTo(coinPathW / 2, horizLine7_mid + scrollyBlockHeight3)
 		coinPathData4.lineTo(coinPathW - sidePadding - sidePadding, horizLine7_mid + scrollyBlockHeight3)
 		coinPathData4.quadraticCurveTo(coinPathW - sidePadding, horizLine7_mid + scrollyBlockHeight3, coinPathW - sidePadding, horizLine7_mid + scrollyBlockHeight3 + sidePadding)
-		coinPathData4.lineTo(coinPathW - sidePadding, endTop + coinPathW)
+		coinPathData4.lineTo(coinPathW - sidePadding, endTop)
 	}
 }
 
@@ -184,7 +184,7 @@ function drawPath(path) {
 		.attr("stroke-dashoffset", 0)
 		.duration(length)
 		.on("end", function () {
-			addCoin(path)
+			if (path !== 4) { addCoin(path) }
 		})
 }
 
@@ -209,7 +209,6 @@ function addCoin(path) {
 		.duration(length)
 		.ease(d3.easeLinear)
 		.tween("pathTween", function () { return pathTween($targetPath, path) })
-		.on("end", console.log('Check'))
 }
 
 function pathTween(path) {
