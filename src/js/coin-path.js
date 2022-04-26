@@ -56,22 +56,6 @@ let coinPathW;
 let coinPathH;
 let yPos;
 
-/*
-coinPathImg = $coinPathSVG
-		.append("image")
-		.attr("id", "coin-img")
-		.attr('xlink:href', './assets/images/money_neon.png')
-		.attr("width", coinWidth)
-		.attr("height", coinWidth)
-		.attr("x", -coinWidth)
-		.attr("y", horizLine1_mid)
-		.transition()
-		.delay(500)
-		.duration(100000)
-		.ease(d3.easeLinear)
-		.tween("pathTween", function(){return pathTween(coinPath)})
-*/
-
 function resetPaths() {
 	coinPathData1 = d3.path();
 	coinPathData2 = d3.path();
@@ -225,11 +209,10 @@ function addCoin(path) {
 		.duration(length)
 		.ease(d3.easeLinear)
 		.tween("pathTween", function () { return pathTween($targetPath, path) })
+		.on("end", console.log('Check'))
 }
 
-function pathTween(path, pathNum) {
-
-	console.log(path.node())
+function pathTween(path) {
 
 	let length = path.node().getTotalLength(); // Get the length of the path
 	let r;

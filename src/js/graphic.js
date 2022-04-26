@@ -32,15 +32,6 @@ function setupchartRev(data) {
 	chartRev = $chartRevContainer.datum(data).chartRev();
 }
 
-function getScrollDirection() {
-	let st = window.pageYOffset || document.documentElement.scrollTop;
-	if (st > lastScrollTop) {
-		console.log("down")
-	} else {
-		console.log("down")
-	}
-}
-
 function resize() {
 	const $body = d3.select("body");
 	let previousWidth = 0;
@@ -64,14 +55,11 @@ function resize() {
 }
 
 function init() {
-	getScrollDirection();
-
 	setupchartDiagram(data);
 	setupchartForce(data);
 	setupchartRev(data);
 
 	if (document.fonts.check("12px Poppins")) {
-		console.log(document.fonts.check("12px Poppins"))
 		coinPathFunc.init();
 		resize();
 	}

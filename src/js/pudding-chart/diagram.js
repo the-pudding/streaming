@@ -67,7 +67,21 @@ d3.selection.prototype.chartDiagram = function init(options) {
     let $musicNotes = d3.selectAll('#music_notes');
     let $money = d3.selectAll('#diag_dist_dollars');
 
+    let lastScrollTop = 0;
+    let scrollDir;
+
     // helper functions
+    function getScrollDirection() {
+      let st = window.pageYOffset || document.documentElement.scrollTop;
+      //console.log(st, lastScrollTop)
+      if (st > lastScrollTop) {
+        scrollDir = "down"
+      } else {
+        scrollDir = "up"
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
+    }
+
     function animateMusic() {
         $musicNotes = $vis.append("g").attr("id","music_notes")
 
@@ -166,20 +180,41 @@ d3.selection.prototype.chartDiagram = function init(options) {
         Chart.render();
         Chart.resize();
 
+        document.addEventListener('scroll', function() {
+          getScrollDirection();
+        }, false)
+
         enterView({
           selector: '#triggerDiv1',
           offset: 0.4,
           enter: function(el) {
-            d3.selectAll("#coinGroup1, #coinImg1").transition()
+            d3.selectAll("#coinGroup1, #coinImgG1").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 0)
           },
           exit: function(el) {
-            d3.selectAll("#coinGroup1, #coinImg1").transition()
+            d3.selectAll("#coinGroup1, #coinImgG1").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 1)
+          }
+        })
+
+        enterView({
+          selector: '#lastDiv1',
+          offset: 1,
+          enter: function(el) {
+            d3.selectAll("#coinGroup2, #coinImgG2").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 1)
+          },
+          exit: function(el) {
+            d3.selectAll("#coinGroup2, #coinImgG2").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 0)
           }
         })
 
@@ -191,7 +226,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
             .offset(100)
             // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
             .on('active', function(i){
-               console.log(i)
+               //console.log(i, scrollDir)
                 Chart.updateDiagram(i);
                 Chart.toggleAnimations(i);
             });
@@ -211,6 +246,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
                 break;
             case 2:
               logo_label.transition().duration(500).style('opacity', 1)
+              break;
           }
       },
       toggleAnimations(i) {
@@ -231,7 +267,6 @@ d3.selection.prototype.chartDiagram = function init(options) {
                 setTimeout(function(){
                   coinPathFunc.drawPath(2)
                 }, 500)
-                //coinPathFunc.addCoin(2);
                 break;
           }
       },

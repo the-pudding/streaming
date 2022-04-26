@@ -828,16 +828,33 @@ d3.selection.prototype.chartRev = function init(options) {
           selector: '#triggerDiv3',
           offset: 0.4,
           enter: function(el) {
-            d3.selectAll("#coinGroup3, #coinImg3").transition()
+            d3.selectAll("#coinGroup3, #coinImgG3").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 0)
           },
           exit: function(el) {
-            d3.selectAll("#coinGroup3, #coinImg3").transition()
+            d3.selectAll("#coinGroup3, #coinImgG3").transition()
               .delay(200)
               .duration(500)
               .style("opacity", 1)
+          }
+        })
+
+        enterView({
+          selector: '#lastDiv3',
+          offset: 1,
+          enter: function(el) {
+            d3.selectAll("#coinGroup4, #coinImgG4").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 1)
+          },
+          exit: function(el) {
+            d3.selectAll("#coinGroup4, #coinImgG4").transition()
+              .delay(200)
+              .duration(500)
+              .style("opacity", 0)
           }
         })
 
@@ -854,7 +871,7 @@ d3.selection.prototype.chartRev = function init(options) {
           }
         })
 
-        $controlsContainer.on("click", function() {
+        $controlsContainer.on("mousedown", function() {
           d3.select("#DSPrevenue .noUi-handle").style("animation-play-state", "paused")
         })
 
