@@ -2,9 +2,9 @@
 //import { graphScroll } from './graph-scroll';
 import coinPathFunc from './coin-path';
 import './pudding-chart/diagram';
-import './pudding-chart/rectChart';
 import './pudding-chart/revChart';
-import './pudding-chart/forceChart';
+// import './pudding-chart/forceChart';
+import './pudding-chart/userChart';
 
 /* DOM */
 let $chartDiagramContainer = d3.select('.diagram-container');
@@ -14,6 +14,7 @@ let $chartRevContainer = d3.select('.container-2 #graph');
 /* charts */
 let chartDiagram;
 let chartForce;
+let chartUser;
 let chartRev;
 let data;
 
@@ -26,6 +27,10 @@ function setupchartDiagram(data) {
 
 function setupchartForce(data) {
 	chartForce = $chartRectContainer.datum(data).chartForce();
+}
+
+function setupchartUser(data) {
+	chartUser = $chartRectContainer.datum(data).chartUser();
 }
 
 function setupchartRev(data) {
@@ -49,14 +54,16 @@ function resize() {
 
 	if (previousWidth !== width) {
 		chartDiagram.resize();
-		chartForce.resize();
+		//chartForce.resize();
+		chartUser.resize();
 		chartRev.resize();
 	}
 }
 
 function init() {
 	setupchartDiagram(data);
-	setupchartForce(data);
+	setupchartUser(data);
+	//setupchartForce(data);
 	setupchartRev(data);
 
 	if (document.fonts.check("12px Poppins")) {
