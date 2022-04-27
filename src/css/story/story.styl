@@ -5,9 +5,17 @@ body
 	color $white
 	font-family $sans
 
+html
+	//overflow-x hidden
+
 #content
 	position relative
 	padding 0 1rem
+	//overflow-x hidden
+
+#story-Container
+	position relative
+	z-index 100
 
 #coinPath-Container
 	position absolute
@@ -16,6 +24,9 @@ body
 	z-index 0
 	width 100%
 	pointer-events none
+	opacity 0
+	+mq('bp-4')
+		opacity 100
 
 .coinPath-path
 	fill none
@@ -32,12 +43,14 @@ body
 h1
 	text-transform uppercase
 	font-family $sans-display
-	set-type-size(xxxxx-large, false)
+	set-type-size(xxxx-large, false)
 	max-width 30rem
 	text-shadow 0 0 20px $white
 	font-weight 300
 	line-height 1
 	animation flicker 10s linear infinite
+	+mq('bp-4')
+		set-type-size(xxxxx-large, false)
 
 h1:hover
 	animation flicker 10s linear infinite
@@ -102,7 +115,7 @@ h3
 
 p
 	margin 0 auto
-	padding 1rem 0
+	padding 1rem 1rem
 	max-width $column-width
 
 p.normal
@@ -147,12 +160,15 @@ p.highlight
 #sections > div
 	z-index set-index('overlay')
 	margin-bottom 600px
-	padding 1rem
+	padding 2rem
 	border 5px solid $purple
 	border-radius 10px
 	background white
 	box-shadow 0 0 20px $purple
 	opacity 0.2
+
+#sections > div p
+	padding 1rem 0
 
 #sections > div:last-child
 	margin-bottom 30px

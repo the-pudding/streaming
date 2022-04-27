@@ -87,7 +87,7 @@ d3.selection.prototype.chartForce = function init(options) {
 
         enterView({
           selector: '#triggerDiv2',
-          offset: 0.4,
+          offset: 0.2,
           enter: function(el) {
             d3.selectAll("#coinGroup2, #coinImgG2").transition()
               .delay(200)

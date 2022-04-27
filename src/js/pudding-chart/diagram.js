@@ -186,7 +186,7 @@ d3.selection.prototype.chartDiagram = function init(options) {
 
         enterView({
           selector: '#triggerDiv1',
-          offset: 0.4,
+          offset: 0.2,
           enter: function(el) {
             d3.selectAll("#coinGroup1, #coinImgG1").transition()
               .delay(200)

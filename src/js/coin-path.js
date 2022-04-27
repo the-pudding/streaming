@@ -222,6 +222,8 @@ function pathTween(path) {
 			.style("animation", "spin 0.5s linear infinite")
 			.style("left", `${point.x - coinWidth / 2}px`) // Set the x
 			.style("top", `${point.y - coinWidth / 2}px`) // Set the y
+		
+		if (t == 1) { d3.select(this).remove(); }
 	}
 }
 

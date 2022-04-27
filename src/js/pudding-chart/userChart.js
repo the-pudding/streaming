@@ -104,14 +104,12 @@ d3.selection.prototype.chartUser = function init(options) {
                 text_users
                     .transition()
                     .duration(1000)
-                    .attr('x',width/2)
-                    .attr('y',height - 200);
+                    .attr('x',width/2);
                     
                 text_money
                     .transition()
                     .duration(1000)
                     .attr('x',width/2)
-                    .attr('y',height - 200)
                     .style('opacity', 0);
             
                 break;
@@ -143,14 +141,12 @@ d3.selection.prototype.chartUser = function init(options) {
                 text_users
                     .transition()
                     .duration(1000)    
-                    .attr('x',width/2)
-                    .attr('y',height - 200);
+                    .attr('x',width/2);
                     
                 text_money
                     .transition()
                     .duration(1000)
                     .attr('x',width/2)
-                    .attr('y',height - 200)
                     .style('opacity', 0);
                         
                 break;
@@ -174,14 +170,12 @@ d3.selection.prototype.chartUser = function init(options) {
                 text_users
                     .transition()
                     .duration(1000)    
-                    .attr('x',dollarWidth*6)
-                    .attr('y',height - 200);
+                    .attr('x',dollarWidth*6);
                     
                 text_money
                     .transition()
                     .duration(1000)
                     .attr('x',width - dollarWidth*6)
-                    .attr('y',height - 200)
                     .style('opacity', 1)
                 break;
             case 3:
@@ -226,7 +220,7 @@ d3.selection.prototype.chartUser = function init(options) {
 
         enterView({
           selector: '#triggerDiv2',
-          offset: 0.4,
+          offset: 0.2,
           enter: function(el) {
             d3.selectAll("#coinGroup2, #coinImgG2").transition()
               .delay(200)
@@ -265,7 +259,6 @@ d3.selection.prototype.chartUser = function init(options) {
             .sections(d3.selectAll('.container-1 #sections > div'))
             .offset(100)
             .on('active', function(i){
-                console.log(i)
                 updateChart(i);
             });
       },
@@ -275,9 +268,8 @@ d3.selection.prototype.chartUser = function init(options) {
         let strokeWidth = 10;
 
         width = $chart.node().offsetWidth - MARGIN_LEFT - MARGIN_RIGHT - strokeWidth;
-        height = $chart.node().offsetWidth - 50;
+        height = $chart.node().offsetHeight - MARGIN_TOP - MARGIN_BOTTOM;
         dollarWidth = width/dollarNum/2.5;
-        console.log(width, height)
 
         $svg
           .attr('width', width + MARGIN_LEFT + MARGIN_RIGHT)
@@ -318,11 +310,11 @@ d3.selection.prototype.chartUser = function init(options) {
 
         text_users
           .attr('x',width/2)
-          .attr('y',height - 200);
+          .attr('y',height - 80);
         
         text_money
           .attr('x',width/2)
-          .attr('y',height - 200);
+          .attr('y',height - 80);
 
         return Chart;
       },

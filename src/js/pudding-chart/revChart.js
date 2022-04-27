@@ -826,7 +826,7 @@ d3.selection.prototype.chartRev = function init(options) {
 
         enterView({
           selector: '#triggerDiv3',
-          offset: 0.4,
+          offset: 0.2,
           enter: function(el) {
             d3.selectAll("#coinGroup3, #coinImgG3").transition()
               .delay(200)
@@ -871,7 +871,11 @@ d3.selection.prototype.chartRev = function init(options) {
           }
         })
 
-        $controlsContainer.on("mousedown", function() {
+        $controlsContainer.on("mousemove", function() {
+          d3.select("#DSPrevenue .noUi-handle").style("animation-play-state", "paused")
+        })
+
+        $controlsContainer.on("touchmove", function() {
           d3.select("#DSPrevenue .noUi-handle").style("animation-play-state", "paused")
         })
 
