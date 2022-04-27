@@ -10,6 +10,7 @@ import './pudding-chart/userChart';
 let $chartDiagramContainer = d3.select('.diagram-container');
 let $chartRectContainer = d3.select('.container-1 #graph');
 let $chartRevContainer = d3.select('.container-2 #graph');
+let $sliders = d3.selectAll('.noUi-handle')
 
 /* charts */
 let chartDiagram;
@@ -73,6 +74,8 @@ function init() {
 	addEventListener("beforeunload", () => {
 		window.scrollTo(0, 0);
 	});
+
+	$sliders.attr("aria-label", "revenue slider")
 }
 
 export default { init, resize };
