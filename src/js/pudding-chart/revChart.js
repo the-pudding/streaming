@@ -898,7 +898,8 @@ d3.selection.prototype.chartRev = function init(options) {
         // defaults to grabbing dimensions from container element
         width = $chart.node().offsetWidth - MARGIN_LEFT - MARGIN_RIGHT - strokeWidth;
         height = $chart.node().offsetWidth - 50;
-        dollarWidth = width/dollarNum;
+        dollarWidth = Math.round(width/dollarNum);
+        console.log(dollarWidth)
 
         //container widths
         widthContainer = $container.node().offsetWidth - strokeWidth;
@@ -934,7 +935,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $DSPShareRect
             .attr("x", 0)
             .attr("y", dollarWidth*1)
-            .attr("width", width)
+            .attr("width", dollarWidth*20)
             .attr("height", 0) //Needs to be y_axis_range - coordinate because vertical coordinates go from top to bottom
         
         $otherTracksRect
