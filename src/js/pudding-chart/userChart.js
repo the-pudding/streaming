@@ -199,6 +199,26 @@ d3.selection.prototype.chartUser = function init(options) {
                         })
                 break;
             case 4:
+              $users
+                  .transition()
+                  .duration(1000)
+                  .attr('transform', `translate(${dollarWidth}, ${height/4 - dollarWidth*3})`)
+              $dollars
+                  .transition()
+                  .duration(1000)
+                  .attr('transform', `translate(${width - dollarWidth*11}, ${height/4 - dollarWidth*3})`)
+
+              d3.selectAll('.money-imgs')
+                      .transition()
+                      .delay(function(d,i){ return 50*i; }) 
+                      .duration(1000)
+                      .style('opacity', 1)
+                      .attr('xlink:href', function(d, i) {
+                          if (i < 10) { return './assets/images/money_neon_green.png'}
+                          else { return './assets/images/money_neon.png'}
+                      })
+              break;
+            case 5:
                 coinPathFunc.drawPath(3);
                 break;
         }

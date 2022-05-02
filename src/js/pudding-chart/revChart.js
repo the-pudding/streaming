@@ -232,7 +232,7 @@ d3.selection.prototype.chartRev = function init(options) {
     }
 
     function updateChart(i) {
-      //console.log(i)
+      console.log(i)
       switch(i) {
         case 0:
           $otherTracksRect.transition().duration(transition_duration)
@@ -683,6 +683,32 @@ d3.selection.prototype.chartRev = function init(options) {
         $sections.style("pointer-events", "auto")
         break;
       case 19:
+        $otherTracksRect.transition().duration(transition_duration)
+          .attr("y", dollarWidth*1)
+          .attr("height", dollarWidth*20)
+        $DSPShareRect.transition().duration(transition_duration)
+          .attr("height", 0)
+        $artistTracksRect.transition().duration(transition_duration)
+          .attr("width", dollarWidth/2)
+          .attr("x", dollarWidth*20 - dollarWidth/2)
+          .attr("y", dollarWidth*1)
+          .attr("height", dollarWidth*20)  
+        $distTracksRect.transition().duration(transition_duration)
+          .attr("width", dollarWidth/2)
+          .attr("x", dollarWidth*20 - dollarWidth/2)
+          .attr("y", dollarWidth*18)
+          .attr("height", dollarWidth*3)
+        $otherBlock.transition().duration(transition_duration)
+          .style("opacity", 1)
+        $artistBlock.transition().duration(transition_duration)
+          .style("opacity", 1)
+        $distBlock.transition().duration(transition_duration)
+          .style("opacity", 1)
+        $controlsContainer.transition().duration(1000)
+          .style("bottom", "-20rem")
+        $sections.style("pointer-events", "none")
+        break;
+      case 20:
         coinPathFunc.drawPath(4)
         $otherTracksRect.transition().duration(transition_duration)
           .attr("y", dollarWidth*1)
