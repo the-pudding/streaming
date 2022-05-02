@@ -247,6 +247,9 @@ d3.selection.prototype.chartDiagram = function init(options) {
             case 2:
               logo_label.transition().duration(500).style('opacity', 1)
               break;
+            case 3:
+              logo_label.transition().duration(500).style('opacity', 1)
+              break;
           }
       },
       toggleAnimations(i) {
@@ -264,6 +267,11 @@ d3.selection.prototype.chartDiagram = function init(options) {
                 animateMoney();
                 break;
             case 3:
+                $money.transition().duration(500).style('opacity', 0).remove()
+                $musicNotes.transition().duration(500).style('opacity', 0).remove()
+                animateMoney();
+                break;
+            case 4:
                 setTimeout(function(){
                   coinPathFunc.drawPath(2)
                 }, 500)
