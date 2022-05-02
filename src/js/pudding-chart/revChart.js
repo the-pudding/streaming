@@ -958,20 +958,25 @@ d3.selection.prototype.chartRev = function init(options) {
             .attr("width", 0)
             .attr("height", dollarWidth*14)
         
-        $dollarImages = d3.selectAll('.dollar-imgs')
-          .each(function(d, i) {
-            d3.select(this)
-              .attr("width", dollarWidth)
-              .attr("height", dollarWidth)
-              .attr("x", function(d) {
-                let elementX = d3.select(this).attr('data-i') * dollarWidth;
-                return elementX;
-              })
-              .attr("y", function(d) {
-                let elementY = d3.select(this).attr('data-j') * dollarWidth;
-                return elementY;
-              })
-          })
+            $dollarImages
+              .attr('width', dollarWidth*20)
+              .attr('height', dollarWidth*20)
+              .attr('y', dollarWidth)
+        
+        // $dollarImages = d3.selectAll('.dollar-imgs')
+        //   .each(function(d, i) {
+        //     d3.select(this)
+        //       .attr("width", dollarWidth)
+        //       .attr("height", dollarWidth)
+        //       .attr("x", function(d) {
+        //         let elementX = d3.select(this).attr('data-i') * dollarWidth;
+        //         return elementX;
+        //       })
+        //       .attr("y", function(d) {
+        //         let elementY = d3.select(this).attr('data-j') * dollarWidth;
+        //         return elementY;
+        //       })
+        //   })
           
           if (currStep !== 19) { updateChart(currStep); }
           else  {
@@ -998,7 +1003,13 @@ d3.selection.prototype.chartRev = function init(options) {
         
         $dollars = $vis.append("g").attr("class","dollars");
 
-        drawDollars(dollarNum);
+        $dollarImages = $dollars
+            .append("image")
+            .attr('xlink:href', './assets/images/money_grid.png')
+            //.attr("id","dollar_"+idx)
+            .attr("class", "dollar-imgs")
+
+        // drawDollars(dollarNum);
 
         return Chart;
       },
