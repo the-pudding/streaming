@@ -63,6 +63,7 @@ d3.selection.prototype.chartForce = function init(options) {
     let radius = null;
     let forceX = null;
     let forceCollide = null;
+    let forceCollide2 = null;
 
     // helper functions
     function ticked() {
@@ -131,6 +132,7 @@ d3.selection.prototype.chartForce = function init(options) {
             });
       },
       updateChart(i) {
+        console.log(i)
         switch (i){
           case 0:
             text_premium.transition().duration(500).style("opacity", 0)
@@ -210,7 +212,7 @@ d3.selection.prototype.chartForce = function init(options) {
               .duration(1000)
               .attr("r", radius)
 
-            let forceCollide2 = d3.forceCollide(function(d) {
+            forceCollide2 = d3.forceCollide(function(d) {
               if (d.category === "premium") { return radius*1.25 }
                 else { return radius*1.25/12 }
             })
@@ -229,8 +231,47 @@ d3.selection.prototype.chartForce = function init(options) {
               
             break;
           case 3:
+            text_premium.transition().duration(500).style("opacity", 1)
+            text_freemium.transition().duration(500).style("opacity", 1)
+            text_premium_num.transition().duration(500).style("opacity", 1)
+            text_freemium_num.transition().duration(500).style("opacity", 1)
+            text_premium_num.text("12x more revenue")
+            text_freemium_num.text("")
+
+            fCircle.transition().duration(500).delay(500).attr('r', width*0.25/2.65/5)
+            pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
+
+            d3.selectAll(".circle-freemium")
+              .transition()
+              .duration(1000)
+              .attr("r", radius/12)
+            
+            d3.selectAll(".circle-premium")
+              .transition()
+              .duration(1000)
+              .attr("r", radius)
+
+            forceCollide2 = d3.forceCollide(function(d) {
+              if (d.category === "premium") { return radius*1.25 }
+                else { return radius*1.25/12 }
+            })
+
+            forceX = d3.forceX(function(d) { 
+              if (d.category === "premium") { return width*0.25 }
+              else { return width*0.75 }
+            }).strength(0.05)
+
+            simulation
+              .force("x", forceX) 
+              .force("y", d3.forceY(height/2).strength(0.05)) 
+              .force("collide", forceCollide2)
+              .alphaTarget(0.5)
+              .restart()
+              
+            break; 
+          case 5:
             coinPathFunc.drawPath(3)
-            break;   
+            break;  
         }
       },
       // on resize, update new dimensions

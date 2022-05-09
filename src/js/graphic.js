@@ -3,7 +3,7 @@
 import coinPathFunc from './coin-path';
 import './pudding-chart/diagram';
 import './pudding-chart/revChart';
-// import './pudding-chart/forceChart';
+import './pudding-chart/forceChart';
 import './pudding-chart/userChart';
 
 /* DOM */
@@ -55,16 +55,16 @@ function resize() {
 
 	if (previousWidth !== width) {
 		chartDiagram.resize();
-		//chartForce.resize();
-		chartUser.resize();
+		chartForce.resize();
+		//chartUser.resize();
 		chartRev.resize();
 	}
 }
 
 function init() {
 	setupchartDiagram(data);
-	setupchartUser(data);
-	//setupchartForce(data);
+	//setupchartUser(data);
+	setupchartForce(data);
 	setupchartRev(data);
 
 	if (document.fonts.check("12px Poppins")) {
