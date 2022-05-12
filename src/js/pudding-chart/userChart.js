@@ -1,6 +1,6 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
-import coinPathFunc from '../coin-path';
+//import coinPathFunc from '../coin-path';
 import enterView from 'enter-view';
 
 /*
@@ -219,7 +219,7 @@ d3.selection.prototype.chartUser = function init(options) {
                       })
               break;
             case 5:
-                coinPathFunc.drawPath(3);
+                //coinPathFunc.drawPath(3);
                 break;
         }
     }
@@ -238,39 +238,39 @@ d3.selection.prototype.chartUser = function init(options) {
         Chart.render();
         Chart.resize();
 
-        enterView({
-          selector: '#triggerDiv2',
-          offset: 0.2,
-          enter: function(el) {
-            d3.selectAll("#coinGroup2, #coinImgG2").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 0)
-          },
-          exit: function(el) {
-            d3.selectAll("#coinGroup2, #coinImgG2").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 1)
-          }
-        })
+        // enterView({
+        //   selector: '#triggerDiv2',
+        //   offset: 0.2,
+        //   enter: function(el) {
+        //     d3.selectAll("#coinGroup2, #coinImgG2").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 0)
+        //   },
+        //   exit: function(el) {
+        //     d3.selectAll("#coinGroup2, #coinImgG2").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 1)
+        //   }
+        // })
 
-        enterView({
-          selector: '#lastDiv2',
-          offset: 1,
-          enter: function(el) {
-            d3.selectAll("#coinGroup3, #coinImgG3").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 1)
-          },
-          exit: function(el) {
-            d3.selectAll("#coinGroup3, #coinImgG3").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 0)
-          }
-        })
+        // enterView({
+        //   selector: '#lastDiv2',
+        //   offset: 1,
+        //   enter: function(el) {
+        //     d3.selectAll("#coinGroup3, #coinImgG3").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 1)
+        //   },
+        //   exit: function(el) {
+        //     d3.selectAll("#coinGroup3, #coinImgG3").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 0)
+        //   }
+        // })
 
         let gs1 = graphScroll()
             .container(d3.select('.container-1'))

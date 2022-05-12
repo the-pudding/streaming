@@ -146,25 +146,35 @@ p.highlight
 
 #container
 	position relative
+	display block
+	max-width 70rem
+	margin 0 auto
+	+mq('bp-7')
+		display flex
+		flex-direction row
+		margin 2rem auto 0 auto
 
 #sections
 	position relative
+	order 1
 	z-index set-index('overlay')
 	margin 0 auto
-	max-width 330px
+	width 25rem
 	color $dark-purple
-	+mq('bp-3')
-		max-width 400px
+	+mq('bp-7')
+		margin 0 2rem
 
 #sections > div
 	z-index set-index('overlay')
-	margin-bottom 800px
+	margin 0 0 40rem 0
 	padding 2rem
 	border 5px solid $purple
 	border-radius 10px
 	background white
 	box-shadow 0 0 20px $purple
 	opacity 0.2
+	+mq('bp-7')
+		margin 20rem 0 40rem 0
 
 #sections > div p
 	padding 0
@@ -186,6 +196,7 @@ p.highlight
 #graph
 	position -webkit-sticky
 	position sticky
+	order 2
 	top 6rem
 	z-index 1
 	margin 0 auto
@@ -194,6 +205,13 @@ p.highlight
 	border-radius 10px
 	background-color $dark-purple
 	box-shadow 0 0 20px $purple
+	+mq('bp-7')
+		width calc(100% - 25rem)
+		margin 0 2rem 0 0
+		border none
+		border-radius 0
+		background-color $bg-purple
+		box-shadow none
 
 .flickerClass
 	border 5px solid $purple

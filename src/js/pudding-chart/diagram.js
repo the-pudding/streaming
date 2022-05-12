@@ -1,6 +1,6 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
-import coinPathFunc from '../coin-path';
+//import coinPathFunc from '../coin-path';
 import enterView from 'enter-view';
 import { entries } from 'lodash';
 
@@ -184,46 +184,46 @@ d3.selection.prototype.chartDiagram = function init(options) {
           getScrollDirection();
         }, false)
 
-        enterView({
-          selector: '#triggerDiv1',
-          offset: 0.2,
-          enter: function(el) {
-            d3.selectAll("#coinGroup1, #coinImgG1").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 0)
-          },
-          exit: function(el) {
-            d3.selectAll("#coinGroup1, #coinImgG1").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 1)
-          }
-        })
+        // enterView({
+        //   selector: '#triggerDiv1',
+        //   offset: 0.2,
+        //   enter: function(el) {
+        //     d3.selectAll("#coinGroup1, #coinImgG1").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 0)
+        //   },
+        //   exit: function(el) {
+        //     d3.selectAll("#coinGroup1, #coinImgG1").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 1)
+        //   }
+        // })
 
-        enterView({
-          selector: '#lastDiv1',
-          offset: 1,
-          enter: function(el) {
-            d3.selectAll("#coinGroup2, #coinImgG2").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 1)
-          },
-          exit: function(el) {
-            d3.selectAll("#coinGroup2, #coinImgG2").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 0)
-          }
-        })
+        // enterView({
+        //   selector: '#lastDiv1',
+        //   offset: 1,
+        //   enter: function(el) {
+        //     d3.selectAll("#coinGroup2, #coinImgG2").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 1)
+        //   },
+        //   exit: function(el) {
+        //     d3.selectAll("#coinGroup2, #coinImgG2").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 0)
+        //   }
+        // })
 
         let gs0 = graphScroll()
             .container(d3.select('.container-0'))
             .graph(d3.selectAll('container-0 #graph'))
             .eventId('uniqueId0')  // namespace for scroll and resize events
             .sections(d3.selectAll('.container-0 #sections > div'))
-            .offset(100)
+            .offset(400)
             // .offset(innerWidth < 900 ? innerHeight - 30 : 200)
             .on('active', function(i){
                //console.log(i, scrollDir)
@@ -272,9 +272,12 @@ d3.selection.prototype.chartDiagram = function init(options) {
                 animateMoney();
                 break;
             case 4:
-                setTimeout(function(){
-                  coinPathFunc.drawPath(2)
-                }, 500)
+                $money.transition().duration(500).style('opacity', 0).remove()
+                $musicNotes.transition().duration(500).style('opacity', 0).remove()
+                animateMoney();
+                // setTimeout(function(){
+                //   coinPathFunc.drawPath(2)
+                // }, 500)
                 break;
           }
       },

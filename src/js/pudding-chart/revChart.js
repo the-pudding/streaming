@@ -1,7 +1,7 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
 import noUiSlider from 'nouislider'
-import coinPathFunc from '../coin-path';
+//import coinPathFunc from '../coin-path';
 import enterView from 'enter-view';
 
 /*
@@ -708,7 +708,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $sections.style("pointer-events", "none")
         break;
       case 20:
-        coinPathFunc.drawPath(4)
+        //coinPathFunc.drawPath(4)
         $otherTracksRect.transition().duration(transition_duration)
           .attr("y", dollarWidth*1)
           .attr("height", dollarWidth*20)
@@ -849,39 +849,39 @@ d3.selection.prototype.chartRev = function init(options) {
           updateSliderChart(sliderVals)
         })
 
-        enterView({
-          selector: '#triggerDiv3',
-          offset: 0.2,
-          enter: function(el) {
-            d3.selectAll("#coinGroup3, #coinImgG3").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 0)
-          },
-          exit: function(el) {
-            d3.selectAll("#coinGroup3, #coinImgG3").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 1)
-          }
-        })
+        // enterView({
+        //   selector: '#triggerDiv3',
+        //   offset: 0.2,
+        //   enter: function(el) {
+        //     d3.selectAll("#coinGroup3, #coinImgG3").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 0)
+        //   },
+        //   exit: function(el) {
+        //     d3.selectAll("#coinGroup3, #coinImgG3").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 1)
+        //   }
+        // })
 
-        enterView({
-          selector: '#lastDiv3',
-          offset: 1,
-          enter: function(el) {
-            d3.selectAll("#coinGroup4, #coinImgG4").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 1)
-          },
-          exit: function(el) {
-            d3.selectAll("#coinGroup4, #coinImgG4").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 0)
-          }
-        })
+        // enterView({
+        //   selector: '#lastDiv3',
+        //   offset: 1,
+        //   enter: function(el) {
+        //     d3.selectAll("#coinGroup4, #coinImgG4").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 1)
+        //   },
+        //   exit: function(el) {
+        //     d3.selectAll("#coinGroup4, #coinImgG4").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 0)
+        //   }
+        // })
 
         enterView({
           selector: '.pudding-footer',

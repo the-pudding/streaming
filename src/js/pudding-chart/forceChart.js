@@ -1,6 +1,6 @@
 /* global d3 */
 import { graphScroll } from '../graph-scroll';
-import coinPathFunc from '../coin-path';
+//import coinPathFunc from '../coin-path';
 import enterView from 'enter-view';
 import { delay } from 'lodash';
 
@@ -86,39 +86,39 @@ d3.selection.prototype.chartForce = function init(options) {
         Chart.render();
         Chart.resize();
 
-        enterView({
-          selector: '#triggerDiv2',
-          offset: 0.2,
-          enter: function(el) {
-            d3.selectAll("#coinGroup2, #coinImgG2").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 0)
-          },
-          exit: function(el) {
-            d3.selectAll("#coinGroup2, #coinImgG2").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 1)
-          }
-        })
+        // enterView({
+        //   selector: '#triggerDiv2',
+        //   offset: 0.2,
+        //   enter: function(el) {
+        //     d3.selectAll("#coinGroup2, #coinImgG2").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 0)
+        //   },
+        //   exit: function(el) {
+        //     d3.selectAll("#coinGroup2, #coinImgG2").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 1)
+        //   }
+        // })
 
-        enterView({
-          selector: '#lastDiv2',
-          offset: 1,
-          enter: function(el) {
-            d3.selectAll("#coinGroup3, #coinImgG3").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 1)
-          },
-          exit: function(el) {
-            d3.selectAll("#coinGroup3, #coinImgG3").transition()
-              .delay(200)
-              .duration(500)
-              .style("opacity", 0)
-          }
-        })
+        // enterView({
+        //   selector: '#lastDiv2',
+        //   offset: 1,
+        //   enter: function(el) {
+        //     d3.selectAll("#coinGroup3, #coinImgG3").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 1)
+        //   },
+        //   exit: function(el) {
+        //     d3.selectAll("#coinGroup3, #coinImgG3").transition()
+        //       .delay(200)
+        //       .duration(500)
+        //       .style("opacity", 0)
+        //   }
+        // })
 
         let gs1 = graphScroll()
             .container(d3.select('.container-1'))
@@ -192,44 +192,35 @@ d3.selection.prototype.chartForce = function init(options) {
 
               break;
           case 2:
-            text_premium.transition().duration(500).style("opacity", 1)
-            text_freemium.transition().duration(500).style("opacity", 1)
-            text_premium_num.transition().duration(500).style("opacity", 1)
-            text_freemium_num.transition().duration(500).style("opacity", 1)
-            text_premium_num.text("12x more revenue")
-            text_freemium_num.text("")
+              text_premium.transition().duration(500).style("opacity", 1)
+              text_freemium.transition().duration(500).style("opacity", 1)
+              text_premium_num.transition().duration(500).style("opacity", 1)
+              text_freemium_num.transition().duration(500).style("opacity", 1)
+              text_premium_num.text("45%")
+              text_freemium_num.text("55%")
 
-            fCircle.transition().duration(500).delay(500).attr('r', width*0.25/2.65/5)
-            pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
+              fCircle.transition().duration(500).delay(500).attr('r', width*0.55/2.65)
+              pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
 
-            d3.selectAll(".circle-freemium")
-              .transition()
-              .duration(1000)
-              .attr("r", radius/12)
-            
-            d3.selectAll(".circle-premium")
-              .transition()
-              .duration(1000)
-              .attr("r", radius)
+              d3.selectAll(".circle-freemium, .circle-premium")
+                .transition()
+                .duration(1000)
+                .attr("r", radius)
 
-            forceCollide2 = d3.forceCollide(function(d) {
-              if (d.category === "premium") { return radius*1.25 }
-                else { return radius*1.25/12 }
-            })
+              forceX = d3.forceX(function(d) { 
+                if (d.category === "premium") { return width*0.25 }
+                else { return width*0.75 }
+              }).strength(0.05)
+              forceCollide = d3.forceCollide(radius*1.25)
 
-            forceX = d3.forceX(function(d) { 
-              if (d.category === "premium") { return width*0.25 }
-              else { return width*0.75 }
-            }).strength(0.05)
+              simulation 
+                .force("x", forceX) 
+                .force("y", d3.forceY(height/2).strength(0.05)) 
+                .force("collide", forceCollide)
+                .alphaTarget(0.5)
+                .restart()
 
-            simulation
-              .force("x", forceX) 
-              .force("y", d3.forceY(height/2).strength(0.05)) 
-              .force("collide", forceCollide2)
-              .alphaTarget(0.5)
-              .restart()
-              
-            break;
+              break;
           case 3:
             text_premium.transition().duration(500).style("opacity", 1)
             text_freemium.transition().duration(500).style("opacity", 1)
@@ -238,7 +229,7 @@ d3.selection.prototype.chartForce = function init(options) {
             text_premium_num.text("12x more revenue")
             text_freemium_num.text("")
 
-            fCircle.transition().duration(500).delay(500).attr('r', width*0.25/2.65/5)
+            fCircle.transition().duration(500).delay(500).attr('r', width*0.55/2.65)
             pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
 
             d3.selectAll(".circle-freemium")
@@ -269,8 +260,46 @@ d3.selection.prototype.chartForce = function init(options) {
               .restart()
               
             break; 
+          case 4:
+            text_premium.transition().duration(500).style("opacity", 1)
+            text_freemium.transition().duration(500).style("opacity", 1)
+            text_premium_num.transition().duration(500).style("opacity", 1)
+            text_freemium_num.transition().duration(500).style("opacity", 1)
+            text_premium_num.text("12x more revenue")
+            text_freemium_num.text("")
+
+            fCircle.transition().duration(500).delay(500).attr('r', width*0.25/2.65/5)
+            pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
+
+            d3.selectAll(".circle-freemium")
+              .transition()
+              .duration(1000)
+              .attr("r", radius/12)
+            
+            d3.selectAll(".circle-premium")
+              .transition()
+              .duration(1000)
+              .attr("r", radius)
+
+            forceCollide2 = d3.forceCollide(function(d) {
+              if (d.category === "premium") { return radius*1.25 }
+                else { return radius*1.25/12 }
+            })
+
+            forceX = d3.forceX(function(d) { 
+              if (d.category === "premium") { return width*0.25 }
+              else { return width*0.75 }
+            }).strength(0.05)
+
+            simulation
+              .force("x", forceX) 
+              .force("y", d3.forceY(height/2).strength(0.05)) 
+              .force("collide", forceCollide2)
+              .alphaTarget(0.5)
+              .restart()
+            break;
           case 5:
-            coinPathFunc.drawPath(3)
+            //coinPathFunc.drawPath(3)
             break;  
         }
       },

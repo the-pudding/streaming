@@ -1,6 +1,6 @@
 /* global d3 */
 //import { graphScroll } from './graph-scroll';
-import coinPathFunc from './coin-path';
+//import coinPathFunc from './coin-path';
 import './pudding-chart/diagram';
 import './pudding-chart/revChart';
 import './pudding-chart/forceChart';
@@ -43,14 +43,14 @@ function resize() {
 	let previousWidth = 0;
 	const width = $body.node().offsetWidth;
 
-	coinPathFunc.resetPaths();
+	// coinPathFunc.resetPaths();
 
-	coinPathFunc.calcPath(1);
-	coinPathFunc.calcPath(2);
-	coinPathFunc.calcPath(3);
-	coinPathFunc.calcPath(4);
+	// coinPathFunc.calcPath(1);
+	// coinPathFunc.calcPath(2);
+	// coinPathFunc.calcPath(3);
+	// coinPathFunc.calcPath(4);
 
-	coinPathFunc.setupPaths();
+	// coinPathFunc.setupPaths();
 	//coinPathFunc.addCoin(1);
 
 	if (previousWidth !== width) {
@@ -67,13 +67,13 @@ function init() {
 	setupchartForce(data);
 	setupchartRev(data);
 
-	if (document.fonts.check("12px Poppins")) {
-		coinPathFunc.init();
-		resize();
-	}
-	addEventListener("beforeunload", () => {
-		window.scrollTo(0, 0);
-	});
+	// if (document.fonts.check("12px Poppins")) {
+	// 	coinPathFunc.init();
+	// 	resize();
+	// }
+	// addEventListener("beforeunload", () => {
+	// 	window.scrollTo(0, 0);
+	// });
 
 	$sliders.attr("aria-label", "revenue slider")
 }
