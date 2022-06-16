@@ -166,8 +166,8 @@ d3.selection.prototype.chartForce = function init(options) {
               text_freemium.transition().duration(500).style("opacity", 1)
               text_premium_num.transition().duration(500).style("opacity", 1)
               text_freemium_num.transition().duration(500).style("opacity", 1)
-              text_premium_num.text("45%")
-              text_freemium_num.text("55%")
+              text_premium_num.text("42%")
+              text_freemium_num.text("58%")
 
               fCircle.transition().duration(500).delay(500).attr('r', width*0.55/2.65)
               pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
@@ -196,8 +196,8 @@ d3.selection.prototype.chartForce = function init(options) {
               text_freemium.transition().duration(500).style("opacity", 1)
               text_premium_num.transition().duration(500).style("opacity", 1)
               text_freemium_num.transition().duration(500).style("opacity", 1)
-              text_premium_num.text("45%")
-              text_freemium_num.text("55%")
+              text_premium_num.text("42%")
+              text_freemium_num.text("58%")
 
               fCircle.transition().duration(500).delay(500).attr('r', width*0.55/2.65)
               pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
