@@ -35,7 +35,7 @@ d3.selection.prototype.chartForce = function init(options) {
     let currStep;
 
     function setCategory(d) {
-      if (d > 45) { return "freemium" }
+      if (d > 42) { return "freemium" }
       else { return "premium" }
     }
 
