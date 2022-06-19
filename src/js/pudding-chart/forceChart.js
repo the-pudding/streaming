@@ -139,8 +139,8 @@ d3.selection.prototype.chartForce = function init(options) {
             text_freemium.transition().duration(500).style("opacity", 0)
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
-            text_premium_num.text("45%")
-            text_freemium_num.text("55%")
+            text_premium_num.text("42%")
+            text_freemium_num.text("58%")
 
             d3.selectAll(".circle-freemium, .circle-premium")
                 .transition()
@@ -388,14 +388,14 @@ d3.selection.prototype.chartForce = function init(options) {
           .style("opacity", 0);
         
         text_premium_num = $vis.append('text')
-          .text("45%")
+          .text("42%")
           .attr('text-anchor','middle')
           .attr('dominant-baseline','central')
           .attr('id',"premium_num")
           .style("opacity", 0);
         
         text_freemium_num = $vis.append('text')
-          .text("55%")
+          .text("58%")
           .attr('text-anchor','middle')
           .attr('dominant-baseline','central')
           .attr('id',"freemium_num")
