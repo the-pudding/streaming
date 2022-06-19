@@ -63,7 +63,7 @@ function resize() {
 
 function init() {
 	setupchartDiagram(data);
-	//setupchartUser(data);
+	// setupchartUser(data);
 	setupchartForce(data);
 	setupchartRev(data);
 
