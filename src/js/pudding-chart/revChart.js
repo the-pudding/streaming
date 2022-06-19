@@ -923,7 +923,6 @@ d3.selection.prototype.chartRev = function init(options) {
             .offset(100)
             .on('active', function(i){
                 currStep = i;
-                console.log('currStep', currStep)
                 updateChart(i)
             });
       },
