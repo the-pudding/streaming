@@ -28,6 +28,11 @@ d3.selection.prototype.chartForce = function init(options) {
     let text_freemium_num;
     let fCircle;
     let pCircle;
+    let pDollar;
+    let fDollar;
+    let dollarHeight=15;
+    let pDollarHeight=9*dollarHeight;
+    let fDollarHeight=dollarHeight;
 
     // data
     let data = $chart.datum();
@@ -171,6 +176,11 @@ d3.selection.prototype.chartForce = function init(options) {
 
               fCircle.transition().duration(500).delay(500).attr('r', width*0.55/2.65)
               pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
+              // fCircle.transition().duration(500).delay(500).attr('cy', height/2)
+              // pCircle.transition().duration(500).delay(500).attr('cy', height/2)
+
+              pDollar.transition().duration(500).delay(500).attr('height', 0)
+              fDollar.transition().duration(500).delay(500).attr('height', 0)
 
               d3.selectAll(".circle-freemium, .circle-premium")
                 .transition()
@@ -192,15 +202,21 @@ d3.selection.prototype.chartForce = function init(options) {
 
               break;
           case 2:
-              text_premium.transition().duration(500).style("opacity", 1)
-              text_freemium.transition().duration(500).style("opacity", 1)
-              text_premium_num.transition().duration(500).style("opacity", 1)
-              text_freemium_num.transition().duration(500).style("opacity", 1)
+              let verticalOffset=0.5;
+              text_premium.transition().duration(500).style("opacity", 0)
+              text_freemium.transition().duration(500).style("opacity", 0)
+              text_premium_num.transition().duration(500).style("opacity", 0)
+              text_freemium_num.transition().duration(500).style("opacity", 0)
               text_premium_num.text("42%")
               text_freemium_num.text("58%")
 
               fCircle.transition().duration(500).delay(500).attr('r', width*0.55/2.65)
+              fCircle.transition().duration(500).delay(500).attr('cy', height/2*verticalOffset)
               pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
+              pCircle.transition().duration(500).delay(500).attr('cy', height/2*verticalOffset)
+
+              pDollar.transition().duration(500).delay(500).attr('height', pDollarHeight)
+              fDollar.transition().duration(500).delay(500).attr('height', fDollarHeight)
 
               d3.selectAll(".circle-freemium, .circle-premium")
                 .transition()
@@ -215,88 +231,80 @@ d3.selection.prototype.chartForce = function init(options) {
 
               simulation 
                 .force("x", forceX) 
-                .force("y", d3.forceY(height/2).strength(0.05)) 
+                .force("y", d3.forceY(height*0.5/2).strength(0.05)) 
                 .force("collide", forceCollide)
                 .alphaTarget(0.5)
                 .restart()
 
               break;
           case 3:
-            text_premium.transition().duration(500).style("opacity", 1)
-            text_freemium.transition().duration(500).style("opacity", 1)
-            text_premium_num.transition().duration(500).style("opacity", 1)
-            text_freemium_num.transition().duration(500).style("opacity", 1)
+            text_premium.transition().duration(500).style("opacity", 0)
+            text_freemium.transition().duration(500).style("opacity", 0)
+            text_premium_num.transition().duration(500).style("opacity", 0)
+            text_freemium_num.transition().duration(500).style("opacity", 0)
             text_premium_num.text("12x more revenue")
             text_freemium_num.text("")
 
             fCircle.transition().duration(500).delay(500).attr('r', width*0.55/2.65)
             pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
 
-            d3.selectAll(".circle-freemium")
-              .transition()
-              .duration(1000)
-              .attr("r", radius/12)
+            // d3.selectAll(".circle-freemium")
+            //   .transition()
+            //   .duration(1000)
+            //   .attr("r", radius/12)
             
-            d3.selectAll(".circle-premium")
-              .transition()
-              .duration(1000)
-              .attr("r", radius)
+            // d3.selectAll(".circle-premium")
+            //   .transition()
+            //   .duration(1000)
+            //   .attr("r", radius)
 
-            forceCollide2 = d3.forceCollide(function(d) {
-              if (d.category === "premium") { return radius*1.25 }
-                else { return radius*1.25/12 }
-            })
+            // forceX = d3.forceX(function(d) { 
+            //   if (d.category === "premium") { return width*0.25 }
+            //   else { return width*0.75 }
+            // }).strength(0.05)
+            // forceCollide = d3.forceCollide(radius*1.25)
 
-            forceX = d3.forceX(function(d) { 
-              if (d.category === "premium") { return width*0.25 }
-              else { return width*0.75 }
-            }).strength(0.05)
-
-            simulation
-              .force("x", forceX) 
-              .force("y", d3.forceY(height/2).strength(0.05)) 
-              .force("collide", forceCollide2)
-              .alphaTarget(0.5)
-              .restart()
+            // simulation 
+            //   .force("x", forceX) 
+            //   .force("y", d3.forceY(height/2).strength(0.05)) 
+            //   .force("collide", forceCollide)
+            //   .alphaTarget(0.5)
+            //   .restart()
               
             break; 
           case 4:
-            text_premium.transition().duration(500).style("opacity", 1)
-            text_freemium.transition().duration(500).style("opacity", 1)
-            text_premium_num.transition().duration(500).style("opacity", 1)
-            text_freemium_num.transition().duration(500).style("opacity", 1)
+            text_premium.transition().duration(500).style("opacity", 0)
+            text_freemium.transition().duration(500).style("opacity", 0)
+            text_premium_num.transition().duration(500).style("opacity", 0)
+            text_freemium_num.transition().duration(500).style("opacity", 0)
             text_premium_num.text("12x more revenue")
             text_freemium_num.text("")
 
-            fCircle.transition().duration(500).delay(500).attr('r', width*0.25/2.65/5)
-            pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
+            // fCircle.transition().duration(500).delay(500).attr('r', width*0.25/2.65)
+            // pCircle.transition().duration(500).delay(500).attr('r', width*0.45/2.65)
 
-            d3.selectAll(".circle-freemium")
-              .transition()
-              .duration(1000)
-              .attr("r", radius/12)
+            // d3.selectAll(".circle-freemium")
+            //   .transition()
+            //   .duration(1000)
+            //   .attr("r", radius/12)
             
-            d3.selectAll(".circle-premium")
-              .transition()
-              .duration(1000)
-              .attr("r", radius)
+            // d3.selectAll(".circle-premium")
+            //   .transition()
+            //   .duration(1000)
+            //   .attr("r", radius)
 
-            forceCollide2 = d3.forceCollide(function(d) {
-              if (d.category === "premium") { return radius*1.25 }
-                else { return radius*1.25/12 }
-            })
+              // forceX = d3.forceX(function(d) { 
+              //   if (d.category === "premium") { return width*0.25 }
+              //   else { return width*0.75 }
+              // }).strength(0.05)
+              // forceCollide = d3.forceCollide(radius*1.25)
 
-            forceX = d3.forceX(function(d) { 
-              if (d.category === "premium") { return width*0.25 }
-              else { return width*0.75 }
-            }).strength(0.05)
-
-            simulation
-              .force("x", forceX) 
-              .force("y", d3.forceY(height/2).strength(0.05)) 
-              .force("collide", forceCollide2)
-              .alphaTarget(0.5)
-              .restart()
+              // simulation 
+              //   .force("x", forceX) 
+              //   .force("y", d3.forceY(height/2).strength(0.05)) 
+              //   .force("collide", forceCollide)
+              //   .alphaTarget(0.5)
+              //   .restart()
             break;
           case 5:
             //coinPathFunc.drawPath(3)
@@ -356,6 +364,14 @@ d3.selection.prototype.chartForce = function init(options) {
           .attr('cy', height/2)
           .attr('r', 0)
         
+        pDollar
+        .attr('x',width*0.25 - pDollarHeight/2)
+        .attr('y',height - pDollarHeight);
+        
+        fDollar
+        .attr('x',width*0.75 - fDollarHeight/2)
+        .attr('y',height - pDollarHeight/2);
+        
         Chart.updateChart(currStep)
         
         return Chart;
@@ -372,6 +388,18 @@ d3.selection.prototype.chartForce = function init(options) {
         fCircle = $vis.append('circle')
           .attr('class', 'bigCircle')
           .attr('id', 'fCircle')
+        
+        pDollar = $vis.append('image')
+          .attr('xlink:href', './assets/images/money_neon.png')
+          .attr("id","pDollar")
+          .attr('height', 0)
+        
+        fDollar = $vis.append('image')
+          .attr('xlink:href', './assets/images/money_neon.png')
+          .attr("id","fDollar")
+          .attr('height', 0)
+            
+            // .style("opacity", 0)
 
         text_premium = $vis.append('text')
           .text("Premium")
