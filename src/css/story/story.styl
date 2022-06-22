@@ -67,6 +67,7 @@ h1:hover
 	border-radius 1rem
 	background-color $green
 	box-decoration-break clone
+	color #0b1832
 	font-weight bold
 
 .purpleSpan
@@ -87,6 +88,14 @@ h1:hover
 .whiteSpan
 	padding 0.25rem 0.75rem
 	border 1px solid rgba($purple, 0.25)
+	border-radius 1rem
+	background-color $white
+	box-decoration-break clone
+	font-weight bold
+	color #0b1832
+
+.whiteSpanBorderless
+	padding 0.25rem 0.75rem
 	border-radius 1rem
 	background-color $white
 	box-decoration-break clone
@@ -242,6 +251,17 @@ p.highlight
 
 #premium_text, #premium_num
 	fill $green
+
+#premium_num, #freemium_num
+	font-weight 700
+	font-size 24px
+
+.fArrowLine, .pArrowLine 
+	stroke white
+	stroke-width 2
+
+.fArrow, .pArrow
+	fill white
 
 .container-1 #graph
 	max-height 30rem
