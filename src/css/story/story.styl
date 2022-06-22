@@ -188,7 +188,8 @@ p.highlight
 	order 1
 	z-index set-index('overlay')
 	margin 0 auto
-	width 25rem
+	max-width 25rem
+	width 100%
 	color $dark-purple
 	+mq('bp-7')
 		margin 0 2rem
@@ -304,11 +305,11 @@ p.highlight
 	//animation dash 3s infinite
 
 .circle-premium
-	filter drop-shadow(0 0 2px $green)
+	filter drop-shadow(0 0 1px $green)
 	fill $green
 
 .circle-freemium
-	filter drop-shadow(0 0 2px $white)
+	filter drop-shadow(0 0 1px $white)
 	fill $white
 
 .legend-1
@@ -501,6 +502,7 @@ li
 
 #subhed-5
 	font-size 24px
+	padding 4rem 0 0 0
 
 #notes ol 
 	max-width 40rem

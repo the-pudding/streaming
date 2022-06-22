@@ -160,7 +160,7 @@ d3.selection.prototype.chartForce = function init(options) {
               pCircle.transition().duration(500).attr('r', 0)
 
             forceX = d3.forceX(width/2).strength(0.05)
-            forceCollide = d3.forceCollide(radius*1.25)
+            forceCollide = d3.forceCollide(radius*1.35)
 
             simulation 
               .force("x", forceX) 
@@ -201,7 +201,7 @@ d3.selection.prototype.chartForce = function init(options) {
                 if (d.category === "premium") { return width*0.25 }
                 else { return width*0.75 }
               }).strength(0.05)
-              forceCollide = d3.forceCollide(radius*1.25)
+              forceCollide = d3.forceCollide(radius*1.35)
 
               simulation 
                 .force("x", forceX) 
@@ -243,7 +243,7 @@ d3.selection.prototype.chartForce = function init(options) {
               if (d.category === "premium") { return width*0.25 }
               else { return width*0.75 }
             }).strength(0.05)
-            forceCollide = d3.forceCollide(radius*1.25)
+            forceCollide = d3.forceCollide(radius*1.35)
 
             simulation 
               .force("x", forceX) 
@@ -284,7 +284,7 @@ d3.selection.prototype.chartForce = function init(options) {
               if (d.category === "premium") { return width*0.25 }
               else { return width*0.75 }
             }).strength(0.05)
-            forceCollide = d3.forceCollide(radius*1.25)
+            forceCollide = d3.forceCollide(radius*1.35)
 
             simulation 
               .force("x", forceX) 
@@ -327,7 +327,7 @@ d3.selection.prototype.chartForce = function init(options) {
               if (d.category === "premium") { return width*0.25 }
               else { return width*0.75 }
             }).strength(0.05)
-            forceCollide = d3.forceCollide(radius*1.25)
+            forceCollide = d3.forceCollide(radius*1.35)
 
             simulation 
               .force("x", forceX) 
@@ -363,14 +363,14 @@ d3.selection.prototype.chartForce = function init(options) {
           .attr('width', width + MARGIN_LEFT + MARGIN_RIGHT)
           .attr('height', height + MARGIN_TOP + MARGIN_BOTTOM);
 
-          radius = width/60
+          radius = width/65
 
         $circles
           .attr("r", radius)
 
         forceX = d3.forceX(width/2).strength(0.05)
 
-        forceCollide = d3.forceCollide(radius*1.25)
+        forceCollide = d3.forceCollide(radius*1.35)
 
         simulation = d3.forceSimulation()
           .force("x", forceX) 

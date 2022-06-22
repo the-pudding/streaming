@@ -105,10 +105,10 @@ d3.selection.prototype.chartRev = function init(options) {
     // dimensions
     let width = 0;
     let height = 0;
-    const MARGIN_TOP = 20;
-    const MARGIN_BOTTOM = 20;
-    const MARGIN_LEFT = 60;
-    const MARGIN_RIGHT = 60;
+    const MARGIN_TOP = 10;
+    const MARGIN_BOTTOM = 10;
+    const MARGIN_LEFT = 40;
+    const MARGIN_RIGHT = 40;
     let widthContainer = 0;
     let heightContainer = 0;
 
@@ -939,8 +939,10 @@ d3.selection.prototype.chartRev = function init(options) {
 
         //container widths
         widthContainer = $container.node().offsetWidth - strokeWidth;
-        heightContainer = $container.node().offsetWidth - strokeWidth + 40;
-        $container.style('height', `${heightContainer}px`)
+        heightContainer = $container.node().offsetWidth - strokeWidth + 61;
+        $container.style('height', `${heightContainer}px`);
+
+        $vis.attr('transform', `translate(${(widthContainer - width)/2 + dollarWidth/2}, ${MARGIN_TOP})`);
 
         $svg
           .attr('width', width + MARGIN_LEFT + MARGIN_RIGHT)
