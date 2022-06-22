@@ -31,12 +31,13 @@ d3.selection.prototype.chartForce = function init(options) {
     let pDollar;
     let fDollar;
     let dollarHeight=15;
-    let pDollarHeight=9*dollarHeight;
+    let pDollarHeight=9*dollarHeight*0.75;
     let fDollarHeight=dollarHeight;
     let pArrowLine;
     let fArrowLine;
     let pArrow;
     let fArrow;
+    let verticalOffset=0.75;
 
     // data
     let data = $chart.datum();
@@ -141,7 +142,6 @@ d3.selection.prototype.chartForce = function init(options) {
             });
       },
       updateChart(i) {
-        console.log(i)
         switch (i){
           case 0:
             text_premium.transition().duration(500).style("opacity", 0)
@@ -171,11 +171,11 @@ d3.selection.prototype.chartForce = function init(options) {
             
             pArrowLine 
               .transition().duration(500).delay(500)
-              .attr("y2", height/1.6)
+              .attr("y2", height/2 + width*0.42/2.6/2)
             
             fArrowLine 
               .transition().duration(500).delay(500)
-              .attr("y2", height/1.4)
+              .attr("y2", height/2 + width*0.58/2.6/2 +20)
 
             break;
           case 1:
@@ -190,7 +190,6 @@ d3.selection.prototype.chartForce = function init(options) {
               pCircle.transition().duration(500).delay(500).attr('r', width*0.42/2.5).attr('cy', height/2)
 
               pDollar.transition().duration(500).delay(500).attr('height', 0)
-              
               fDollar.transition().duration(500).delay(500).attr('height', 0)
 
               d3.selectAll(".circle-freemium, .circle-premium")
@@ -211,13 +210,13 @@ d3.selection.prototype.chartForce = function init(options) {
                 .alphaTarget(0.5)
                 .restart()
               
-              pArrowLine 
-                .transition().duration(500).delay(500)
-                .attr("y2", height/1.6)
-              
-              fArrowLine 
-                .transition().duration(500).delay(500)
-                .attr("y2", height/1.4)
+            pArrowLine 
+              .transition().duration(500).delay(500)
+              .attr("y2", height/2 + width*0.42/2.6/2)
+            
+            fArrowLine 
+              .transition().duration(500).delay(500)
+              .attr("y2", height/2 + width*0.58/2.6/2 +20)
 
               pArrow
                 .transition().duration(500).delay(500)
@@ -229,76 +228,129 @@ d3.selection.prototype.chartForce = function init(options) {
 
               break;
           case 2:
-              let verticalOffset=0.75;
-              text_premium.transition().duration(500).style("opacity", 0)
-              text_freemium.transition().duration(500).style("opacity", 0)
-              text_premium_num.transition().duration(500).style("opacity", 0)
-              text_freemium_num.transition().duration(500).style("opacity", 0)
-              text_premium_num.text("42%")
-              text_freemium_num.text("58%")
+            text_premium.transition().duration(500).style("opacity", 0)
+            text_freemium.transition().duration(500).style("opacity", 0)
+            text_premium_num.transition().duration(500).style("opacity", 0)
+            text_freemium_num.transition().duration(500).style("opacity", 0)
 
-              fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2*verticalOffset)
-              pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2*verticalOffset)
+            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
+            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
 
-              pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
-              fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
+            pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
+            fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
 
-              d3.selectAll(".circle-freemium, .circle-premium")
-                .transition()
-                .duration(1000)
-                .attr("r", radius)
+            forceX = d3.forceX(function(d) { 
+              if (d.category === "premium") { return width*0.25 }
+              else { return width*0.75 }
+            }).strength(0.05)
+            forceCollide = d3.forceCollide(radius*1.25)
 
-              forceX = d3.forceX(function(d) { 
-                if (d.category === "premium") { return width*0.25 }
-                else { return width*0.75 }
-              }).strength(0.05)
-              forceCollide = d3.forceCollide(radius*1.25)
+            simulation 
+              .force("x", forceX) 
+              .force("y", d3.forceY(height/2*verticalOffset).strength(0.05)) 
+              .force("collide", forceCollide)
+              .alphaTarget(0.5)
+              .restart()
 
-              simulation 
-                .force("x", forceX) 
-                .force("y", d3.forceY(height/2*verticalOffset).strength(0.05)) 
-                .force("collide", forceCollide)
-                .alphaTarget(0.5)
-                .restart()
+            pArrowLine 
+                .transition().duration(500).delay(500)
+                .attr("y2", height - pDollarHeight -10)
               
-              pArrowLine 
-                .transition().duration(500).delay(500)
-                .attr("y2", height/1.425)
-              
-              fArrowLine 
-                .transition().duration(500).delay(500)
-                .attr("y2", height/1.2)
+            fArrowLine 
+              .transition().duration(500).delay(500)
+              .attr("y2", height - pDollarHeight/2 -10)
 
-              pArrow
-                .transition().duration(500).delay(500)
-                .style("opacity", 1)
-              
-              fArrow
-                .transition().duration(500).delay(500)
-                .style("opacity", 1)
-
-              break;
+            pArrow
+              .transition().duration(500).delay(500)
+              .style("opacity", 1)
+            
+            fArrow
+              .transition().duration(500).delay(500)
+              .style("opacity", 1)
+            break; 
           case 3:
             text_premium.transition().duration(500).style("opacity", 0)
             text_freemium.transition().duration(500).style("opacity", 0)
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
-            text_premium_num.text("12x more revenue")
-            text_freemium_num.text("")
 
-            fCircle.transition().duration(500).delay(500).attr('r', width*0.58/2.5)
-            pCircle.transition().duration(500).delay(500).attr('r', width*0.42/2.5)
-            break; 
+            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
+            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
+
+            pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
+            fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
+
+            forceX = d3.forceX(function(d) { 
+              if (d.category === "premium") { return width*0.25 }
+              else { return width*0.75 }
+            }).strength(0.05)
+            forceCollide = d3.forceCollide(radius*1.25)
+
+            simulation 
+              .force("x", forceX) 
+              .force("y", d3.forceY(height/2*verticalOffset).strength(0.05)) 
+              .force("collide", forceCollide)
+              .alphaTarget(0.5)
+              .restart()
+
+            pArrowLine 
+                .transition().duration(500).delay(500)
+                .attr("y2", height - pDollarHeight -10)
+              
+            fArrowLine 
+              .transition().duration(500).delay(500)
+              .attr("y2", height - pDollarHeight/2 -10)
+
+            pArrow
+              .transition().duration(500).delay(500)
+              .style("opacity", 1)
+            
+            fArrow
+              .transition().duration(500).delay(500)
+              .style("opacity", 1)
+            break;
           case 4:
+            //coinPathFunc.drawPath(3)
+
             text_premium.transition().duration(500).style("opacity", 0)
             text_freemium.transition().duration(500).style("opacity", 0)
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
-            text_premium_num.text("12x more revenue")
-            text_freemium_num.text("")
-            break;
-          case 5:
-            //coinPathFunc.drawPath(3)
+
+            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
+            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
+
+            pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
+            fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
+
+            forceX = d3.forceX(function(d) { 
+              if (d.category === "premium") { return width*0.25 }
+              else { return width*0.75 }
+            }).strength(0.05)
+            forceCollide = d3.forceCollide(radius*1.25)
+
+            simulation 
+              .force("x", forceX) 
+              .force("y", d3.forceY(height/2*verticalOffset).strength(0.05)) 
+              .force("collide", forceCollide)
+              .alphaTarget(0.5)
+              .restart()
+
+            pArrowLine 
+                .transition().duration(500).delay(500)
+                .attr("y2", height - pDollarHeight -10)
+              
+            fArrowLine 
+              .transition().duration(500).delay(500)
+              .attr("y2", height - pDollarHeight/2 -10)
+
+            pArrow
+              .transition().duration(500).delay(500)
+              .style("opacity", 1)
+            
+            fArrow
+              .transition().duration(500).delay(500)
+              .style("opacity", 1)
             break;  
         }
       },
@@ -365,22 +417,22 @@ d3.selection.prototype.chartForce = function init(options) {
 
         pArrowLine 
           .attr("x1", width*0.25)
-          .attr("y1", height/1.6)
+          .attr("y1", height/2 + width*0.42/2.6/2)
           .attr("x2", width*0.25)
-          .attr("y2", height/1.6)
+          .attr("y2", height/2 + width*0.42/2.6/2)
         
         fArrowLine 
           .attr("x1", width*0.75)
-          .attr("y1", height/1.4)
+          .attr("y1", height/2 + width*0.58/2.6/2 +20)
           .attr("x2", width*0.75)
-          .attr("y2", height/1.4)
+          .attr("y2", height/2 + width*0.58/2.6/2 +20)
         
         pArrow
-          .attr("transform", `translate(${width*0.25}, ${height/1.425-4}) rotate(60)`)
+          .attr("transform", `translate(${width*0.25}, ${height - pDollarHeight -10}) rotate(60)`)
           .style("opacity", 0)
         
         fArrow
-          .attr("transform", `translate(${width*0.75}, ${height/1.2-4}) rotate(60)`)
+          .attr("transform", `translate(${width*0.75}, ${height - pDollarHeight/2 -10}) rotate(60)`)
           .style("opacity", 0)
         
         Chart.updateChart(currStep)
