@@ -48,12 +48,8 @@ h1
 	text-shadow 0 0 20px $white
 	font-weight 300
 	line-height 1
-	animation flicker 10s linear infinite
 	+mq('bp-4')
 		set-type-size(xxxxx-large, false)
-
-h1:hover
-	animation flicker 10s linear infinite
 
 .redSpan
 	padding 0.25rem 0.75rem
@@ -67,6 +63,7 @@ h1:hover
 	border-radius 1rem
 	background-color $green
 	box-decoration-break clone
+	color #0b1832
 	font-weight bold
 
 .purpleSpan
@@ -87,6 +84,14 @@ h1:hover
 .whiteSpan
 	padding 0.25rem 0.75rem
 	border 1px solid rgba($purple, 0.25)
+	border-radius 1rem
+	background-color $white
+	box-decoration-break clone
+	font-weight bold
+	color #0b1832
+
+.whiteSpanBorderless
+	padding 0.25rem 0.75rem
 	border-radius 1rem
 	background-color $white
 	box-decoration-break clone
@@ -131,6 +136,29 @@ p.highlight
 
 .text_div:last-of-type
 	margin-bottom 10rem
+
+.intro-icons
+	max-width 20rem
+	margin 0 auto 1rem auto
+	display flex
+	flex-direction row
+	justify-content center
+
+.intro-icons img
+	width 4rem
+	height 4rem
+	margin 0.5rem
+
+.intro-artist
+	animation flicker 10s linear infinite
+
+.intro-note
+	animation flicker 10s linear infinite
+	animation-delay 2.5s
+
+.intro-dollar
+	animation flicker 10s linear infinite
+	animation-delay 5s
 
 .bold
 	font-weight bold
@@ -202,17 +230,10 @@ p.highlight
 	z-index 1
 	margin 0 auto
 	max-width $column-width
-	border 5px solid $purple
-	border-radius 10px
-	background-color $dark-purple
-	box-shadow 0 0 20px $purple
+	border-radius 0
+	background-color $bg-purple
 	+mq('bp-7')
 		width calc(100% - 25rem)
-		margin 0 2rem 0 0
-		border none
-		border-radius 0
-		background-color $bg-purple
-		box-shadow none
 
 .flickerClass
 	border 5px solid $purple
@@ -242,6 +263,17 @@ p.highlight
 
 #premium_text, #premium_num
 	fill $green
+
+#premium_num, #freemium_num
+	font-weight 700
+	font-size 24px
+
+.fArrowLine, .pArrowLine 
+	stroke white
+	stroke-width 2
+
+.fArrow, .pArrow
+	fill white
 
 .container-1 #graph
 	max-height 30rem
@@ -447,6 +479,40 @@ circle
 	// animation shake 1s
 	// animation-play-state running
 	// animation-iteration-count infinite
+
+
+ul
+	max-width 40rem
+	margin 0 auto
+	padding 1rem
+	list-style-type disc
+
+li 
+	font-size 16px
+	line-height 1.65
+
+	+mq('bp-3')
+		font-size 18px
+
+#notes p
+	font-size 14px
+	+mq('bp-3')
+		font-size 16px
+
+#subhed-5
+	font-size 24px
+
+#notes ol 
+	max-width 40rem
+	margin 0 auto
+	padding 1rem 4rem
+	font-size 16px
+
+#notes li
+	padding 0.5rem 0
+	font-size 14px
+	+mq('bp-3')
+		font-size 16px
 
 @keyframes flicker
 	0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%

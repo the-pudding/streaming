@@ -232,6 +232,7 @@ d3.selection.prototype.chartRev = function init(options) {
     }
 
     function updateChart(i) {
+      console.log(i)
       switch(i) {
         // case 0:
         //   $otherTracksRect.transition().duration(transition_duration)
@@ -715,7 +716,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $distBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $controlsContainer.transition().duration(1000)
-          .style("bottom", "-20rem")
+          .style("bottom", "0rem")
         $sections.style("pointer-events", "none")
         break;
       case 20:
@@ -895,7 +896,7 @@ d3.selection.prototype.chartRev = function init(options) {
         // })
 
         enterView({
-          selector: '.pudding-footer',
+          selector: '#subhed-4',
           offset: 0.2,
           enter: function(el) {
             $controlsContainer.transition().duration(1000)
