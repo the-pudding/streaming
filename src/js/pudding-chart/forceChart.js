@@ -80,6 +80,9 @@ d3.selection.prototype.chartForce = function init(options) {
       $circles
         .attr("cx", function(d) { return d.x })
         .attr("cy", function(d) { return d.y })
+
+
+        simulation.alphaTarget(0.1).restart();
     }
 
     const Chart = {
@@ -166,7 +169,7 @@ d3.selection.prototype.chartForce = function init(options) {
               .force("x", forceX) 
               .force("y", d3.forceY(height/2).strength(0.05)) 
               .force("collide", forceCollide)
-              .alphaTarget(0.5)
+              .alphaTarget(0.1)
               .restart()
             
             pArrowLine 
@@ -200,14 +203,14 @@ d3.selection.prototype.chartForce = function init(options) {
               forceX = d3.forceX(function(d) { 
                 if (d.category === "premium") { return width*0.25 }
                 else { return width*0.75 }
-              }).strength(0.05)
+              }).strength(0.25)
               forceCollide = d3.forceCollide(radius*1.35)
 
               simulation 
                 .force("x", forceX) 
-                .force("y", d3.forceY(height/2).strength(0.05)) 
+                .force("y", d3.forceY(height/2).strength(0.25)) 
                 .force("collide", forceCollide)
-                .alphaTarget(0.5)
+                .alphaTarget(0.1)
                 .restart()
               
             pArrowLine 
@@ -242,14 +245,14 @@ d3.selection.prototype.chartForce = function init(options) {
             forceX = d3.forceX(function(d) { 
               if (d.category === "premium") { return width*0.25 }
               else { return width*0.75 }
-            }).strength(0.05)
+            }).strength(0.25)
             forceCollide = d3.forceCollide(radius*1.35)
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2*verticalOffset).strength(0.05)) 
+              .force("y", d3.forceY(height/2*verticalOffset).strength(0.25)) 
               .force("collide", forceCollide)
-              .alphaTarget(0.5)
+              .alphaTarget(0.1)
               .restart()
 
             pArrowLine 
@@ -283,14 +286,14 @@ d3.selection.prototype.chartForce = function init(options) {
             forceX = d3.forceX(function(d) { 
               if (d.category === "premium") { return width*0.25 }
               else { return width*0.75 }
-            }).strength(0.05)
+            }).strength(0.25)
             forceCollide = d3.forceCollide(radius*1.35)
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2*verticalOffset).strength(0.05)) 
+              .force("y", d3.forceY(height/2*verticalOffset).strength(0.25)) 
               .force("collide", forceCollide)
-              .alphaTarget(0.5)
+              .alphaTarget(0.1)
               .restart()
 
             pArrowLine 
@@ -326,14 +329,14 @@ d3.selection.prototype.chartForce = function init(options) {
             forceX = d3.forceX(function(d) { 
               if (d.category === "premium") { return width*0.25 }
               else { return width*0.75 }
-            }).strength(0.05)
+            }).strength(0.25)
             forceCollide = d3.forceCollide(radius*1.35)
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2*verticalOffset).strength(0.05)) 
+              .force("y", d3.forceY(height/2*verticalOffset).strength(0.25)) 
               .force("collide", forceCollide)
-              .alphaTarget(0.5)
+              .alphaTarget(0.1)
               .restart()
 
             pArrowLine 
@@ -376,6 +379,8 @@ d3.selection.prototype.chartForce = function init(options) {
           .force("x", forceX) 
           .force("y", d3.forceY(height/2).strength(0.05)) 
           .force("collide", forceCollide)
+          .alphaTarget(0.5)
+          .restart();
 
         simulation
           .nodes(data)

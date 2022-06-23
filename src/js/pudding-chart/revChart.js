@@ -844,19 +844,19 @@ d3.selection.prototype.chartRev = function init(options) {
         // sliders
         setupSliders();
 
-        $DSPrevenue.node().noUiSlider.on("change", function() {
+        $DSPrevenue.node().noUiSlider.on("update", function() {
           getSliderValues()
           updateSliderChart(sliderVals)
         })
-        $TotalOtherStreams.node().noUiSlider.on("change", function() {
+        $TotalOtherStreams.node().noUiSlider.on("update", function() {
           getSliderValues()
           updateSliderChart(sliderVals)
         })
-        $Trackstreams.node().noUiSlider.on("change", function() {
+        $Trackstreams.node().noUiSlider.on("update", function() {
           getSliderValues()
           updateSliderChart(sliderVals)
         })
-        $Artistshare.node().noUiSlider.on("change", function() {
+        $Artistshare.node().noUiSlider.on("update", function() {
           getSliderValues()
           updateSliderChart(sliderVals)
         })
