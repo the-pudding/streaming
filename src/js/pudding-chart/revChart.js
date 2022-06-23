@@ -205,7 +205,6 @@ d3.selection.prototype.chartRev = function init(options) {
     }
 
     function getSliderValues() {
-        console.log("getting slide values")
         $DSPrevenueValue = $DSPrevenue_slider.get();
         $TotalOtherStreamsValue = $TotalOtherStreams_slider.get();
         $TrackstreamsValue = $Trackstreams_slider.get();
@@ -214,7 +213,6 @@ d3.selection.prototype.chartRev = function init(options) {
   }
 
   function resetSliderValues() {
-      console.log("resetting")
       $DSPrevenueValue = $DSPrevenue_slider.reset();
       $TotalOtherStreamsValue = $TotalOtherStreams_slider.reset();
       $TrackstreamsValue = $Trackstreams_slider.reset();
@@ -242,7 +240,6 @@ d3.selection.prototype.chartRev = function init(options) {
     }
 
     function updateChart(i) {
-      console.log(i)
       switch(i) {
         // case 0:
         //   $otherTracksRect.transition().duration(transition_duration)
