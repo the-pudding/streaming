@@ -205,11 +205,21 @@ d3.selection.prototype.chartRev = function init(options) {
     }
 
     function getSliderValues() {
+        console.log("getting slide values")
         $DSPrevenueValue = $DSPrevenue_slider.get();
         $TotalOtherStreamsValue = $TotalOtherStreams_slider.get();
         $TrackstreamsValue = $Trackstreams_slider.get();
         $ArtistshareValue = $Artistshare_slider.get();
         sliderVals = { dspVal: $DSPrevenueValue, totVal: $TotalOtherStreamsValue, trackVal: $TrackstreamsValue, artistVal: $ArtistshareValue }
+  }
+
+  function resetSliderValues() {
+      console.log("resetting")
+      $DSPrevenueValue = $DSPrevenue_slider.reset();
+      $TotalOtherStreamsValue = $TotalOtherStreams_slider.reset();
+      $TrackstreamsValue = $Trackstreams_slider.reset();
+      $ArtistshareValue = $Artistshare_slider.reset();
+      sliderVals = { dspVal: $DSPrevenueValue, totVal: $TotalOtherStreamsValue, trackVal: $TrackstreamsValue, artistVal: $ArtistshareValue }
   }
 
     function drawDollars(N) {
@@ -694,6 +704,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $sections.style("pointer-events", "auto")
         break;
       case 19:
+        resetSliderValues();    
         $otherTracksRect.transition().duration(transition_duration)
           .attr("y", dollarWidth*1)
           .attr("height", dollarWidth*20)
@@ -721,21 +732,21 @@ d3.selection.prototype.chartRev = function init(options) {
         break;
       case 20:
         //coinPathFunc.drawPath(4)
-        $otherTracksRect.transition().duration(transition_duration)
-          .attr("y", dollarWidth*1)
-          .attr("height", dollarWidth*20)
-        $DSPShareRect.transition().duration(transition_duration)
-          .attr("height", 0)
-        $artistTracksRect.transition().duration(transition_duration)
-          .attr("width", dollarWidth/2)
-          .attr("x", dollarWidth*20 - dollarWidth/2)
-          .attr("y", dollarWidth*1)
-          .attr("height", dollarWidth*20)  
-        $distTracksRect.transition().duration(transition_duration)
-          .attr("width", dollarWidth/2)
-          .attr("x", dollarWidth*20 - dollarWidth/2)
-          .attr("y", dollarWidth*18)
-          .attr("height", dollarWidth*3)
+        // $otherTracksRect.transition().duration(transition_duration)
+        //   .attr("y", dollarWidth*1)
+        //   .attr("height", dollarWidth*20)
+        // $DSPShareRect.transition().duration(transition_duration)
+        //   .attr("height", 0)
+        // $artistTracksRect.transition().duration(transition_duration)
+        //   .attr("width", dollarWidth/2)
+        //   .attr("x", dollarWidth*20 - dollarWidth/2)
+        //   .attr("y", dollarWidth*1)
+        //   .attr("height", dollarWidth*20)  
+        // $distTracksRect.transition().duration(transition_duration)
+        //   .attr("width", dollarWidth/2)
+        //   .attr("x", dollarWidth*20 - dollarWidth/2)
+        //   .attr("y", dollarWidth*18)
+        //   .attr("height", dollarWidth*3)
         $otherBlock.transition().duration(transition_duration)
           .style("opacity", 1)
         $artistBlock.transition().duration(transition_duration)
@@ -1016,7 +1027,7 @@ d3.selection.prototype.chartRev = function init(options) {
         //       })
         //   })
           
-          if (currStep !== 19) { updateChart(currStep); }
+        if (currStep !== 19 || currStep !== 20) { updateChart(currStep); }
           else  {
             getSliderValues()
             updateSliderChart(sliderVals)
