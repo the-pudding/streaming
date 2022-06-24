@@ -80,7 +80,9 @@ d3.selection.prototype.chartForce = function init(options) {
       $circles
         .attr("cx", function(d) { return d.x })
         .attr("cy", function(d) { return d.y })
-
+        .transition()
+        .duration(10000)
+        .ease(d3.easeLinear)
 
         simulation.alphaTarget(0.1).restart();
     }
@@ -145,6 +147,7 @@ d3.selection.prototype.chartForce = function init(options) {
             });
       },
       updateChart(i) {
+        console.log(i)
         switch (i){
           case 0:
             text_premium.transition().duration(500).style("opacity", 0)
@@ -170,7 +173,12 @@ d3.selection.prototype.chartForce = function init(options) {
               .force("y", d3.forceY(height/2).strength(0.05)) 
               .force("collide", forceCollide)
               .alphaTarget(0.1)
-              .restart()
+              .restart();
+
+            $circleGroup
+              .transition()
+              .duration(500)
+              .attr('transform', `translate(0, 0)`);
             
             pArrowLine 
               .transition().duration(500).delay(500)
@@ -189,11 +197,11 @@ d3.selection.prototype.chartForce = function init(options) {
               text_premium_num.text("42%")
               text_freemium_num.text("58%")
 
-              fCircle.transition().duration(500).delay(500).attr('r', width*0.58/2.5).attr('cy', height/2)
-              pCircle.transition().duration(500).delay(500).attr('r', width*0.42/2.5).attr('cy', height/2)
+              fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2)
+              pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2)
 
-              pDollar.transition().duration(500).delay(500).attr('height', 0)
-              fDollar.transition().duration(500).delay(500).attr('height', 0)
+              pDollar.transition().duration(500).delay(0).attr('height', 0)
+              fDollar.transition().duration(500).delay(0).attr('height', 0)
 
               d3.selectAll(".circle-freemium, .circle-premium")
                 .transition()
@@ -211,7 +219,12 @@ d3.selection.prototype.chartForce = function init(options) {
                 .force("y", d3.forceY(height/2).strength(0.25)) 
                 .force("collide", forceCollide)
                 .alphaTarget(0.1)
-                .restart()
+                .restart();
+
+            $circleGroup
+              .transition()
+              .duration(500)
+              .attr('transform', `translate(0, 0)`);
               
             pArrowLine 
               .transition().duration(500).delay(500)
@@ -250,10 +263,15 @@ d3.selection.prototype.chartForce = function init(options) {
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2*verticalOffset).strength(0.25)) 
+              .force("y", d3.forceY(height/2).strength(0.25)) 
               .force("collide", forceCollide)
               .alphaTarget(0.1)
-              .restart()
+              .restart();
+
+            $circleGroup
+              .transition()
+              .duration(500)
+              .attr('transform', `translate(0, ${-height/2*0.25})`);
 
             pArrowLine 
                 .transition().duration(500).delay(500)
@@ -291,10 +309,15 @@ d3.selection.prototype.chartForce = function init(options) {
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2*verticalOffset).strength(0.25)) 
+              .force("y", d3.forceY(height/2).strength(0.25)) 
               .force("collide", forceCollide)
               .alphaTarget(0.1)
-              .restart()
+              .restart();
+
+            $circleGroup
+              .transition()
+              .duration(500)
+              .attr('transform', `translate(0, ${-height/2*0.25})`);
 
             pArrowLine 
                 .transition().duration(500).delay(500)
@@ -334,10 +357,15 @@ d3.selection.prototype.chartForce = function init(options) {
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2*verticalOffset).strength(0.25)) 
+              .force("y", d3.forceY(height/2).strength(0.25)) 
               .force("collide", forceCollide)
               .alphaTarget(0.1)
-              .restart()
+              .restart();
+
+            $circleGroup
+              .transition()
+              .duration(500)
+              .attr('transform', `translate(0, ${-height/2*0.25})`);
 
             pArrowLine 
                 .transition().duration(500).delay(500)
@@ -366,25 +394,36 @@ d3.selection.prototype.chartForce = function init(options) {
           .attr('width', width + MARGIN_LEFT + MARGIN_RIGHT)
           .attr('height', height + MARGIN_TOP + MARGIN_BOTTOM);
 
-          radius = width/65
+        radius = width/65
 
         $circles
           .attr("r", radius)
 
-        forceX = d3.forceX(width/2).strength(0.05)
-
-        forceCollide = d3.forceCollide(radius*1.35)
+        if (currStep < 1 ) {
+          forceX = d3.forceX(width/2).strength(0.05)
+          forceCollide = d3.forceCollide(radius*1.35)
+        } else {
+          forceX = d3.forceX(function(d) { 
+            if (d.category === "premium") { return width*0.25 }
+            else { return width*0.75 }
+          }).strength(0.25)
+          forceCollide = d3.forceCollide(radius*1.35)
+        }
 
         simulation = d3.forceSimulation()
           .force("x", forceX) 
           .force("y", d3.forceY(height/2).strength(0.05)) 
           .force("collide", forceCollide)
-          .alphaTarget(0.5)
+          .alphaTarget(0.1)
           .restart();
 
         simulation
           .nodes(data)
           .on("tick", ticked)
+
+        setTimeout(function(d) {
+          simulation.stop();
+        }, 5000)
         
         text_premium
           .attr('x',width*0.25)
@@ -441,6 +480,10 @@ d3.selection.prototype.chartForce = function init(options) {
           .style("opacity", 0)
         
         Chart.updateChart(currStep)
+
+        if (currStep > 0) {
+          console.log(currStep)
+        }
         
         return Chart;
       },
