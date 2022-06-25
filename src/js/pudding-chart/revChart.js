@@ -701,7 +701,7 @@ d3.selection.prototype.chartRev = function init(options) {
         $sections.style("pointer-events", "auto")
         break;
       case 19:
-        resetSliderValues();    
+        resetSliderValues();   
         $otherTracksRect.transition().duration(transition_duration)
           .attr("y", dollarWidth*1)
           .attr("height", dollarWidth*20)
