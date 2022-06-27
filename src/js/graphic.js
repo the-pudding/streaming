@@ -42,6 +42,8 @@ function resize() {
 	const $body = d3.select("body");
 	let previousWidth = 0;
 	const width = $body.node().offsetWidth;
+	let previousHeight = 0;
+	const height = $body.node().offsetHeight;
 
 	// coinPathFunc.resetPaths();
 
@@ -57,6 +59,10 @@ function resize() {
 		chartDiagram.resize();
 		chartForce.resize();
 		//chartUser.resize();
+		chartRev.resize();
+	}
+
+	if (previousHeight !== height) {
 		chartRev.resize();
 	}
 }

@@ -147,7 +147,6 @@ d3.selection.prototype.chartForce = function init(options) {
             });
       },
       updateChart(i) {
-        console.log(i)
         switch (i){
           case 0:
             text_premium.transition().duration(500).style("opacity", 0)
