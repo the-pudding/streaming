@@ -221,7 +221,6 @@ d3.selection.prototype.chartRev = function init(options) {
   }
 
     function updateChart(i) {
-      console.log(i)
       switch(i) {
         // case 0:
         //   $otherTracksRect.transition().duration(transition_duration)
@@ -919,8 +918,6 @@ d3.selection.prototype.chartRev = function init(options) {
         // defaults to grabbing dimensions from container element
         height = $chart.node().offsetHeight - MARGIN_TOP - MARGIN_BOTTOM;
         width = $chart.node().offsetWidth - MARGIN_LEFT - MARGIN_RIGHT;
-
-        console.log(height, width)
 
         if (width > height) {
           dollarWidth = Math.floor(height/dollarNum);

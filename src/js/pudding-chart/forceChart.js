@@ -74,6 +74,7 @@ d3.selection.prototype.chartForce = function init(options) {
     let forceX = null;
     let forceCollide = null;
     let forceCollide2 = null;
+    let chargeForce = null;
 
     // helper functions
     function ticked() {
@@ -84,7 +85,7 @@ d3.selection.prototype.chartForce = function init(options) {
         .duration(10000)
         .ease(d3.easeLinear)
 
-        simulation.alphaTarget(0.1).restart();
+        simulation.alpha(0.5)//.alphaTarget(0.1).restart();
     }
 
     const Chart = {
@@ -142,11 +143,13 @@ d3.selection.prototype.chartForce = function init(options) {
             .sections(d3.selectAll('.container-1 #sections > div'))
             .offset(100)
             .on('active', function(i){
+              console.log(i)
                 currStep = i;
                 Chart.updateChart(i);
             });
       },
       updateChart(i) {
+        console.log(i, width, width*0.25, width*0.75)
         switch (i){
           case 0:
             text_premium.transition().duration(500).style("opacity", 0)
@@ -165,13 +168,15 @@ d3.selection.prototype.chartForce = function init(options) {
               pCircle.transition().duration(500).attr('r', 0)
 
             forceX = d3.forceX(width/2).strength(0.05)
-            forceCollide = d3.forceCollide(radius*1.35)
+            forceCollide = d3.forceCollide(radius)
 
             simulation 
               .force("x", forceX) 
               .force("y", d3.forceY(height/2).strength(0.05)) 
-              .force("collide", forceCollide)
-              .alphaTarget(0.1)
+              .force("charge", chargeForce)
+              .force("collision", forceCollide)
+              .alpha(0.5)
+              //.alphaTarget(0.1)
               .restart();
 
             $circleGroup
@@ -208,16 +213,18 @@ d3.selection.prototype.chartForce = function init(options) {
                 .attr("r", radius)
 
               forceX = d3.forceX(function(d) { 
-                if (d.category === "premium") { return width*0.25 }
-                else { return width*0.75 }
-              }).strength(0.25)
-              forceCollide = d3.forceCollide(radius*1.35)
+                if (d.category === "premium") { return width*0.3 }
+                else { return width*0.7 }
+              }).strength(0.05)
+              //forceCollide = d3.forceCollide(radius)
 
               simulation 
                 .force("x", forceX) 
-                .force("y", d3.forceY(height/2).strength(0.25)) 
-                .force("collide", forceCollide)
-                .alphaTarget(0.1)
+                .force("y", d3.forceY(height/2).strength(0.05)) 
+                .force("charge", chargeForce)
+                .force("collision", forceCollide)
+                .alpha(0.5)
+                //.alphaTarget(0.1)
                 .restart();
 
             $circleGroup
@@ -255,16 +262,18 @@ d3.selection.prototype.chartForce = function init(options) {
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
 
             forceX = d3.forceX(function(d) { 
-              if (d.category === "premium") { return width*0.25 }
-              else { return width*0.75 }
-            }).strength(0.25)
-            forceCollide = d3.forceCollide(radius*1.35)
+              if (d.category === "premium") { return width*0.3 }
+              else { return width*0.7 }
+            }).strength(0.05)
+            forceCollide = d3.forceCollide(radius)
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2).strength(0.25)) 
-              .force("collide", forceCollide)
-              .alphaTarget(0.1)
+              .force("y", d3.forceY(height/2).strength(0.05)) 
+              .force("charge", chargeForce)
+              .force("collision", forceCollide)
+              .alpha(0.5)
+              //.alphaTarget(0.1)
               .restart();
 
             $circleGroup
@@ -301,16 +310,18 @@ d3.selection.prototype.chartForce = function init(options) {
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
 
             forceX = d3.forceX(function(d) { 
-              if (d.category === "premium") { return width*0.25 }
-              else { return width*0.75 }
-            }).strength(0.25)
-            forceCollide = d3.forceCollide(radius*1.35)
+              if (d.category === "premium") { return width*0.3 }
+              else { return width*0.7 }
+            }).strength(0.05)
+            forceCollide = d3.forceCollide(radius)
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2).strength(0.25)) 
-              .force("collide", forceCollide)
-              .alphaTarget(0.1)
+              .force("y", d3.forceY(height/2).strength(0.05)) 
+              .force("charge", chargeForce)
+              .force("collision", forceCollide)
+              .alpha(0.5)
+              //.alphaTarget(0.1)
               .restart();
 
             $circleGroup
@@ -349,16 +360,18 @@ d3.selection.prototype.chartForce = function init(options) {
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
 
             forceX = d3.forceX(function(d) { 
-              if (d.category === "premium") { return width*0.25 }
-              else { return width*0.75 }
-            }).strength(0.25)
-            forceCollide = d3.forceCollide(radius*1.35)
+              if (d.category === "premium") { return width*0.3 }
+              else { return width*0.7 }
+            }).strength(0.05)
+            forceCollide = d3.forceCollide(radius)
 
             simulation 
               .force("x", forceX) 
-              .force("y", d3.forceY(height/2).strength(0.25)) 
-              .force("collide", forceCollide)
-              .alphaTarget(0.1)
+              .force("y", d3.forceY(height/2).strength(0.05)) 
+              .force("charge", chargeForce)
+              .force("collision", forceCollide)
+              .alpha(0.5)
+              //.alphaTarget(0.1)
               .restart();
 
             $circleGroup
@@ -389,31 +402,38 @@ d3.selection.prototype.chartForce = function init(options) {
         // defaults to grabbing dimensions from container element
         width = $chart.node().offsetWidth - MARGIN_LEFT - MARGIN_RIGHT;
         height = $chart.node().offsetHeight - MARGIN_TOP - MARGIN_BOTTOM;
+        
         $svg
           .attr('width', width + MARGIN_LEFT + MARGIN_RIGHT)
           .attr('height', height + MARGIN_TOP + MARGIN_BOTTOM);
 
-        radius = width/65
+        radius = width/65;
+        chargeForce = d3.forceManyBody().strength(-radius);
+        forceCollide = d3.forceCollide(radius)
 
         $circles
           .attr("r", radius)
+        
+        forceX = d3.forceX(width/2).strength(0.05)
 
-        if (currStep < 1 ) {
-          forceX = d3.forceX(width/2).strength(0.05)
-          forceCollide = d3.forceCollide(radius*1.35)
-        } else {
-          forceX = d3.forceX(function(d) { 
-            if (d.category === "premium") { return width*0.25 }
-            else { return width*0.75 }
-          }).strength(0.25)
-          forceCollide = d3.forceCollide(radius*1.35)
-        }
+        // if (currStep = 0 ) {
+        //   console.log("less than", currStep, width, width*0.25, width*0.75)
+        //   forceX = d3.forceX(width/2).strength(0.05)
+        // } else {
+        //   console.log(currStep, width, width*0.25, width*0.75)
+        //   forceX = d3.forceX(function(d) { 
+        //     if (d.category === "premium") { return width*0.25 }
+        //     else { return width*0.75 }
+        //   }).strength(0.05)
+        // }
 
         simulation = d3.forceSimulation()
           .force("x", forceX) 
           .force("y", d3.forceY(height/2).strength(0.05)) 
-          .force("collide", forceCollide)
-          .alphaTarget(0.1)
+          .force("charge", chargeForce)
+          .force("collision", forceCollide)
+          .alpha(0.5)
+          //.alphaTarget(0.1)
           .restart();
 
         simulation
@@ -479,10 +499,6 @@ d3.selection.prototype.chartForce = function init(options) {
           .style("opacity", 0)
         
         Chart.updateChart(currStep)
-
-        if (currStep > 0) {
-          console.log(currStep)
-        }
         
         return Chart;
       },
