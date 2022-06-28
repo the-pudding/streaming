@@ -168,6 +168,7 @@ d3.selection.prototype.chartForce = function init(options) {
               pCircle.transition().duration(500).attr('r', 0)
 
             forceX = d3.forceX(width/2).strength(0.05)
+            chargeForce = d3.forceManyBody().strength(-radius);
             forceCollide = d3.forceCollide(radius)
 
             simulation 
@@ -211,12 +212,14 @@ d3.selection.prototype.chartForce = function init(options) {
                 .transition()
                 .duration(1000)
                 .attr("r", radius)
+              
+              chargeForce = d3.forceManyBody().strength(-radius);
+              forceCollide = d3.forceCollide(radius)
 
               forceX = d3.forceX(function(d) { 
                 if (d.category === "premium") { return width*0.3 }
                 else { return width*0.7 }
               }).strength(0.05)
-              //forceCollide = d3.forceCollide(radius)
 
               simulation 
                 .force("x", forceX) 
@@ -255,17 +258,19 @@ d3.selection.prototype.chartForce = function init(options) {
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
 
-            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
-            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
+            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2*verticalOffset)
+            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2*verticalOffset)
 
             pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
+
+            chargeForce = d3.forceManyBody().strength(-radius);
+            forceCollide = d3.forceCollide(radius)
 
             forceX = d3.forceX(function(d) { 
               if (d.category === "premium") { return width*0.3 }
               else { return width*0.7 }
             }).strength(0.05)
-            forceCollide = d3.forceCollide(radius)
 
             simulation 
               .force("x", forceX) 
@@ -303,17 +308,19 @@ d3.selection.prototype.chartForce = function init(options) {
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
 
-            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
-            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
+            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2*verticalOffset)
+            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2*verticalOffset)
 
             pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
+
+            chargeForce = d3.forceManyBody().strength(-radius);
+            forceCollide = d3.forceCollide(radius)
 
             forceX = d3.forceX(function(d) { 
               if (d.category === "premium") { return width*0.3 }
               else { return width*0.7 }
             }).strength(0.05)
-            forceCollide = d3.forceCollide(radius)
 
             simulation 
               .force("x", forceX) 
@@ -353,17 +360,19 @@ d3.selection.prototype.chartForce = function init(options) {
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
 
-            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
-            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
+            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2*verticalOffset)
+            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2*verticalOffset)
 
             pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
+
+            chargeForce = d3.forceManyBody().strength(-radius);
+            forceCollide = d3.forceCollide(radius)
 
             forceX = d3.forceX(function(d) { 
               if (d.category === "premium") { return width*0.3 }
               else { return width*0.7 }
             }).strength(0.05)
-            forceCollide = d3.forceCollide(radius)
 
             simulation 
               .force("x", forceX) 
@@ -440,9 +449,9 @@ d3.selection.prototype.chartForce = function init(options) {
           .nodes(data)
           .on("tick", ticked)
 
-        setTimeout(function(d) {
-          simulation.stop();
-        }, 5000)
+        // setTimeout(function(d) {
+        //   simulation.stop();
+        // }, 5000)
         
         text_premium
           .attr('x',width*0.25)
