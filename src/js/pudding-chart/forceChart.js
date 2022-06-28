@@ -71,6 +71,8 @@ d3.selection.prototype.chartForce = function init(options) {
     const MARGIN_BOTTOM = 0;
     const MARGIN_LEFT = 0;
     const MARGIN_RIGHT = 0;
+    let widthPSplit;
+    let widthFSplit;
 
     // scales
     const scaleX = null;
@@ -79,7 +81,6 @@ d3.selection.prototype.chartForce = function init(options) {
     let radius = null;
     let forceX = null;
     let forceCollide = null;
-    let forceCollide2 = null;
     let chargeForce = null;
 
     // helper functions
@@ -173,7 +174,7 @@ d3.selection.prototype.chartForce = function init(options) {
             });
       },
       updateChart(i) {
-        console.log(i)
+        //console.log(i)
         switch (i){
           case 0:
             text_premium.transition().duration(500).style("opacity", 0)
@@ -188,8 +189,8 @@ d3.selection.prototype.chartForce = function init(options) {
                 .duration(1000)
                 .attr("r", radius)
             
-            fCircle.transition().duration(500).attr('r', 0)
-            pCircle.transition().duration(500).attr('r', 0)
+            // fCircle.transition().duration(500).attr('r', 0)
+            // pCircle.transition().duration(500).attr('r', 0)
 
             forceX = d3.forceX(width/2).strength(0.05)
             chargeForce = d3.forceManyBody().strength(-radius);
@@ -204,6 +205,10 @@ d3.selection.prototype.chartForce = function init(options) {
               .alphaTarget(0.5)
               .restart();
 
+            setTimeout(function() {
+              simulation.stop();
+            }, 3000)
+
             $circleGroup
               .transition()
               .duration(500)
@@ -211,11 +216,11 @@ d3.selection.prototype.chartForce = function init(options) {
             
             pArrowLine 
               .transition().duration(500).delay(500)
-              .attr("y2", height/2 + width*0.42/2.6/2)
+              .attr("y2", height/2 + width*0.58/2.5/2 +20)
             
             fArrowLine 
               .transition().duration(500).delay(500)
-              .attr("y2", height/2 + width*0.58/2.6/2 +20)
+              .attr("y2", height/2 + width*0.58/2.5/2 +20)
 
             break;
           case 1:
@@ -226,8 +231,8 @@ d3.selection.prototype.chartForce = function init(options) {
               text_premium_num.text("42%")
               text_freemium_num.text("58%")
 
-              fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2)
-              pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2)
+              // fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2)
+              // pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2)
 
               pDollar.transition().duration(500).delay(0).attr('height', 0)
               fDollar.transition().duration(500).delay(0).attr('height', 0)
@@ -253,6 +258,10 @@ d3.selection.prototype.chartForce = function init(options) {
                 .alpha(1)
                 .alphaTarget(0.5)
                 .restart();
+            
+            setTimeout(function() {
+              simulation.stop();
+            }, 3000)
 
             $circleGroup
               .transition()
@@ -261,11 +270,11 @@ d3.selection.prototype.chartForce = function init(options) {
               
             pArrowLine 
               .transition().duration(500).delay(500)
-              .attr("y2", height/2 + width*0.42/2.6/2)
+              .attr("y2", height/2 + width*0.58/2.5/2 +20)
             
             fArrowLine 
               .transition().duration(500).delay(500)
-              .attr("y2", height/2 + width*0.58/2.6/2 +20)
+              .attr("y2", height/2 + width*0.58/2.5/2 +20)
 
             pArrow
               .transition().duration(500).delay(500)
@@ -282,8 +291,8 @@ d3.selection.prototype.chartForce = function init(options) {
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
 
-            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
-            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
+            // fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2*verticalOffset)
+            // pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2*verticalOffset)
 
             pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
@@ -304,6 +313,10 @@ d3.selection.prototype.chartForce = function init(options) {
               .alpha(1)
               .alphaTarget(0.5)
               .restart();
+
+            setTimeout(function() {
+              simulation.stop();
+            }, 3000)
 
             $circleGroup
               .transition()
@@ -332,8 +345,8 @@ d3.selection.prototype.chartForce = function init(options) {
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
 
-            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
-            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
+            // fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2*verticalOffset)
+            // pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2*verticalOffset)
 
             pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
@@ -354,6 +367,10 @@ d3.selection.prototype.chartForce = function init(options) {
               .alpha(1)
               .alphaTarget(0.5)
               .restart();
+
+            setTimeout(function() {
+              simulation.stop();
+            }, 3000)
 
             $circleGroup
               .transition()
@@ -384,8 +401,8 @@ d3.selection.prototype.chartForce = function init(options) {
             text_premium_num.transition().duration(500).style("opacity", 0)
             text_freemium_num.transition().duration(500).style("opacity", 0)
 
-            fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.6).attr('cy', height/2*verticalOffset)
-            pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.6).attr('cy', height/2*verticalOffset)
+            // fCircle.transition().duration(500).delay(0).attr('r', width*0.58/2.5).attr('cy', height/2*verticalOffset)
+            // pCircle.transition().duration(500).delay(0).attr('r', width*0.42/2.5).attr('cy', height/2*verticalOffset)
 
             pDollar.transition().duration(500).delay(0).attr('height', pDollarHeight)
             fDollar.transition().duration(500).delay(0).attr('height', fDollarHeight)
@@ -406,6 +423,10 @@ d3.selection.prototype.chartForce = function init(options) {
               .alpha(1)
               .alphaTarget(0.5)
               .restart();
+
+            setTimeout(function() {
+              simulation.stop();
+            }, 3000)
 
             $circleGroup
               .transition()
@@ -440,7 +461,9 @@ d3.selection.prototype.chartForce = function init(options) {
           .attr('width', width + MARGIN_LEFT + MARGIN_RIGHT)
           .attr('height', height + MARGIN_TOP + MARGIN_BOTTOM);
 
-        radius = width/65;
+        radius = (width < 600) ? 6 : 12;
+        widthPSplit = width*0.25;
+        widthFSplit = width*0.75;
         chargeForce = d3.forceManyBody().strength(-radius);
         forceCollide = d3.forceCollide(radius)
 
@@ -463,60 +486,63 @@ d3.selection.prototype.chartForce = function init(options) {
           .on("tick", ticked)
         
         text_premium
-          .attr('x',width*0.25)
+          .attr('x', widthPSplit)
           .attr('y',height - 60);
         
         text_freemium
-          .attr('x',width*0.75)
+          .attr('x', widthFSplit)
           .attr('y',height - 60);
 
         text_premium_num
-          .attr('x',width*0.25)
+          .attr('x', widthPSplit)
           .attr('y',height - 40);
         
         text_freemium_num
-          .attr('x',width*0.75)
+          .attr('x', widthFSplit)
           .attr('y',height - 40);
 
-        pCircle
-          .attr('cx', width*0.25) 
-          .attr('cy', height/2)
-          .attr('r', 0)
+        // pCircle
+        //   .attr('cx', widthPSplit) 
+        //   .attr('cy', height/2)
+        //   .attr('r', 0)
         
-        fCircle
-          .attr('cx', width*0.75) 
-          .attr('cy', height/2)
-          .attr('r', 0)
+        // fCircle
+        //   .attr('cx', widthFSplit) 
+        //   .attr('cy', height/2)
+        //   .attr('r', 0)
         
         pDollar
-          .attr('x',width*0.25 - pDollarHeight/2)
+          .attr('x', widthPSplit - pDollarHeight/2)
           .attr('y',height - pDollarHeight);
         
         fDollar
-          .attr('x',width*0.75 - fDollarHeight/2)
+          .attr('x', widthFSplit - fDollarHeight/2)
           .attr('y',height - pDollarHeight/2);
 
         pArrowLine 
-          .attr("x1", width*0.25)
-          .attr("y1", height/2 + width*0.42/2.6/2)
-          .attr("x2", width*0.25)
-          .attr("y2", height/2 + width*0.42/2.6/2)
+          .attr("x1", widthPSplit)
+          .attr("y1", height/2 + width*0.58/2.5/2 +20)
+          .attr("x2", widthPSplit)
+          .attr("y2", height/2 + width*0.58/2.5/2 +20)
         
         fArrowLine 
-          .attr("x1", width*0.75)
-          .attr("y1", height/2 + width*0.58/2.6/2 +20)
-          .attr("x2", width*0.75)
-          .attr("y2", height/2 + width*0.58/2.6/2 +20)
+          .attr("x1", widthFSplit)
+          .attr("y1", height/2 + width*0.58/2.5/2 +20)
+          .attr("x2", widthFSplit)
+          .attr("y2", height/2 + width*0.58/2.5/2 +20)
         
         pArrow
-          .attr("transform", `translate(${width*0.25}, ${height - pDollarHeight -10}) rotate(60)`)
+          .attr("transform", `translate(${widthPSplit}, ${height - pDollarHeight -10}) rotate(60)`)
           .style("opacity", 0)
         
         fArrow
-          .attr("transform", `translate(${width*0.75}, ${height - pDollarHeight/2 -10}) rotate(60)`)
+          .attr("transform", `translate(${widthFSplit}, ${height - pDollarHeight/2 -10}) rotate(60)`)
           .style("opacity", 0)
         
-        Chart.updateChart(currStep)
+        if (currStep) {
+          console.log(currStep)
+          Chart.updateChart(currStep)
+        }
         
         return Chart;
       },
@@ -525,13 +551,13 @@ d3.selection.prototype.chartForce = function init(options) {
         // offset chart for margins
         $vis.attr('transform', `translate(${MARGIN_LEFT}, ${MARGIN_TOP})`);
         
-        pCircle = $vis.append('circle')
-          .attr('class', 'bigCircle')
-          .attr('id', 'pCircle')
+        // pCircle = $vis.append('circle')
+        //   .attr('class', 'bigCircle')
+        //   .attr('id', 'pCircle')
       
-        fCircle = $vis.append('circle')
-          .attr('class', 'bigCircle')
-          .attr('id', 'fCircle')
+        // fCircle = $vis.append('circle')
+        //   .attr('class', 'bigCircle')
+        //   .attr('id', 'fCircle')
         
         pDollar = $vis.append('image')
           .attr('xlink:href', './assets/images/money_neon.png')
