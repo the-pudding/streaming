@@ -221,6 +221,7 @@ d3.selection.prototype.chartRev = function init(options) {
   }
 
     function updateChart(i) {
+      console.log(i)
       switch(i) {
         // case 0:
         //   $otherTracksRect.transition().duration(transition_duration)
