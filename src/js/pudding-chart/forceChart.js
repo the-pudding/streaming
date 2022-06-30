@@ -540,7 +540,6 @@ d3.selection.prototype.chartForce = function init(options) {
           .style("opacity", 0)
         
         if (currStep) {
-          console.log(currStep)
           Chart.updateChart(currStep)
         }
         
