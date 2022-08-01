@@ -586,7 +586,7 @@ d3.selection.prototype.chartForce = function init(options) {
           .style("opacity", 0);
         
         text_freemium = $vis.append('text')
-          .text("Freemium")
+          .text("Free")
           .attr('text-anchor','middle')
           .attr('dominant-baseline','central')
           .attr('id',"freemium_text")
